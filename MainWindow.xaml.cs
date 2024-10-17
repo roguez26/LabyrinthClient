@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,7 +24,35 @@ namespace LabyrinthClient
         public MainWindow()
         {
             InitializeComponent();
+            LoadCountries();
         }
+        private void LoadCountries()
+        {
+            try
+            {
 
+                CatalogManagementService.CatalogManagementClient client = new CatalogManagementService.CatalogManagementClient();
+                var countries = client.getAllCountries();
+
+                CountryCombobox.ItemsSource = countries;
+                CountryCombobox.DisplayMemberPath = "name";
+                CountryCombobox.SelectedValuePath = "idCountry";
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show($"Error al cargar países: {exception.Message}");
+            }
+        }
+        private void SignupButtonIsPressed(object sender, RoutedEventArgs e)
+        {
+            UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
+            UserManagementService.User user = new UserManagementService.User();   
+            user.Username = UsernameTextbox.Text;
+            user.Email = UsernameTextbox.Text;
+            user.Password = UsernameTextbox.Text;
+            user.Country = 1;
+            int check = client.addUser(user);           
+
+        }
     }
 }

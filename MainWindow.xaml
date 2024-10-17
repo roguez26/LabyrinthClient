@@ -25,23 +25,11 @@
             </TabItem>
             <TabItem Header="{x:Static p:Resources.GlobalSignup}" Margin="210,-2,-210,0" Width="85">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"  Text="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}" Height="25"/>
-                    <TextBox HorizontalAlignment="Center" Margin="0,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"  Text="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" Height="25"/>
-                    <TextBox HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"  Text="{x:Static p:Resources.GlobalPasswordTextBoxPlaceholder}" Height="25"/>
-                    <ComboBox Width="259" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,137,0,0">
-                        <ComboBoxItem Content="Argentina"/>
-                        <ComboBoxItem Content="Brasil"/>
-                        <ComboBoxItem Content="Canadá"/>
-                        <ComboBoxItem Content="Chile"/>
-                        <ComboBoxItem Content="Colombia"/>
-                        <ComboBoxItem Content="España"/>
-                        <ComboBoxItem Content="Estados Unidos"/>
-                        <ComboBoxItem Content="Francia"/>
-                        <ComboBoxItem Content="México"/>
-                        <ComboBoxItem Content="Perú"/>
-                    </ComboBox>
-                    <Button Content="{x:Static p:Resources.GlobalSignup}" HorizontalAlignment="Left" Margin="333,193,0,0" VerticalAlignment="Top"/>
-
+                    <TextBox Name="UsernameTextbox" HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"  Text="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}" Height="25"/>
+                    <TextBox Name="EmailTextbox" HorizontalAlignment="Center" Margin="0,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"  Text="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" Height="25"/>
+                    <PasswordBox Name="PasswordBox" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" Width="258"  Height="25"/>
+                    <ComboBox Name="CountryCombobox" Width="259" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,137,0,0"/>
+                    <Button Content="{x:Static p:Resources.GlobalSignup}" HorizontalAlignment="Left" Margin="333,193,0,0" VerticalAlignment="Top" Click="SignupButtonIsPressed"/>
                 </Grid>
             </TabItem>
             <TabItem Header="{x:Static p:Resources.JoinAsGuestTabItem}" Margin="211,-2,-211,0" Width="85">
