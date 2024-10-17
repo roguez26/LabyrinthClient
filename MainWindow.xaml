@@ -1,0 +1,53 @@
+﻿<Window x:Class="LabyrinthClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabyrinthClient"
+        xmlns:p="clr-namespace:LabyrinthClient.Properties"
+        mc:Ignorable="d"
+        Title="Login" Height="720" Width="1280">
+    <Grid>
+        <Label Content="Labyrinth The Game" HorizontalAlignment="Center" Margin="0,181,0,0" VerticalAlignment="Top" FontSize="38"/>
+        <TabControl Margin="301,275,301,164" RenderTransformOrigin="0.5,0.5">
+            <TabControl.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.458"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.792"/>
+                </TransformGroup>
+            </TabControl.RenderTransform>
+            <TabItem Header="{x:Static p:Resources.GlobalLogin}" Margin="209,-2,-209,1" Width="85">
+                <Grid Background="#FFE5E5E5" Margin="86,0,74,0" Height="206">
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="{x:Static p:Resources.GlobalSignup}" Margin="210,-2,-210,0" Width="85">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox HorizontalAlignment="Center" Margin="0,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"  Text="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}" Height="25"/>
+                    <TextBox HorizontalAlignment="Center" Margin="0,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"  Text="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" Height="25"/>
+                    <TextBox HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258"  Text="{x:Static p:Resources.GlobalPasswordTextBoxPlaceholder}" Height="25"/>
+                    <ComboBox Width="259" Height="25" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,137,0,0">
+                        <ComboBoxItem Content="Argentina"/>
+                        <ComboBoxItem Content="Brasil"/>
+                        <ComboBoxItem Content="Canadá"/>
+                        <ComboBoxItem Content="Chile"/>
+                        <ComboBoxItem Content="Colombia"/>
+                        <ComboBoxItem Content="España"/>
+                        <ComboBoxItem Content="Estados Unidos"/>
+                        <ComboBoxItem Content="Francia"/>
+                        <ComboBoxItem Content="México"/>
+                        <ComboBoxItem Content="Perú"/>
+                    </ComboBox>
+                    <Button Content="{x:Static p:Resources.GlobalSignup}" HorizontalAlignment="Left" Margin="333,193,0,0" VerticalAlignment="Top"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="{x:Static p:Resources.JoinAsGuestTabItem}" Margin="211,-2,-211,0" Width="85">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-52">
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

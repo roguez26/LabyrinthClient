@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddFriendButton" xml:space="preserve">
+    <value>Add friend</value>
+  </data>
+  <data name="AdvantageCardLabel" xml:space="preserve">
+    <value>No advantage card yet</value>
+  </data>
+  <data name="AdventurerDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="AdventurerNameLabel" xml:space="preserve">
+    <value>Adventurer</value>
+  </data>
+  <data name="AlienDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="AlienNameLabel" xml:space="preserve">
+    <value>Alien</value>
+  </data>
+  <data name="CharacterSelectionLabel" xml:space="preserve">
+    <value>Character selection</value>
+  </data>
+  <data name="ClassicComboBoxItem" xml:space="preserve">
+    <value>Classic</value>
+  </data>
+  <data name="EndTurnButton" xml:space="preserve">
+    <value>End turn</value>
+  </data>
+  <data name="FriendsListLabel" xml:space="preserve">
+    <value>Friends list</value>
+  </data>
+  <data name="GameboardSkinLabel" xml:space="preserve">
+    <value>Gameboard skin</value>
+  </data>
+  <data name="GlobalAcceptButton" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="GlobalChangeCharacterButton" xml:space="preserve">
+    <value>Change character</value>
+  </data>
+  <data name="GlobalConnectionErrorLabel" xml:space="preserve">
+    <value>Connection error</value>
+  </data>
+  <data name="GlobalConnectionErrorMessageText" xml:space="preserve">
+    <value>Failed to connect to the server. Please check your internet connection.</value>
+  </data>
+  <data name="GlobalEmailTextBoxPlaceholder" xml:space="preserve">
+    <value>Email address (e.g. example@gmail.com)</value>
+  </data>
+  <data name="GlobalInviteFriendButton" xml:space="preserve">
+    <value>Invite friend</value>
+  </data>
+  <data name="GlobalJoinGame" xml:space="preserve">
+    <value>Join game</value>
+  </data>
+  <data name="GlobalLobbyIdTextBoxPlaceholder" xml:space="preserve">
+    <value>Lobby ID (e.g. xxx-xxx-xxx)</value>
+  </data>
+  <data name="GlobalLobbyLabel" xml:space="preserve">
+    <value>Lobby</value>
+  </data>
+  <data name="GlobalLobbyMembersLabel" xml:space="preserve">
+    <value>Lobby members</value>
+  </data>
+  <data name="GlobalLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="GlobalMessageTextBoxPlaceholder" xml:space="preserve">
+    <value>Type here</value>
+  </data>
+  <data name="GlobalPasswordTextBoxPlaceholder" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="GlobalPlayersReadyLabel" xml:space="preserve">
+    <value>Players ready</value>
+  </data>
+  <data name="GlobalSignup" xml:space="preserve">
+    <value>Signup</value>
+  </data>
+  <data name="GlobalUploadButton" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="GlobalUsernameTextBoxPlaceholder" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="GlobalYouLabel" xml:space="preserve">
+    <value>You</value>
+  </data>
+  <data name="HostGameButton" xml:space="preserve">
+    <value>Host game</value>
+  </data>
+  <data name="HunterDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="HunterNameLabel" xml:space="preserve">
+    <value>Hunter</value>
+  </data>
+  <data name="JoinAsGuestTabItem" xml:space="preserve">
+    <value>Join as guest</value>
+  </data>
+  <data name="KnightDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="KnightNameLabel" xml:space="preserve">
+    <value>Knight</value>
+  </data>
+  <data name="LobbySettingsLabel" xml:space="preserve">
+    <value>Lobby settings</value>
+  </data>
+  <data name="NextTreasureLabel" xml:space="preserve">
+    <value>Next treasure</value>
+  </data>
+  <data name="NinjaDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="NinjaNameLabel" xml:space="preserve">
+    <value>Ninja</value>
+  </data>
+  <data name="PirateDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="PirateNameLabel" xml:space="preserve">
+    <value>Pirate</value>
+  </data>
+  <data name="PrincessDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="PrincessNameLabel" xml:space="preserve">
+    <value>Princess</value>
+  </data>
+  <data name="RankingLabel" xml:space="preserve">
+    <value>Ranking</value>
+  </data>
+  <data name="ReadyButton" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="RobotDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="RobotNameLabel" xml:space="preserve">
+    <value>Robot</value>
+  </data>
+  <data name="ScientistDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="ScientistNameLabel" xml:space="preserve">
+    <value>Scientist</value>
+  </data>
+  <data name="SelectCharacterButton" xml:space="preserve">
+    <value>Select Character</value>
+  </data>
+  <data name="SelectLanguageLabel" xml:space="preserve">
+    <value>Select language</value>
+  </data>
+  <data name="StartButton" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TreasuresLabel" xml:space="preserve">
+    <value>Treasures</value>
+  </data>
+  <data name="UpdateProfileLabel" xml:space="preserve">
+    <value>Update profile</value>
+  </data>
+  <data name="VolcanoComboBoxItem" xml:space="preserve">
+    <value>Volcano</value>
+  </data>
+  <data name="WizardDescriptionTextBlock" xml:space="preserve">
+    <value>ToDo</value>
+  </data>
+  <data name="WizardNameLabel" xml:space="preserve">
+    <value>Wizard</value>
+  </data>
+</root>
