@@ -54,5 +54,9 @@ namespace LabyrinthClient
             int check = client.addUser(user);           
 
         }
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

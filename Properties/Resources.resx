@@ -288,4 +288,7 @@
   <data name="WizardNameLabel" xml:space="preserve">
     <value>Wizard</value>
   </data>
+  <data name="JoinGameButton" xml:space="preserve">
+    <value>Join game</value>
+  </data>
 </root>
