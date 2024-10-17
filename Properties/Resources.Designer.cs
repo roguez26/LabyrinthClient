@@ -358,6 +358,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Join game.
+        /// </summary>
+        public static string JoinGameButton {
+            get {
+                return ResourceManager.GetString("JoinGameButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ToDo.
         /// </summary>
         public static string KnightDescriptionTextBlock {
