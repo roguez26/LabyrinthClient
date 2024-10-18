@@ -39,6 +39,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -120,7 +121,7 @@
     <None Include="Connected Services\CatalogManagementService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\CatalogManagementService\LabyrinthClient.CatalogManagementService.Country.datasource">
+    <None Include="Connected Services\CatalogManagementService\LabyrinthClient.CatalogManagementService.TransferCountry.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ChatService\ChatServiceImplementation.wsdl" />
@@ -152,21 +153,30 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ExitButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LanguageButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BackButton.png" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CatalogManagementService\" />
     <WCFMetadataStorage Include="Connected Services\ChatService\" />
     <WCFMetadataStorage Include="Connected Services\UserManagementService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CatalogManagementService\item.disco" />
+    <None Include="Connected Services\ChatService\item.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CatalogManagementService\configuration91.svcinfo" />
+    <None Include="Connected Services\ChatService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CatalogManagementService\configuration.svcinfo" />
+    <None Include="Connected Services\ChatService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\CatalogManagementService\Reference.svcmap">
+    <None Include="Connected Services\ChatService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -187,16 +197,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ChatService\item.disco" />
+    <None Include="Connected Services\CatalogManagementService\item.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ChatService\configuration91.svcinfo" />
+    <None Include="Connected Services\CatalogManagementService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ChatService\configuration.svcinfo" />
+    <None Include="Connected Services\CatalogManagementService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ChatService\Reference.svcmap">
+    <None Include="Connected Services\CatalogManagementService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

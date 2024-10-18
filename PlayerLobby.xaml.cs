@@ -24,6 +24,7 @@ namespace LabyrinthClient
         public PlayerLobby()
         {
             InitializeComponent();
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InstanceContext context = new InstanceContext(this);
             chatServiceClient = new ChatService.ChatServiceClient(context);
         }
@@ -68,5 +69,11 @@ namespace LabyrinthClient
             }
         }
 
+        private void BackButtonIsPressed(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            this.Close();
+            mainWindow.Show();
+        }
     }
 }

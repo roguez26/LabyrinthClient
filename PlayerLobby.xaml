@@ -14,5 +14,10 @@
         <Rectangle HorizontalAlignment="Left" Height="376" Margin="430,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="448"/>
         <Rectangle HorizontalAlignment="Left" Height="111" Margin="430,593,0,0" Stroke="Black" VerticalAlignment="Top" Width="448"/>
         <Rectangle HorizontalAlignment="Left" Height="280" Margin="930,115,0,0" Stroke="Black" VerticalAlignment="Top" Width="283"/>
+        <Button HorizontalAlignment="Left" Margin="87,49,0,0" VerticalAlignment="Top" Width="45" Height="45" BorderBrush="White" Foreground="White" Click="BackButtonIsPressed">
+            <Button.Background>
+                <ImageBrush ImageSource="/BackButton.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

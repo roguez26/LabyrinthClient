@@ -15,9 +15,9 @@ namespace LabyrinthClient.UserManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/UserManagementService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferUser", Namespace="http://schemas.datacontract.org/2004/07/UserManagementService")]
     [System.SerializableAttribute()]
-    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class TransferUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -111,10 +111,10 @@ namespace LabyrinthClient.UserManagementService {
     public interface IUserManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/addUser", ReplyAction="http://tempuri.org/IUserManagement/addUserResponse")]
-        int addUser(LabyrinthClient.UserManagementService.User user);
+        int addUser(LabyrinthClient.UserManagementService.TransferUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/addUser", ReplyAction="http://tempuri.org/IUserManagement/addUserResponse")]
-        System.Threading.Tasks.Task<int> addUserAsync(LabyrinthClient.UserManagementService.User user);
+        System.Threading.Tasks.Task<int> addUserAsync(LabyrinthClient.UserManagementService.TransferUser user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -144,11 +144,11 @@ namespace LabyrinthClient.UserManagementService {
                 base(binding, remoteAddress) {
         }
         
-        public int addUser(LabyrinthClient.UserManagementService.User user) {
+        public int addUser(LabyrinthClient.UserManagementService.TransferUser user) {
             return base.Channel.addUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> addUserAsync(LabyrinthClient.UserManagementService.User user) {
+        public System.Threading.Tasks.Task<int> addUserAsync(LabyrinthClient.UserManagementService.TransferUser user) {
             return base.Channel.addUserAsync(user);
         }
     }
