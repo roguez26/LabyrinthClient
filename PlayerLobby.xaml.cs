@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabyrinthClient.UserManagementService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -20,13 +21,16 @@ namespace LabyrinthClient
     /// </summary>
     public partial class PlayerLobby : Window, ChatService.IChatServiceCallback
     {
+        private TransferUser _currentSession;
+
         private ChatService.ChatServiceClient chatServiceClient;
-        public PlayerLobby()
+        public PlayerLobby(TransferUser user)
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InstanceContext context = new InstanceContext(this);
             chatServiceClient = new ChatService.ChatServiceClient(context);
+            _currentSession = user;
         }
 
         public void BroadcastMessage(string message)
@@ -45,7 +49,8 @@ namespace LabyrinthClient
                 {
                     if (chatServiceClient != null && chatServiceClient.State != CommunicationState.Faulted)
                     {
-                        chatServiceClient.SendMessage(MessageTextBox.Text);
+                        String message = "<" + _currentSession.Username + "> " + MessageTextBox.Text;
+                        chatServiceClient.SendMessage(message);
                         MessageTextBox.Clear();
                     }
                     else
@@ -71,9 +76,11 @@ namespace LabyrinthClient
 
         private void BackButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            MainMenu mainMenu = MainMenu.GetInstance(_currentSession);
+            mainMenu.Show();
             this.Close();
-            mainWindow.Show();
         }
+
+
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthCliente\LabyrinthClient\obj\Debug\
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\
 LabyrinthClient
 none
 false
 DEBUG;TRACE
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthCliente\LabyrinthClient\App.xaml
-2-1186237668
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\App.xaml
+5-1048386373
 
-9-664475511
+131512795999
 1685338780
-MainWindow.xaml;PlayerLobby.xaml;
+MainMenu.xaml;MainWindow.xaml;PlayerLobby.xaml;MyUser.xaml;Styles.xaml;
 
 False
 

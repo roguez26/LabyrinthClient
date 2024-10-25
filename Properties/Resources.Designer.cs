@@ -115,6 +115,24 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Change password.
+        /// </summary>
+        public static string ChangePasswordButton {
+            get {
+                return ResourceManager.GetString("ChangePasswordButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Change profile picture.
+        /// </summary>
+        public static string ChangeProfilePictureButton {
+            get {
+                return ResourceManager.GetString("ChangeProfilePictureButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Character selection.
         /// </summary>
         public static string CharacterSelectionLabel {
@@ -129,6 +147,15 @@ namespace LabyrinthClient.Properties {
         public static string ClassicComboBoxItem {
             get {
                 return ResourceManager.GetString("ClassicComboBoxItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Edit profile.
+        /// </summary>
+        public static string EditProfileButton {
+            get {
+                return ResourceManager.GetString("EditProfileButton", resourceCulture);
             }
         }
         
@@ -169,6 +196,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        public static string GlobalCancelButton {
+            get {
+                return ResourceManager.GetString("GlobalCancelButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Change character.
         /// </summary>
         public static string GlobalChangeCharacterButton {
@@ -201,6 +237,24 @@ namespace LabyrinthClient.Properties {
         public static string GlobalEmailTextBoxPlaceholder {
             get {
                 return ResourceManager.GetString("GlobalEmailTextBoxPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Games played.
+        /// </summary>
+        public static string GlobalGamesPlayed {
+            get {
+                return ResourceManager.GetString("GlobalGamesPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Games won.
+        /// </summary>
+        public static string GlobalGamesWonLabel {
+            get {
+                return ResourceManager.GetString("GlobalGamesWonLabel", resourceCulture);
             }
         }
         
@@ -394,6 +448,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a New Password.
+        /// </summary>
+        public static string NewPasswordLabel {
+            get {
+                return ResourceManager.GetString("NewPasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Next treasure.
         /// </summary>
         public static string NextTreasureLabel {
@@ -417,6 +480,15 @@ namespace LabyrinthClient.Properties {
         public static string NinjaNameLabel {
             get {
                 return ResourceManager.GetString("NinjaNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Old password.
+        /// </summary>
+        public static string OldPasswordLabel {
+            get {
+                return ResourceManager.GetString("OldPasswordLabel", resourceCulture);
             }
         }
         
@@ -511,7 +583,7 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Select Character.
+        ///   Busca una cadena traducida similar a Select character.
         /// </summary>
         public static string SelectCharacterButton {
             get {
@@ -552,6 +624,15 @@ namespace LabyrinthClient.Properties {
         public static string UpdateProfileLabel {
             get {
                 return ResourceManager.GetString("UpdateProfileLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Verification code.
+        /// </summary>
+        public static string VerificationCodeTextBox {
+            get {
+                return ResourceManager.GetString("VerificationCodeTextBox", resourceCulture);
             }
         }
         

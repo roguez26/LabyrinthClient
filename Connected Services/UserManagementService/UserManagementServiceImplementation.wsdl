@@ -34,6 +34,7 @@
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UserManagementService" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManagement_addUser_InputMessage">
@@ -42,10 +43,70 @@
   <wsdl:message name="IUserManagement_addUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:addUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_userVerification_InputMessage">
+    <wsdl:part name="parameters" element="tns:userVerification" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_userVerification_OutputMessage">
+    <wsdl:part name="parameters" element="tns:userVerificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_updateUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateUser" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_updateUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_changeUserProfilePicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:changeUserProfilePicture" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_changeUserProfilePicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:changeUserProfilePictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_getUserProfilePicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserProfilePicture" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_getUserProfilePicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserProfilePictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_verificateCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:verificateCode" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_verificateCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:verificateCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_addVerificationCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:addVerificationCode" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_addVerificationCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addVerificationCodeResponse" />
+  </wsdl:message>
   <wsdl:portType name="IUserManagement">
     <wsdl:operation name="addUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/addUser" message="tns:IUserManagement_addUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/addUserResponse" message="tns:IUserManagement_addUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="userVerification">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/userVerification" message="tns:IUserManagement_userVerification_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/userVerificationResponse" message="tns:IUserManagement_userVerification_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/updateUser" message="tns:IUserManagement_updateUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/updateUserResponse" message="tns:IUserManagement_updateUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="changeUserProfilePicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/changeUserProfilePicture" message="tns:IUserManagement_changeUserProfilePicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/changeUserProfilePictureResponse" message="tns:IUserManagement_changeUserProfilePicture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserProfilePicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/getUserProfilePicture" message="tns:IUserManagement_getUserProfilePicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/getUserProfilePictureResponse" message="tns:IUserManagement_getUserProfilePicture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="verificateCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/verificateCode" message="tns:IUserManagement_verificateCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/verificateCodeResponse" message="tns:IUserManagement_verificateCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addVerificationCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/addVerificationCode" message="tns:IUserManagement_addVerificationCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/addVerificationCodeResponse" message="tns:IUserManagement_addVerificationCode_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManagement" type="tns:IUserManagement">
@@ -60,6 +121,60 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="userVerification">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/userVerification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/updateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeUserProfilePicture">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/changeUserProfilePicture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserProfilePicture">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/getUserProfilePicture" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificateCode">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/verificateCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addVerificationCode">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/addVerificationCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserManagementServiceImplementation">
     <wsdl:port name="NetTcpBinding_IUserManagement" binding="tns:NetTcpBinding_IUserManagement">
@@ -67,7 +182,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8091/UserManagementService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MSI\axel_</Upn>
+          <Upn>ROGUEZ\ivanr</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

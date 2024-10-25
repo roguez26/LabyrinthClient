@@ -265,7 +265,7 @@
     <value>Scientist</value>
   </data>
   <data name="SelectCharacterButton" xml:space="preserve">
-    <value>Select Character</value>
+    <value>Select character</value>
   </data>
   <data name="SelectLanguageLabel" xml:space="preserve">
     <value>Select language</value>
@@ -290,5 +290,32 @@
   </data>
   <data name="JoinGameButton" xml:space="preserve">
     <value>Join game</value>
+  </data>
+  <data name="EditProfileButton" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="GlobalCancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="GlobalGamesPlayed" xml:space="preserve">
+    <value>Games played</value>
+  </data>
+  <data name="GlobalGamesWonLabel" xml:space="preserve">
+    <value>Games won</value>
+  </data>
+  <data name="ChangePasswordButton" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="OldPasswordLabel" xml:space="preserve">
+    <value>Old password</value>
+  </data>
+  <data name="NewPasswordLabel" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="ChangeProfilePictureButton" xml:space="preserve">
+    <value>Change profile picture</value>
+  </data>
+  <data name="VerificationCodeTextBox" xml:space="preserve">
+    <value>Verification code</value>
   </data>
 </root>

@@ -74,6 +74,99 @@ namespace LabyrinthClient.CatalogManagementService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferStats", Namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService")]
+    [System.SerializableAttribute()]
+    public partial class TransferStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GamesPlayedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GamesWonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GamesPlayed {
+            get {
+                return this.GamesPlayedField;
+            }
+            set {
+                if ((this.GamesPlayedField.Equals(value) != true)) {
+                    this.GamesPlayedField = value;
+                    this.RaisePropertyChanged("GamesPlayed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GamesWon {
+            get {
+                return this.GamesWonField;
+            }
+            set {
+                if ((this.GamesWonField.Equals(value) != true)) {
+                    this.GamesWonField = value;
+                    this.RaisePropertyChanged("GamesWon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StatId {
+            get {
+                return this.StatIdField;
+            }
+            set {
+                if ((this.StatIdField.Equals(value) != true)) {
+                    this.StatIdField = value;
+                    this.RaisePropertyChanged("StatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CatalogManagementService.ICatalogManagement")]
     public interface ICatalogManagement {
@@ -83,6 +176,18 @@ namespace LabyrinthClient.CatalogManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/getAllCountriesResponse")]
         System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> getAllCountriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/getCountryByIdResponse")]
+        LabyrinthClient.CatalogManagementService.TransferCountry getCountryById(int idCountry);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/getCountryByIdResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> getCountryByIdAsync(int idCountry);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/getStatsByUserIdResponse")]
+        LabyrinthClient.CatalogManagementService.TransferStats getStatsByUserId(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/getStatsByUserIdResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferStats> getStatsByUserIdAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,6 +223,22 @@ namespace LabyrinthClient.CatalogManagementService {
         
         public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> getAllCountriesAsync() {
             return base.Channel.getAllCountriesAsync();
+        }
+        
+        public LabyrinthClient.CatalogManagementService.TransferCountry getCountryById(int idCountry) {
+            return base.Channel.getCountryById(idCountry);
+        }
+        
+        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> getCountryByIdAsync(int idCountry) {
+            return base.Channel.getCountryByIdAsync(idCountry);
+        }
+        
+        public LabyrinthClient.CatalogManagementService.TransferStats getStatsByUserId(int userId) {
+            return base.Channel.getStatsByUserId(userId);
+        }
+        
+        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferStats> getStatsByUserIdAsync(int userId) {
+            return base.Channel.getStatsByUserIdAsync(userId);
         }
     }
 }
