@@ -235,47 +235,59 @@ namespace LabyrinthClient.UserManagementService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserManagementService.IUserManagement")]
     public interface IUserManagement {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/addUser", ReplyAction="http://tempuri.org/IUserManagement/addUserResponse")]
-        int addUser(LabyrinthClient.UserManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
+        int AddUser(LabyrinthClient.UserManagementService.TransferUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/addUser", ReplyAction="http://tempuri.org/IUserManagement/addUserResponse")]
-        System.Threading.Tasks.Task<int> addUserAsync(LabyrinthClient.UserManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
+        System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/userVerification", ReplyAction="http://tempuri.org/IUserManagement/userVerificationResponse")]
-        LabyrinthClient.UserManagementService.TransferUser userVerification(LabyrinthClient.UserManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UserVerification", ReplyAction="http://tempuri.org/IUserManagement/UserVerificationResponse")]
+        LabyrinthClient.UserManagementService.TransferUser UserVerification(LabyrinthClient.UserManagementService.TransferUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/userVerification", ReplyAction="http://tempuri.org/IUserManagement/userVerificationResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> userVerificationAsync(LabyrinthClient.UserManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UserVerification", ReplyAction="http://tempuri.org/IUserManagement/UserVerificationResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(LabyrinthClient.UserManagementService.TransferUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/updateUser", ReplyAction="http://tempuri.org/IUserManagement/updateUserResponse")]
-        int updateUser(LabyrinthClient.UserManagementService.TransferUser newUser);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
+        int UpdateUser(LabyrinthClient.UserManagementService.TransferUser newUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/updateUser", ReplyAction="http://tempuri.org/IUserManagement/updateUserResponse")]
-        System.Threading.Tasks.Task<int> updateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
+        System.Threading.Tasks.Task<int> UpdateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/changeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/changeUserProfilePictureResponse")]
-        string changeUserProfilePicture(int userId, byte[] imagenData);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
+        string ChangeUserProfilePicture(int userId, byte[] imagenData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/changeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/changeUserProfilePictureResponse")]
-        System.Threading.Tasks.Task<string> changeUserProfilePictureAsync(int userId, byte[] imagenData);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
+        System.Threading.Tasks.Task<string> ChangeUserProfilePictureAsync(int userId, byte[] imagenData);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/getUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/getUserProfilePictureResponse")]
-        byte[] getUserProfilePicture(string path);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/GetUserProfilePictureResponse")]
+        byte[] GetUserProfilePicture(string path);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/getUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/getUserProfilePictureResponse")]
-        System.Threading.Tasks.Task<byte[]> getUserProfilePictureAsync(string path);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/GetUserProfilePictureResponse")]
+        System.Threading.Tasks.Task<byte[]> GetUserProfilePictureAsync(string path);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/verificateCode", ReplyAction="http://tempuri.org/IUserManagement/verificateCodeResponse")]
-        bool verificateCode(string email, string code);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/VerificateCode", ReplyAction="http://tempuri.org/IUserManagement/VerificateCodeResponse")]
+        bool VerificateCode(string email, string code);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/verificateCode", ReplyAction="http://tempuri.org/IUserManagement/verificateCodeResponse")]
-        System.Threading.Tasks.Task<bool> verificateCodeAsync(string email, string code);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/VerificateCode", ReplyAction="http://tempuri.org/IUserManagement/VerificateCodeResponse")]
+        System.Threading.Tasks.Task<bool> VerificateCodeAsync(string email, string code);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/addVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/addVerificationCodeResponse")]
-        int addVerificationCode(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/AddVerificationCodeResponse")]
+        int AddVerificationCode(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/addVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/addVerificationCodeResponse")]
-        System.Threading.Tasks.Task<int> addVerificationCodeAsync(string email);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/AddVerificationCodeResponse")]
+        System.Threading.Tasks.Task<int> AddVerificationCodeAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/IsEmailRegistered", ReplyAction="http://tempuri.org/IUserManagement/IsEmailRegisteredResponse")]
+        bool IsEmailRegistered(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/IsEmailRegistered", ReplyAction="http://tempuri.org/IUserManagement/IsEmailRegisteredResponse")]
+        System.Threading.Tasks.Task<bool> IsEmailRegisteredAsync(string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodes", ReplyAction="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesResponse")]
+        int DeleteAllVerificationCodes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodes", ReplyAction="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesResponse")]
+        System.Threading.Tasks.Task<int> DeleteAllVerificationCodesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -305,60 +317,76 @@ namespace LabyrinthClient.UserManagementService {
                 base(binding, remoteAddress) {
         }
         
-        public int addUser(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.addUser(user);
+        public int AddUser(LabyrinthClient.UserManagementService.TransferUser user) {
+            return base.Channel.AddUser(user);
         }
         
-        public System.Threading.Tasks.Task<int> addUserAsync(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.addUserAsync(user);
+        public System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user) {
+            return base.Channel.AddUserAsync(user);
         }
         
-        public LabyrinthClient.UserManagementService.TransferUser userVerification(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.userVerification(user);
+        public LabyrinthClient.UserManagementService.TransferUser UserVerification(LabyrinthClient.UserManagementService.TransferUser user) {
+            return base.Channel.UserVerification(user);
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> userVerificationAsync(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.userVerificationAsync(user);
+        public System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(LabyrinthClient.UserManagementService.TransferUser user) {
+            return base.Channel.UserVerificationAsync(user);
         }
         
-        public int updateUser(LabyrinthClient.UserManagementService.TransferUser newUser) {
-            return base.Channel.updateUser(newUser);
+        public int UpdateUser(LabyrinthClient.UserManagementService.TransferUser newUser) {
+            return base.Channel.UpdateUser(newUser);
         }
         
-        public System.Threading.Tasks.Task<int> updateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser) {
-            return base.Channel.updateUserAsync(newUser);
+        public System.Threading.Tasks.Task<int> UpdateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser) {
+            return base.Channel.UpdateUserAsync(newUser);
         }
         
-        public string changeUserProfilePicture(int userId, byte[] imagenData) {
-            return base.Channel.changeUserProfilePicture(userId, imagenData);
+        public string ChangeUserProfilePicture(int userId, byte[] imagenData) {
+            return base.Channel.ChangeUserProfilePicture(userId, imagenData);
         }
         
-        public System.Threading.Tasks.Task<string> changeUserProfilePictureAsync(int userId, byte[] imagenData) {
-            return base.Channel.changeUserProfilePictureAsync(userId, imagenData);
+        public System.Threading.Tasks.Task<string> ChangeUserProfilePictureAsync(int userId, byte[] imagenData) {
+            return base.Channel.ChangeUserProfilePictureAsync(userId, imagenData);
         }
         
-        public byte[] getUserProfilePicture(string path) {
-            return base.Channel.getUserProfilePicture(path);
+        public byte[] GetUserProfilePicture(string path) {
+            return base.Channel.GetUserProfilePicture(path);
         }
         
-        public System.Threading.Tasks.Task<byte[]> getUserProfilePictureAsync(string path) {
-            return base.Channel.getUserProfilePictureAsync(path);
+        public System.Threading.Tasks.Task<byte[]> GetUserProfilePictureAsync(string path) {
+            return base.Channel.GetUserProfilePictureAsync(path);
         }
         
-        public bool verificateCode(string email, string code) {
-            return base.Channel.verificateCode(email, code);
+        public bool VerificateCode(string email, string code) {
+            return base.Channel.VerificateCode(email, code);
         }
         
-        public System.Threading.Tasks.Task<bool> verificateCodeAsync(string email, string code) {
-            return base.Channel.verificateCodeAsync(email, code);
+        public System.Threading.Tasks.Task<bool> VerificateCodeAsync(string email, string code) {
+            return base.Channel.VerificateCodeAsync(email, code);
         }
         
-        public int addVerificationCode(string email) {
-            return base.Channel.addVerificationCode(email);
+        public int AddVerificationCode(string email) {
+            return base.Channel.AddVerificationCode(email);
         }
         
-        public System.Threading.Tasks.Task<int> addVerificationCodeAsync(string email) {
-            return base.Channel.addVerificationCodeAsync(email);
+        public System.Threading.Tasks.Task<int> AddVerificationCodeAsync(string email) {
+            return base.Channel.AddVerificationCodeAsync(email);
+        }
+        
+        public bool IsEmailRegistered(string email) {
+            return base.Channel.IsEmailRegistered(email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsEmailRegisteredAsync(string email) {
+            return base.Channel.IsEmailRegisteredAsync(email);
+        }
+        
+        public int DeleteAllVerificationCodes() {
+            return base.Channel.DeleteAllVerificationCodes();
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteAllVerificationCodesAsync() {
+            return base.Channel.DeleteAllVerificationCodesAsync();
         }
     }
 }

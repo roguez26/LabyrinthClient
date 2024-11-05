@@ -15,17 +15,17 @@ namespace LabyrinthClient.LobbyManagementService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LobbyManagementService.ILobbyManagementService", CallbackContract=typeof(LabyrinthClient.LobbyManagementService.ILobbyManagementServiceCallback))]
     public interface ILobbyManagementService {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/createLobby")]
-        void createLobby();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/CreateLobby")]
+        void CreateLobby();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/createLobby")]
-        System.Threading.Tasks.Task createLobbyAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/CreateLobby")]
+        System.Threading.Tasks.Task CreateLobbyAsync();
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/joinToGame")]
-        void joinToGame(string lobbyCode, string userName);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/JoinToGame")]
+        void JoinToGame(string lobbyCode, string userName);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/joinToGame")]
-        System.Threading.Tasks.Task joinToGameAsync(string lobbyCode, string userName);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/JoinToGame")]
+        System.Threading.Tasks.Task JoinToGameAsync(string lobbyCode, string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -66,20 +66,20 @@ namespace LabyrinthClient.LobbyManagementService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void createLobby() {
-            base.Channel.createLobby();
+        public void CreateLobby() {
+            base.Channel.CreateLobby();
         }
         
-        public System.Threading.Tasks.Task createLobbyAsync() {
-            return base.Channel.createLobbyAsync();
+        public System.Threading.Tasks.Task CreateLobbyAsync() {
+            return base.Channel.CreateLobbyAsync();
         }
         
-        public void joinToGame(string lobbyCode, string userName) {
-            base.Channel.joinToGame(lobbyCode, userName);
+        public void JoinToGame(string lobbyCode, string userName) {
+            base.Channel.JoinToGame(lobbyCode, userName);
         }
         
-        public System.Threading.Tasks.Task joinToGameAsync(string lobbyCode, string userName) {
-            return base.Channel.joinToGameAsync(lobbyCode, userName);
+        public System.Threading.Tasks.Task JoinToGameAsync(string lobbyCode, string userName) {
+            return base.Channel.JoinToGameAsync(lobbyCode, userName);
         }
     }
 }

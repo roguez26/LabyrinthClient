@@ -68,7 +68,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
+        
         <!-- Triggers para cambiar apariencia -->
         <Style.Triggers>
             <!-- Cambiar borde a azul cuando se selecciona -->
@@ -82,7 +82,22 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
+    <Style x:Key="CustomPasswordBoxStyle" TargetType="PasswordBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border Background="{TemplateBinding Background}" 
+                        BorderBrush="{TemplateBinding BorderBrush}" 
+                        BorderThickness="{TemplateBinding BorderThickness}" 
+                        CornerRadius="6">
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
     <Style x:Key="CustomComboBoxStyle" TargetType="ComboBox">
         <!-- Propiedades generales del ComboBox -->
         <Setter Property="Background" Value="White" />
@@ -155,7 +170,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
+        
         <!-- Triggers para cambiar el color del borde al pasar el mouse y al estar enfocado -->
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -169,5 +184,64 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <!-- Estilo para el TabControl -->
+    <Style TargetType="TabControl">
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Black" Opacity="0.6"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabControl">
+                    <Border CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- StackPanel para organizar las pestañas en horizontal -->
+                            <StackPanel x:Name="HeaderPanel" Grid.Row="1" Orientation="Vertical">
+                                <ItemsControl ItemsSource="{Binding Path=Items, RelativeSource={RelativeSource AncestorType={x:Type TabControl}}}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <!-- Presentador de contenido para los encabezados de los TabItem -->
+                                            <ContentPresenter Content="{Binding Header}" ContentTemplate="{Binding HeaderTemplate}" />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+
+                            <!-- Presentador de contenido para la pestaña seleccionada -->
+                            <ContentPresenter x:Name="PART_SelectedContentHost" Grid.Row="1" ContentSource="SelectedContent"/>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Estilo para TabItem -->
+    <Style TargetType="TabItem">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border Background="Transparent" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter ContentSource="Header" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 
 </ResourceDictionary>

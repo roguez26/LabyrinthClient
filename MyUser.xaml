@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabyrinthClient"
         mc:Ignorable="d"
-        Icon="/logo.png"
+        Icon="/GraphicItems/logo.png"
         xmlns:p="clr-namespace:LabyrinthClient.Properties"
        
         Title="My profile" Height="323" Width="590">

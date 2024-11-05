@@ -171,23 +171,23 @@ namespace LabyrinthClient.CatalogManagementService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CatalogManagementService.ICatalogManagement")]
     public interface ICatalogManagement {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/getAllCountriesResponse")]
-        LabyrinthClient.CatalogManagementService.TransferCountry[] getAllCountries();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/GetAllCountriesResponse")]
+        LabyrinthClient.CatalogManagementService.TransferCountry[] GetAllCountries();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/getAllCountriesResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> getAllCountriesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/GetAllCountriesResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> GetAllCountriesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/getCountryByIdResponse")]
-        LabyrinthClient.CatalogManagementService.TransferCountry getCountryById(int idCountry);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/GetCountryByIdResponse")]
+        LabyrinthClient.CatalogManagementService.TransferCountry GetCountryById(int idCountry);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/getCountryByIdResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> getCountryByIdAsync(int idCountry);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/GetCountryByIdResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> GetCountryByIdAsync(int idCountry);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/getStatsByUserIdResponse")]
-        LabyrinthClient.CatalogManagementService.TransferStats getStatsByUserId(int userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/GetStatsByUserIdResponse")]
+        LabyrinthClient.CatalogManagementService.TransferStats GetStatsByUserId(int userId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/getStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/getStatsByUserIdResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferStats> getStatsByUserIdAsync(int userId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/GetStatsByUserIdResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferStats> GetStatsByUserIdAsync(int userId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -217,28 +217,28 @@ namespace LabyrinthClient.CatalogManagementService {
                 base(binding, remoteAddress) {
         }
         
-        public LabyrinthClient.CatalogManagementService.TransferCountry[] getAllCountries() {
-            return base.Channel.getAllCountries();
+        public LabyrinthClient.CatalogManagementService.TransferCountry[] GetAllCountries() {
+            return base.Channel.GetAllCountries();
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> getAllCountriesAsync() {
-            return base.Channel.getAllCountriesAsync();
+        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> GetAllCountriesAsync() {
+            return base.Channel.GetAllCountriesAsync();
         }
         
-        public LabyrinthClient.CatalogManagementService.TransferCountry getCountryById(int idCountry) {
-            return base.Channel.getCountryById(idCountry);
+        public LabyrinthClient.CatalogManagementService.TransferCountry GetCountryById(int idCountry) {
+            return base.Channel.GetCountryById(idCountry);
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> getCountryByIdAsync(int idCountry) {
-            return base.Channel.getCountryByIdAsync(idCountry);
+        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> GetCountryByIdAsync(int idCountry) {
+            return base.Channel.GetCountryByIdAsync(idCountry);
         }
         
-        public LabyrinthClient.CatalogManagementService.TransferStats getStatsByUserId(int userId) {
-            return base.Channel.getStatsByUserId(userId);
+        public LabyrinthClient.CatalogManagementService.TransferStats GetStatsByUserId(int userId) {
+            return base.Channel.GetStatsByUserId(userId);
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferStats> getStatsByUserIdAsync(int userId) {
-            return base.Channel.getStatsByUserIdAsync(userId);
+        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferStats> GetStatsByUserIdAsync(int userId) {
+            return base.Channel.GetStatsByUserIdAsync(userId);
         }
     }
 }

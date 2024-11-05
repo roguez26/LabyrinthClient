@@ -66,7 +66,7 @@ namespace LabyrinthClient
             }
         }
 
-        private void Window_Closed(object sender, System.EventArgs e)
+        private void WindowClosed(object sender, System.EventArgs e)
         {
             if (chatServiceClient != null)
             {

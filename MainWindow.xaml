@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LabyrinthClient"
         xmlns:p="clr-namespace:LabyrinthClient.Properties"
         mc:Ignorable="d"
-        Icon="/logo.png"
+        Icon="/GraphicItems/logo.png"
         Title="Login"
         Height="720"
         Width="1277"
@@ -21,10 +21,13 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
-    
-    
+
+
+
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/GraphicItems/LoginCover.jpg"/>
+        </Grid.Background>
         <!-- Definición de las filas principales -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -34,23 +37,13 @@
         </Grid.RowDefinitions>
 
         <!-- Título centrado -->
-        <Label Content="Labyrinth The Game"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
-               FontSize="38"
-               FontWeight="Bold"
-               Grid.Row="0"
-               Margin="0,92,0,0" Grid.RowSpan="2"/>
 
         <!-- TabControl en el centro de la ventana -->
         <TabControl Grid.Row="1"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Foreground="White"
-                    BorderBrush="White"
-                    Background="{x:Null}" Width="267">
+                    VerticalAlignment="Top" Width="327" Height="324" Margin="0,255,0,0" BorderBrush="Black">
 
-            <TabItem x:Name="loginTabItem" Header="{x:Static p:Resources.GlobalLogin}" Width="85" Height="22" Margin="1,-2,-1,0">
+            <TabItem x:Name="loginTabItem" Header="{x:Static p:Resources.GlobalLogin}" Width="85" Height="25">
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="201" Width="261">
                     <TextBox x:Name="emailForLoginTextBox"
                              Width="258" Height="25"
@@ -59,12 +52,11 @@
                              TextWrapping="Wrap" 
                              Style="{StaticResource CustomTextBoxStyle}"/>
 
-                    <TextBox x:Name="passwordForLoginTextBox"
+                    <PasswordBox x:Name="passwordForLoginTextBox"
                              Width="258" Height="25"
-                             Margin="0,67,0,0"
+                             Margin="2,67,1,0"
                              VerticalAlignment="Top"
-                             TextWrapping="Wrap" 
-                             Text="{x:Static p:Resources.GlobalPasswordTextBoxPlaceholder}" />
+                             Style="{StaticResource CustomPasswordBoxStyle}" Grid.ColumnSpan="2"/>
 
                     <Button x:Name="LoginButton"
                             Content="{x:Static p:Resources.GlobalLogin}"
@@ -78,7 +70,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="{x:Static p:Resources.GlobalSignup}" Width="85" Height="22" Margin="2,-2,-2,0">
+            <TabItem Header="{x:Static p:Resources.GlobalSignup}" Width="85" Height="25">
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="201" Width="261">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -97,7 +89,7 @@
                         <PasswordBox Name="PasswordBox"
              Width="258" Height="25"
              VerticalAlignment="Center" Canvas.Left="-262" Canvas.Top="73" HorizontalAlignment="Left" 
-                                     />
+                                  Style="{StaticResource CustomPasswordBoxStyle}"/>
 
                         <ComboBox Name="CountryCombobox"
           Width="259" Height="25"
@@ -118,14 +110,14 @@
                 </Grid>
             </TabItem>
 
-            <TabItem x:Name="joinAsGuestTabItem" Header="{x:Static p:Resources.JoinAsGuestTabItem}" Width="85" Height="22" Margin="2,-2,-2,0">
+            <TabItem x:Name="joinAsGuestTabItem" Header="{x:Static p:Resources.JoinAsGuestTabItem}" Width="90" Height="25">
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="201" Width="261">
                     <TextBox x:Name="lobbyTextBox"
                              Width="258" Height="25"
                              Margin="0,35,0,0"
                              VerticalAlignment="Top"
                              TextWrapping="Wrap" 
-                             Style="{StaticResource CustomTextBoxStyle}"/>
+                             Style="{StaticResource CustomTextBoxStyle}" Background="White"/>
 
                     <TextBox x:Name="userNameForJoinAsGuestTextBox"
                              Width="258" Height="25"
@@ -144,17 +136,22 @@
         </TabControl>
 
         <!-- Botones de salida e idioma alineados en la parte inferior derecha -->
-        <Button Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="44" Height="45" Margin="0,0,21,24" Foreground="White" BorderBrush="White" Click="ExitButtonIsPressed" Grid.Row="1">
+        <Button Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="44" Height="45" Margin="0,0,21,24" Click="ExitButtonIsPressed" Grid.Row="1" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/ExitButton.png"/>
+                <ImageBrush ImageSource="/GraphicItems/ExitButton.png"/>
             </Button.Background>
         </Button>
 
-        <Button Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="44" Height="45" Margin="0,0,21,103" Foreground="White" BorderBrush="White" Click="LanguageButtonIsPressed" Grid.Row="1">
+        <Button Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="44" Height="45" Margin="0,0,21,103" Foreground="White" BorderBrush="{x:Null}" Click="LanguageButtonIsPressed" Grid.Row="1">
             <Button.Background>
-                <ImageBrush ImageSource="/LanguageButton.png"/>
+                <ImageBrush ImageSource="/GraphicItems/LanguageButton.png"/>
             </Button.Background>
         </Button>
+        <Image HorizontalAlignment="Left" Margin="417,53,0,0" VerticalAlignment="Top" Width="488" Grid.RowSpan="2" Source="/GraphicItems/TitleStyle.png">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/GraphicItems/TitleStyle.png"/>
+            </Image.OpacityMask>
+        </Image>
 
     </Grid>
 </Window>

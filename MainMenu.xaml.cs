@@ -46,7 +46,7 @@ namespace LabyrinthClient
         private void changeProfilePicture()
         {
             UserManagementService.UserManagementClient userManagement = new UserManagementService.UserManagementClient();
-            byte[] imageData = userManagement.getUserProfilePicture(_currentSession.ProfilePicture);
+            byte[] imageData = userManagement.GetUserProfilePicture(_currentSession.ProfilePicture);
 
             if (imageData != null && imageData.Length > 0)
             {

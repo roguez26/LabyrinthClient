@@ -34,7 +34,7 @@ namespace LabyrinthClient
 
         private void JoinButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            lobbyManagementServiceClient.joinToGame(lobbyCodeTextBox.Text, currentSession.Username);
+            lobbyManagementServiceClient.JoinToGame(lobbyCodeTextBox.Text, currentSession.Username);
 
             PlayerLobby playerLobby = new PlayerLobby(currentSession);
             playerLobby.Show();

@@ -36,43 +36,43 @@
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="ICatalogManagement_getAllCountries_InputMessage">
-    <wsdl:part name="parameters" element="tns:getAllCountries" />
+  <wsdl:message name="ICatalogManagement_GetAllCountries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCountries" />
   </wsdl:message>
-  <wsdl:message name="ICatalogManagement_getAllCountries_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getAllCountriesResponse" />
+  <wsdl:message name="ICatalogManagement_GetAllCountries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
   </wsdl:message>
-  <wsdl:message name="ICatalogManagement_getCountryById_InputMessage">
-    <wsdl:part name="parameters" element="tns:getCountryById" />
+  <wsdl:message name="ICatalogManagement_GetCountryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountryById" />
   </wsdl:message>
-  <wsdl:message name="ICatalogManagement_getCountryById_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getCountryByIdResponse" />
+  <wsdl:message name="ICatalogManagement_GetCountryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCountryByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="ICatalogManagement_getStatsByUserId_InputMessage">
-    <wsdl:part name="parameters" element="tns:getStatsByUserId" />
+  <wsdl:message name="ICatalogManagement_GetStatsByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatsByUserId" />
   </wsdl:message>
-  <wsdl:message name="ICatalogManagement_getStatsByUserId_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getStatsByUserIdResponse" />
+  <wsdl:message name="ICatalogManagement_GetStatsByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatsByUserIdResponse" />
   </wsdl:message>
   <wsdl:portType name="ICatalogManagement">
-    <wsdl:operation name="getAllCountries">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/getAllCountries" message="tns:ICatalogManagement_getAllCountries_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/getAllCountriesResponse" message="tns:ICatalogManagement_getAllCountries_OutputMessage" />
+    <wsdl:operation name="GetAllCountries">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/GetAllCountries" message="tns:ICatalogManagement_GetAllCountries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/GetAllCountriesResponse" message="tns:ICatalogManagement_GetAllCountries_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getCountryById">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/getCountryById" message="tns:ICatalogManagement_getCountryById_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/getCountryByIdResponse" message="tns:ICatalogManagement_getCountryById_OutputMessage" />
+    <wsdl:operation name="GetCountryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/GetCountryById" message="tns:ICatalogManagement_GetCountryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/GetCountryByIdResponse" message="tns:ICatalogManagement_GetCountryById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getStatsByUserId">
-      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/getStatsByUserId" message="tns:ICatalogManagement_getStatsByUserId_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/getStatsByUserIdResponse" message="tns:ICatalogManagement_getStatsByUserId_OutputMessage" />
+    <wsdl:operation name="GetStatsByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/GetStatsByUserId" message="tns:ICatalogManagement_GetStatsByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/GetStatsByUserIdResponse" message="tns:ICatalogManagement_GetStatsByUserId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ICatalogManagement" type="tns:ICatalogManagement">
     <wsp:PolicyReference URI="#NetTcpBinding_ICatalogManagement_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="getAllCountries">
-      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/getAllCountries" style="document" />
+    <wsdl:operation name="GetAllCountries">
+      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/GetAllCountries" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -80,8 +80,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getCountryById">
-      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/getCountryById" style="document" />
+    <wsdl:operation name="GetCountryById">
+      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/GetCountryById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -89,8 +89,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getStatsByUserId">
-      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/getStatsByUserId" style="document" />
+    <wsdl:operation name="GetStatsByUserId">
+      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/GetStatsByUserId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -105,7 +105,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8092/CatalogManagementService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>ROGUEZ\ivanr</Upn>
+          <Upn>MSI\axel_</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

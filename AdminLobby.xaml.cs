@@ -24,26 +24,23 @@ namespace LabyrinthClient
     {
         private TransferUser _currentSession;
 
-        private ChatService.ChatServiceClient chatServiceClient;
-        private LobbyManagementService.LobbyManagementServiceClient lobbyManagementServiceClient;
+        private ChatService.ChatServiceClient _chatServiceClient;
+        private LobbyManagementService.LobbyManagementServiceClient _lobbyManagementServiceClient;
         public AdminLobby(TransferUser user)
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InstanceContext context = new InstanceContext(this);
-            lobbyManagementServiceClient = new LobbyManagementService.LobbyManagementServiceClient(context);
-            chatServiceClient = new ChatService.ChatServiceClient(context);
-            chatServiceClient.Start();
+            _lobbyManagementServiceClient = new LobbyManagementService.LobbyManagementServiceClient(context);
+            _chatServiceClient = new ChatService.ChatServiceClient(context);
+            _chatServiceClient.Start();
             _currentSession = user;
 
             try
-            {
-                
-                    lobbyManagementServiceClient.createLobby();
-                
-                   
+            {                
+                _lobbyManagementServiceClient.CreateLobby();                   
             }
-            catch (Exception ex) { Console.WriteLine(ex.Message); }
+            catch (Exception exception) { Console.WriteLine(exception.Message); }
             
         }
 
@@ -78,10 +75,10 @@ namespace LabyrinthClient
             {
                 try
                 {
-                    if (chatServiceClient != null && chatServiceClient.State != CommunicationState.Faulted)
+                    if (_chatServiceClient != null && _chatServiceClient.State != CommunicationState.Faulted)
                     {
                         String message = "<" + _currentSession.Username + "> " + MessageTextBox.Text;
-                        chatServiceClient.SendMessage(message);
+                        _chatServiceClient.SendMessage(message);
                         MessageTextBox.Clear();
                     }
                     else
@@ -98,10 +95,10 @@ namespace LabyrinthClient
 
         private void Window_Closed(object sender, System.EventArgs e)
         {
-            if (chatServiceClient != null)
+            if (_chatServiceClient != null)
             {
-                if (chatServiceClient.State != CommunicationState.Closed)
-                    chatServiceClient.Close();
+                if (_chatServiceClient.State != CommunicationState.Closed)
+                    _chatServiceClient.Close();
             }
         }
 

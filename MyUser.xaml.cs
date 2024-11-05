@@ -41,14 +41,14 @@ namespace LabyrinthClient
 
             CatalogManagementService.CatalogManagementClient client = new CatalogManagementService.CatalogManagementClient();
 
-            var countries = client.getAllCountries();
+            var countries = client.GetAllCountries();
             countryComboBox.ItemsSource = countries;
 
             countryComboBox.DisplayMemberPath = "CountryName";
             countryComboBox.SelectedValuePath = "CountryId";
             countryComboBox.SelectedValue = user.TransferCountry.CountryId;
 
-            TransferStats stats = client.getStatsByUserId(currentSession.IdUser);
+            TransferStats stats = client.GetStatsByUserId(currentSession.IdUser);
             if (stats.StatId > 0)
             {
                 gamesPlayedCuantityLabel.Content = stats.GamesPlayed;
@@ -66,7 +66,7 @@ namespace LabyrinthClient
         private void changeProfilePicture()
         {
             UserManagementService.UserManagementClient userManagement = new UserManagementService.UserManagementClient();
-            byte[] imageData = userManagement.getUserProfilePicture(currentSession.ProfilePicture);
+            byte[] imageData = userManagement.GetUserProfilePicture(currentSession.ProfilePicture);
 
             if (imageData != null && imageData.Length > 0)
             {
@@ -138,7 +138,7 @@ namespace LabyrinthClient
             UserManagementService.TransferUser transferUser = new UserManagementService.TransferUser();
             transferUser.Password = EncryptPassword(oldPasswordPasswordBox.Password);
             transferUser.Email = currentSession.Email;
-            transferUser = userManagement.userVerification(transferUser);
+            transferUser = userManagement.UserVerification(transferUser);
 
             if (!string.IsNullOrEmpty(transferUser.ErrorCode))
             {
@@ -169,7 +169,7 @@ namespace LabyrinthClient
         private int UpdateUser()
         {
             UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
-            return client.updateUser(GetTransferUser());
+            return client.UpdateUser(GetTransferUser());
         }
 
         private void CancelButtonIsPressed(object sender, RoutedEventArgs e)
@@ -245,7 +245,7 @@ namespace LabyrinthClient
 
                 try
                 {
-                    currentSession.ProfilePicture = client.changeUserProfilePicture(currentSession.IdUser, fileBytes);
+                    currentSession.ProfilePicture = client.ChangeUserProfilePicture(currentSession.IdUser, fileBytes);
                     MainMenu.GetInstance(currentSession);
                     changeProfilePicture();
                     ChangeToEditMode(false);

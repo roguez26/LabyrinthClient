@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LabyrinthClient"
         xmlns:p="clr-namespace:LabyrinthClient.Properties"
         mc:Ignorable="d"
-        Icon="/logo.png"
+        Icon="/GraphicItems/logo.png"
         Title="Menu" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen">
 
@@ -67,7 +67,7 @@
         <!-- Imagen de Usuario -->
         <Image x:Name="userProfilePictureImage"
                Grid.Row="0" Grid.Column="3"
-               Source="/userProfilePicture.png"
+               Source="/GraphicItems/userProfilePicture.png"
                Width="50" Height="50"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"

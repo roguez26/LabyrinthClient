@@ -1,104 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8081/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UserManagementService" />
-  <xs:element name="addUser">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/UserManagementService" minOccurs="0" name="user" nillable="true" type="q1:TransferUser" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="addUserResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="addUserResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="userVerification">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/UserManagementService" minOccurs="0" name="user" nillable="true" type="q2:TransferUser" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="userVerificationResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/UserManagementService" minOccurs="0" name="userVerificationResult" nillable="true" type="q3:TransferUser" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="updateUser">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/UserManagementService" minOccurs="0" name="newUser" nillable="true" type="q4:TransferUser" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="updateUserResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="updateUserResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="changeUserProfilePicture">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-        <xs:element minOccurs="0" name="imagenData" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="changeUserProfilePictureResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="changeUserProfilePictureResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getUserProfilePicture">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="path" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getUserProfilePictureResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="getUserProfilePictureResult" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="verificateCode">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="code" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="verificateCodeResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="verificateCodeResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="addVerificationCode">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="email" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="addVerificationCodeResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="addVerificationCodeResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/UserManagementService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/UserManagementService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8081/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService" />
+  <xs:complexType name="TransferUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Country" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfilePicture" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CatalogManagementService" minOccurs="0" name="TransferCountry" nillable="true" type="q1:TransferCountry" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferUser" nillable="true" type="tns:TransferUser" />
 </xs:schema>

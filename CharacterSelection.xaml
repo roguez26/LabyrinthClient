@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LabyrinthClient"
         mc:Ignorable="d"
         xmlns:p="clr-namespace:LabyrinthClient.Properties"
-        Icon="/logo.png"
+        Icon="/GraphicItems/logo.png"
         Title="Character selection" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen">
     <Grid>
@@ -20,7 +20,7 @@
         </Grid.ColumnDefinitions>
         <Button Margin="44,10,19,0" VerticalAlignment="Top" Height="45" BorderBrush="White" Foreground="White" Click="BackButtonIsPressed">
             <Button.Background>
-                <ImageBrush ImageSource="/BackButton.png"/>
+                <ImageBrush ImageSource="/GraphicItems/BackButton.png"/>
             </Button.Background>
         </Button>
         <Canvas Margin="172,66,280,5" Background="#FFE0E0E0" Grid.Column="1">
