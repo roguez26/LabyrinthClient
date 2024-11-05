@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D88FD025-5004-4794-9521-69FA14D407AA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LabyrinthClient</RootNamespace>
+    <AssemblyName>LabyrinthClient</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AdminLobby.xaml.cs">
+      <DependentUpon>AdminLobby.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterSelection.xaml.cs">
+      <DependentUpon>CharacterSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\LobbyManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="LobbySelection.xaml.cs">
+      <DependentUpon>LobbySelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Characters.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Characters.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+    <Compile Include="MyUser.xaml.cs">
+      <DependentUpon>MyUser.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AdminLobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CharacterSelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LobbySelection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Connected Services\CatalogManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ChatService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\UserManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="PlayerLobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MyUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlayerLobby.xaml.cs">
+      <DependentUpon>PlayerLobby.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Characters.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Characters.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Connected Services\CatalogManagementService\CatalogManagementServiceImplementation.wsdl" />
+    <None Include="Connected Services\CatalogManagementService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CatalogManagementService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CatalogManagementService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CatalogManagementService\LabyrinthClient.CatalogManagementService.TransferCountry.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\CatalogManagementService\LabyrinthClient.CatalogManagementService.TransferStats.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ChatService\ChatServiceImplementation.wsdl" />
+    <None Include="Connected Services\ChatService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ChatService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LobbyManagementService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LobbyManagementService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LobbyManagementService\LobbyManagementServiceImplementation.wsdl" />
+    <None Include="Connected Services\UserManagementService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserManagementService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserManagementService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserManagementService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\UserManagementService\LabyrinthClient.UserManagementService.TransferUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\UserManagementService\UserManagementServiceImplementation.wsdl" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ExitButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LanguageButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="BackButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CatalogManagementService\" />
+    <WCFMetadataStorage Include="Connected Services\ChatService\" />
+    <WCFMetadataStorage Include="Connected Services\LobbyManagementService\" />
+    <WCFMetadataStorage Include="Connected Services\UserManagementService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CatalogManagementService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CatalogManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CatalogManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CatalogManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ChatService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ChatService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ChatService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ChatService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="userProfilePicture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\princess\princess.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\princess\sprites\princess_00.png" />
+    <Resource Include="Skins\princess\sprites\princess_01.png" />
+    <Resource Include="Skins\princess\sprites\princess_02.png" />
+    <Resource Include="Skins\princess\sprites\princess_03.png" />
+    <Resource Include="Skins\princess\sprites\princess_04.png" />
+    <Resource Include="Skins\princess\sprites\princess_05.png" />
+    <Resource Include="Skins\princess\sprites\princess_06.png" />
+    <Resource Include="Skins\princess\sprites\princess_07.png" />
+    <Resource Include="Skins\princess\sprites\princess_08.png" />
+    <Resource Include="Skins\princess\sprites\princess_09.png" />
+    <Resource Include="Skins\princess\sprites\princess_10.png" />
+    <Resource Include="Skins\princess\sprites\princess_11.png" />
+    <Resource Include="Skins\princess\sprites\princess_12.png" />
+    <Resource Include="Skins\princess\sprites\princess_13.png" />
+    <Resource Include="Skins\princess\sprites\princess_14.png" />
+    <Resource Include="Skins\princess\sprites\princess_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\adventurer\adventurer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\knight\knight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\knight\sprites\knight_00.png" />
+    <Resource Include="Skins\knight\sprites\knight_01.png" />
+    <Resource Include="Skins\knight\sprites\knight_02.png" />
+    <Resource Include="Skins\knight\sprites\knight_03.png" />
+    <Resource Include="Skins\knight\sprites\knight_04.png" />
+    <Resource Include="Skins\knight\sprites\knight_05.png" />
+    <Resource Include="Skins\knight\sprites\knight_06.png" />
+    <Resource Include="Skins\knight\sprites\knight_07.png" />
+    <Resource Include="Skins\knight\sprites\knight_08.png" />
+    <Resource Include="Skins\knight\sprites\knight_09.png" />
+    <Resource Include="Skins\knight\sprites\knight_10.png" />
+    <Resource Include="Skins\knight\sprites\knight_11.png" />
+    <Resource Include="Skins\knight\sprites\knight_12.png" />
+    <Resource Include="Skins\knight\sprites\knight_13.png" />
+    <Resource Include="Skins\knight\sprites\knight_14.png" />
+    <Resource Include="Skins\knight\sprites\knight_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\wizzard\sprites\wizzard_00.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_01.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_02.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_03.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_04.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_05.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_06.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_07.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_08.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_09.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_10.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_11.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_12.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_13.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_14.png" />
+    <Resource Include="Skins\wizzard\sprites\wizzard_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\adventurer\sprites\adventurer_00.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_01.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_02.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_03.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_04.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_05.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_06.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_07.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_08.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_09.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_10.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_11.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_12.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_13.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_14.png" />
+    <Resource Include="Skins\adventurer\sprites\adventurer_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Skins\wizzard\wizzard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LobbyManagementService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LobbyManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LobbyManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\LobbyManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

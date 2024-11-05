@@ -1,0 +1,160 @@
+﻿<Window x:Class="LabyrinthClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabyrinthClient"
+        xmlns:p="clr-namespace:LabyrinthClient.Properties"
+        mc:Ignorable="d"
+        Icon="/logo.png"
+        Title="Login"
+        Height="720"
+        Width="1277"
+        Background="White"
+        WindowState="Normal"
+        WindowStyle="SingleBorderWindow">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    
+    
+    <Grid>
+        <!-- Definición de las filas principales -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Fila para el título -->
+            <RowDefinition Height="*" />
+            <!-- Fila para el contenido -->
+        </Grid.RowDefinitions>
+
+        <!-- Título centrado -->
+        <Label Content="Labyrinth The Game"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               FontSize="38"
+               FontWeight="Bold"
+               Grid.Row="0"
+               Margin="0,92,0,0" Grid.RowSpan="2"/>
+
+        <!-- TabControl en el centro de la ventana -->
+        <TabControl Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    BorderBrush="White"
+                    Background="{x:Null}" Width="267">
+
+            <TabItem x:Name="loginTabItem" Header="{x:Static p:Resources.GlobalLogin}" Width="85" Height="22" Margin="1,-2,-1,0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="201" Width="261">
+                    <TextBox x:Name="emailForLoginTextBox"
+                             Width="258" Height="25"
+                             Margin="0,34,0,0"
+                             VerticalAlignment="Top"
+                             TextWrapping="Wrap" 
+                             Style="{StaticResource CustomTextBoxStyle}"/>
+
+                    <TextBox x:Name="passwordForLoginTextBox"
+                             Width="258" Height="25"
+                             Margin="0,67,0,0"
+                             VerticalAlignment="Top"
+                             TextWrapping="Wrap" 
+                             Text="{x:Static p:Resources.GlobalPasswordTextBoxPlaceholder}" />
+
+                    <Button x:Name="LoginButton"
+                            Content="{x:Static p:Resources.GlobalLogin}"
+                            Width="65" Height="22"
+                            Margin="0,170,0,0"
+                            VerticalAlignment="Top"
+                            Click="LoginButtonIsPressed"
+                            Style="{StaticResource CustomButtonStyle}" BorderBrush="Black"
+                            >
+                    </Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="{x:Static p:Resources.GlobalSignup}" Width="85" Height="22" Margin="2,-2,-2,0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="201" Width="261">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Canvas Margin="263,30,0,0">
+                        <TextBox Name="UsernameTextbox"
+         Width="259" Height="25"
+         VerticalAlignment="Center" Canvas.Left="-263" HorizontalAlignment="Left" Canvas.Top="3" 
+                                 Style="{StaticResource CustomTextBoxStyle}"/>
+
+                        <TextBox Name="EmailTextbox"
+         Width="259" Height="25"
+         VerticalAlignment="Center" Canvas.Left="-263" Canvas.Top="37" HorizontalAlignment="Left" 
+                                 Style="{StaticResource CustomTextBoxStyle}"/>
+
+                        <PasswordBox Name="PasswordBox"
+             Width="258" Height="25"
+             VerticalAlignment="Center" Canvas.Left="-262" Canvas.Top="73" HorizontalAlignment="Left" 
+                                     />
+
+                        <ComboBox Name="CountryCombobox"
+          Width="259" Height="25"
+          VerticalAlignment="Center" Canvas.Left="-262" Canvas.Top="108" HorizontalAlignment="Left"
+                                  Style="{StaticResource CustomComboBoxStyle}" Cursor=""/>
+
+                        <Button Content="{x:Static p:Resources.GlobalSignup}"
+        Width="65" Height="22"
+        VerticalAlignment="Top"
+        Click="SignupButtonIsPressed" Canvas.Left="-165" Canvas.Top="142" HorizontalAlignment="Center"
+                                Style="{StaticResource CustomButtonStyle}" BorderBrush="Black"/>
+
+                        <TextBox x:Name="verificationCodeTextBox" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="260" Height="25" Canvas.Left="-263" Canvas.Top="3" Visibility="Collapsed"/>
+
+                    </Canvas>
+
+
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="joinAsGuestTabItem" Header="{x:Static p:Resources.JoinAsGuestTabItem}" Width="85" Height="22" Margin="2,-2,-2,0">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="201" Width="261">
+                    <TextBox x:Name="lobbyTextBox"
+                             Width="258" Height="25"
+                             Margin="0,35,0,0"
+                             VerticalAlignment="Top"
+                             TextWrapping="Wrap" 
+                             Style="{StaticResource CustomTextBoxStyle}"/>
+
+                    <TextBox x:Name="userNameForJoinAsGuestTextBox"
+                             Width="258" Height="25"
+                             Margin="0,69,0,0"
+                             VerticalAlignment="Top"
+                             TextWrapping="Wrap" 
+                             Style="{StaticResource CustomTextBoxStyle}"/>
+
+                    <Button Content="{x:Static p:Resources.JoinGameButton}"
+                            Width="90" Height="22"
+                            Margin="0,170,0,0"
+                            VerticalAlignment="Top"
+                            Style="{StaticResource CustomButtonStyle}" BorderBrush="Black" Cursor=""/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Botones de salida e idioma alineados en la parte inferior derecha -->
+        <Button Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="44" Height="45" Margin="0,0,21,24" Foreground="White" BorderBrush="White" Click="ExitButtonIsPressed" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush ImageSource="/ExitButton.png"/>
+            </Button.Background>
+        </Button>
+
+        <Button Content="" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="44" Height="45" Margin="0,0,21,103" Foreground="White" BorderBrush="White" Click="LanguageButtonIsPressed" Grid.Row="1">
+            <Button.Background>
+                <ImageBrush ImageSource="/LanguageButton.png"/>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

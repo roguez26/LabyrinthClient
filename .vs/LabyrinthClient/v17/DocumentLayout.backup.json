@@ -1,0 +1,246 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|c:\\users\\ivanr\\onedrive\\escritorio\\tecnologias\\labyrinth\\labyrinthclient\\labyrinthclient\\characterselection.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:characterselection.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|c:\\users\\ivanr\\onedrive\\escritorio\\tecnologias\\labyrinth\\labyrinthclient\\labyrinthclient\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|c:\\users\\ivanr\\onedrive\\escritorio\\tecnologias\\labyrinth\\labyrinthclient\\labyrinthclient\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\connected services\\chatservice\\reference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:connected services\\chatservice\\reference.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|c:\\users\\ivanr\\onedrive\\escritorio\\tecnologias\\labyrinth\\labyrinthclient\\labyrinthclient\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\lobbyselection.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:lobbyselection.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\mainmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:mainmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\adminlobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:adminlobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\playerlobby.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:playerlobby.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\adminlobby.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:adminlobby.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\myuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:myuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\playerlobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:playerlobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\myuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:myuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CharacterSelection.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\CharacterSelection.xaml.cs",
+              "RelativeDocumentMoniker": "CharacterSelection.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\CharacterSelection.xaml.cs",
+              "RelativeToolTip": "CharacterSelection.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-29T00:09:40.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAowDEAAABPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T23:53:38.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LobbySelection.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\LobbySelection.xaml.cs",
+              "RelativeDocumentMoniker": "LobbySelection.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\LobbySelection.xaml.cs",
+              "RelativeToolTip": "LobbySelection.xaml.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwDQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-28T18:38:06.416Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminLobby.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\AdminLobby.xaml.cs",
+              "RelativeDocumentMoniker": "AdminLobby.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\AdminLobby.xaml.cs",
+              "RelativeToolTip": "AdminLobby.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T22:45:26.018Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainMenu.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MainMenu.xaml.cs",
+              "RelativeDocumentMoniker": "MainMenu.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MainMenu.xaml.cs",
+              "RelativeToolTip": "MainMenu.xaml.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABoAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T20:08:01.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\App.xaml",
+              "RelativeDocumentMoniker": "App.xaml",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\App.xaml",
+              "RelativeToolTip": "App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-27T23:13:45.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-10-28T23:58:01.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Reference.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\Connected Services\\ChatService\\Reference.cs",
+              "RelativeDocumentMoniker": "Connected Services\\ChatService\\Reference.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\Connected Services\\ChatService\\Reference.cs",
+              "RelativeToolTip": "Connected Services\\ChatService\\Reference.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAMwC0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T23:35:51.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AdminLobby.xaml",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\AdminLobby.xaml",
+              "RelativeDocumentMoniker": "AdminLobby.xaml",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\AdminLobby.xaml",
+              "RelativeToolTip": "AdminLobby.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-27T22:44:40.665Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainMenu.xaml",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MainMenu.xaml",
+              "RelativeDocumentMoniker": "MainMenu.xaml",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MainMenu.xaml",
+              "RelativeToolTip": "MainMenu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-28T18:33:42.932Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PlayerLobby.xaml",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\PlayerLobby.xaml",
+              "RelativeDocumentMoniker": "PlayerLobby.xaml",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\PlayerLobby.xaml",
+              "RelativeToolTip": "PlayerLobby.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-27T20:46:16.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "MyUser.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MyUser.xaml.cs",
+              "RelativeDocumentMoniker": "MyUser.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MyUser.xaml.cs",
+              "RelativeToolTip": "MyUser.xaml.cs",
+              "ViewState": "AgIAAOkAAAAAAAAAAAAowNkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T19:54:05.64Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MyUser.xaml",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MyUser.xaml",
+              "RelativeDocumentMoniker": "MyUser.xaml",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\MyUser.xaml",
+              "RelativeToolTip": "MyUser.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-27T19:53:51.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlayerLobby.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\PlayerLobby.xaml.cs",
+              "RelativeDocumentMoniker": "PlayerLobby.xaml.cs",
+              "ToolTip": "C:\\Users\\ivanr\\OneDrive\\Escritorio\\Tecnologias\\Labyrinth\\LabyrinthClient\\LabyrinthClient\\PlayerLobby.xaml.cs",
+              "RelativeToolTip": "PlayerLobby.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-27T19:16:10.088Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
