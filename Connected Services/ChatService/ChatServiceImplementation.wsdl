@@ -38,6 +38,12 @@
   <wsdl:message name="IChatService_SendMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendMessage" />
   </wsdl:message>
+  <wsdl:message name="IChatService_Start_InputMessage">
+    <wsdl:part name="parameters" element="tns:Start" />
+  </wsdl:message>
+  <wsdl:message name="IChatService_Start_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartResponse" />
+  </wsdl:message>
   <wsdl:message name="IChatService_BroadcastMessage_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:BroadcastMessage" />
   </wsdl:message>
@@ -47,6 +53,10 @@
   <wsdl:portType name="IChatService">
     <wsdl:operation name="SendMessage">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatService/SendMessage" message="tns:IChatService_SendMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Start">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatService/Start" message="tns:IChatService_Start_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatService/StartResponse" message="tns:IChatService_Start_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BroadcastMessage">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatService/BroadcastMessage" message="tns:IChatService_BroadcastMessage_OutputCallbackMessage" />
@@ -61,6 +71,15 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Start">
+      <soap12:operation soapAction="http://tempuri.org/IChatService/Start" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="BroadcastMessage">
       <soap12:operation soapAction="http://tempuri.org/IChatService/BroadcastMessage" style="document" />

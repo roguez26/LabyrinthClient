@@ -7,6 +7,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="Start">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="BroadcastMessage">
     <xs:complexType>
       <xs:sequence>

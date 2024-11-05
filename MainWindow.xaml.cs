@@ -68,7 +68,7 @@ namespace LabyrinthClient
 
             if (string.IsNullOrEmpty(verificationCodeTextBox.Text))
             {
-                changeToVerificationMode(true);
+                ChangeToVerificationMode(true);
                 response = client.addVerificationCode(EmailTextbox.Text);
                 switch (response)
                 {
@@ -81,7 +81,7 @@ namespace LabyrinthClient
             {
                 if (client.verificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
                 {
-                    addUser();
+                    AddUser();
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace LabyrinthClient
             }
         }
 
-        private void changeToVerificationMode(Boolean isActive)
+        private void ChangeToVerificationMode(Boolean isActive)
         {
             if (isActive)
             {
@@ -111,7 +111,7 @@ namespace LabyrinthClient
 
         }
 
-        private void addUser()
+        private void AddUser()
         {
             UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();

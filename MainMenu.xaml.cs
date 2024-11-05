@@ -70,23 +70,26 @@ namespace LabyrinthClient
             if (_instance == null || !_instance.IsVisible)
             {
                 _instance = new MainMenu(user);
+                _instance.Activate();
             } else
             {
                 _instance.UpdateData(user);
             }
-            _instance.Activate();
+            
             return _instance;
         }        
 
         private void HostGameButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            PlayerLobby playerLobby = new PlayerLobby(_currentSession);
-            playerLobby.Show();
+            AdminLobby adminLobby = new AdminLobby(_currentSession);
+            adminLobby.Show();
             this.Close();
         }
 
         private void JoinGameButtonIsPressed(object sender, RoutedEventArgs e)
         {
+            LobbySelection lobbySelection = new LobbySelection(_currentSession);
+            lobbySelection.Show();
 
         }
 

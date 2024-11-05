@@ -8,7 +8,6 @@
         mc:Ignorable="d"
         Icon="/logo.png"
         Title="Menu" Height="720" Width="1280"
-        SizeToContent="Manual" ResizeMode="CanResize"
         WindowStartupLocation="CenterScreen">
 
     <Grid>

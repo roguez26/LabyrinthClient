@@ -35,6 +35,9 @@ C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\Labyrin
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\bin\Debug\LabyrinthClient.pdb
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient.csproj.AssemblyReference.cache
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\Styles.baml
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\AdminLobby.g.cs
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\CharacterSelection.g.cs
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LobbySelection.g.cs
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\MainMenu.g.cs
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\MainWindow.g.cs
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\PlayerLobby.g.cs
@@ -42,11 +45,15 @@ C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\Labyrin
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\App.g.cs
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient_MarkupCompile.cache
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient_MarkupCompile.lref
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\AdminLobby.baml
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\CharacterSelection.baml
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LobbySelection.baml
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\MainMenu.baml
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\MainWindow.baml
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\PlayerLobby.baml
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\MyUser.baml
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient.g.resources
+C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient.Properties.Characters.resources
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient.Properties.Messages.resources
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient.Properties.Resources.resources
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\obj\Debug\LabyrinthClient.csproj.GenerateResource.cache

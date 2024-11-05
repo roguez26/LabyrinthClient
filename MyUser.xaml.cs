@@ -28,12 +28,12 @@ namespace LabyrinthClient
     /// </summary>
     public partial class MyUser : Window
     {
-        private static MyUser _instance;
-        private TransferUser _currentSession;
+        private static MyUser instance;
+        private TransferUser currentSession;
 
         private MyUser(TransferUser user)
         {
-            _currentSession = user;
+            currentSession = user;
             InitializeComponent();
             userNameTextBox.Text = user.Username;
 
@@ -48,7 +48,7 @@ namespace LabyrinthClient
             countryComboBox.SelectedValuePath = "CountryId";
             countryComboBox.SelectedValue = user.TransferCountry.CountryId;
 
-            TransferStats stats = client.getStatsByUserId(_currentSession.IdUser);
+            TransferStats stats = client.getStatsByUserId(currentSession.IdUser);
             if (stats.StatId > 0)
             {
                 gamesPlayedCuantityLabel.Content = stats.GamesPlayed;
@@ -56,7 +56,7 @@ namespace LabyrinthClient
             }
 
 
-            if (!string.IsNullOrEmpty(_currentSession.ProfilePicture))
+            if (!string.IsNullOrEmpty(currentSession.ProfilePicture))
             {
                 changeProfilePicture();
 
@@ -66,7 +66,7 @@ namespace LabyrinthClient
         private void changeProfilePicture()
         {
             UserManagementService.UserManagementClient userManagement = new UserManagementService.UserManagementClient();
-            byte[] imageData = userManagement.getUserProfilePicture(_currentSession.ProfilePicture);
+            byte[] imageData = userManagement.getUserProfilePicture(currentSession.ProfilePicture);
 
             if (imageData != null && imageData.Length > 0)
             {
@@ -87,30 +87,30 @@ namespace LabyrinthClient
 
         public static MyUser GetInstance(TransferUser user)
         {
-            if (_instance == null || !_instance.IsVisible)
+            if (instance == null || !instance.IsVisible)
             {
-                _instance = new MyUser(user);
+                instance = new MyUser(user);
             }
-            _instance.Activate();
-            return _instance;
+            instance.Activate();
+            return instance;
         }
 
 
         private void EditProfileButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            changeToEditMode(true);
+            ChangeToEditMode(true);
         }
 
         private void AcceptButtonIsPressed(object sender, RoutedEventArgs e)
         {
             int response = 0;
-            changeToEditMode(false);
+            ChangeToEditMode(false);
 
-            if (!string.IsNullOrWhiteSpace(newPasswordPasswordBox.Password) && EncryptPassword(newPasswordPasswordBox.Password) != _currentSession.Password)
+            if (!string.IsNullOrWhiteSpace(newPasswordPasswordBox.Password) && EncryptPassword(newPasswordPasswordBox.Password) != currentSession.Password)
             {
                 response = UpdatePassword();
             }
-            else if (userNameTextBox.Text != _currentSession.Username || emailTextBox.Text != _currentSession.Email || (int)countryComboBox.SelectedValue != _currentSession.TransferCountry.CountryId)
+            else if (userNameTextBox.Text != currentSession.Username || emailTextBox.Text != currentSession.Email || (int)countryComboBox.SelectedValue != currentSession.TransferCountry.CountryId)
             {
                 response = UpdateUser();
             }
@@ -118,12 +118,12 @@ namespace LabyrinthClient
             switch (response)
             {
                 case 0:
-                    changeToEditPasswordMode(false);
-                    changeToEditMode(false);
+                    ChangeToEditPasswordMode(false);
+                    ChangeToEditMode(false);
                     break;
                 case 1:
-                    _currentSession = GetTransferUser();
-                    MainMenu.GetInstance(_currentSession);
+                    currentSession = GetTransferUser();
+                    MainMenu.GetInstance(currentSession);
                     ShowMessage("SuccessProfileUpdatedTitle", "SuccessProfileUpdatedMessage");
                     break;
                 case -1: ShowMessage("FailProfileNotUpdatedTitle", "FailUserNotFoundMessage"); break;
@@ -137,7 +137,7 @@ namespace LabyrinthClient
             UserManagementService.UserManagementClient userManagement = new UserManagementService.UserManagementClient();
             UserManagementService.TransferUser transferUser = new UserManagementService.TransferUser();
             transferUser.Password = EncryptPassword(oldPasswordPasswordBox.Password);
-            transferUser.Email = _currentSession.Email;
+            transferUser.Email = currentSession.Email;
             transferUser = userManagement.userVerification(transferUser);
 
             if (!string.IsNullOrEmpty(transferUser.ErrorCode))
@@ -146,7 +146,7 @@ namespace LabyrinthClient
             }
             else
             {
-                _currentSession.Password = EncryptPassword(newPasswordPasswordBox.Password);
+                currentSession.Password = EncryptPassword(newPasswordPasswordBox.Password);
                 response = UpdateUser();
             }
             return response;
@@ -155,12 +155,12 @@ namespace LabyrinthClient
         private TransferUser GetTransferUser() 
         {
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();
-            user.IdUser = _currentSession.IdUser;
+            user.IdUser = currentSession.IdUser;
             user.Username = userNameTextBox.Text;
             user.Email = emailTextBox.Text;
             user.Country = (int)countryComboBox.SelectedValue;
-            user.TransferCountry = _currentSession.TransferCountry;
-            user.Password = _currentSession.Password;
+            user.TransferCountry = currentSession.TransferCountry;
+            user.Password = currentSession.Password;
             user.TransferCountry.CountryId = ((CatalogManagementService.TransferCountry)countryComboBox.SelectedItem).CountryId;
             user.TransferCountry.CountryName = ((CatalogManagementService.TransferCountry)countryComboBox.SelectedItem).CountryName;
             return user;
@@ -174,16 +174,16 @@ namespace LabyrinthClient
 
         private void CancelButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            changeToEditPasswordMode(false);
-            changeToEditMode(false);
+            ChangeToEditPasswordMode(false);
+            ChangeToEditMode(false);
         }
 
         private void ChangePasswordButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            changeToEditPasswordMode(true);
+            ChangeToEditPasswordMode(true);
         }
 
-        private void changeToEditPasswordMode(Boolean passwordIsEditable)
+        private void ChangeToEditPasswordMode(Boolean passwordIsEditable)
         {
             if (passwordIsEditable)
             {
@@ -206,7 +206,7 @@ namespace LabyrinthClient
             }
         }
 
-        private void changeToEditMode(Boolean isEditable)
+        private void ChangeToEditMode(Boolean isEditable)
         {
             if (isEditable)
             {
@@ -231,7 +231,7 @@ namespace LabyrinthClient
             emailTextBox.IsEnabled = isEditable;
         }
 
-        private void ChangeProfilePictureIsPressed(object sender, RoutedEventArgs e)
+        private void ChangeProfilePictureButtonIsPressed(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
@@ -245,9 +245,10 @@ namespace LabyrinthClient
 
                 try
                 {
-
-                    _currentSession.ProfilePicture = client.changeUserProfilePicture(_currentSession.IdUser, fileBytes);
+                    currentSession.ProfilePicture = client.changeUserProfilePicture(currentSession.IdUser, fileBytes);
+                    MainMenu.GetInstance(currentSession);
                     changeProfilePicture();
+                    ChangeToEditMode(false);
                 }
                 catch (IOException ex)
                 {

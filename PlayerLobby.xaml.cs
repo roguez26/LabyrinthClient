@@ -30,9 +30,10 @@ namespace LabyrinthClient
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             InstanceContext context = new InstanceContext(this);
             chatServiceClient = new ChatService.ChatServiceClient(context);
+            chatServiceClient.Start();
             _currentSession = user;
         }
-
+                       
         public void BroadcastMessage(string message)
         {
             Dispatcher.Invoke(() =>

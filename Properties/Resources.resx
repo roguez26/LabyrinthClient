@@ -241,7 +241,7 @@
     <value>Pirate</value>
   </data>
   <data name="PrincessDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
+    <value>She is a real princess</value>
   </data>
   <data name="PrincessNameLabel" xml:space="preserve">
     <value>Princess</value>
@@ -263,9 +263,6 @@
   </data>
   <data name="ScientistNameLabel" xml:space="preserve">
     <value>Scientist</value>
-  </data>
-  <data name="SelectCharacterButton" xml:space="preserve">
-    <value>Select character</value>
   </data>
   <data name="SelectLanguageLabel" xml:space="preserve">
     <value>Select language</value>
@@ -317,5 +314,8 @@
   </data>
   <data name="VerificationCodeTextBox" xml:space="preserve">
     <value>Verification code</value>
+  </data>
+  <data name="SelectCharacterButton" xml:space="preserve">
+    <value>Select character</value>
   </data>
 </root>

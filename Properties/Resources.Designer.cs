@@ -511,7 +511,7 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
+        ///   Busca una cadena traducida similar a She is a real princess.
         /// </summary>
         public static string PrincessDescriptionTextBlock {
             get {

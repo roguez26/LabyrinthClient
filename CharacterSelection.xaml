@@ -1,0 +1,67 @@
+﻿<Window x:Class="LabyrinthClient.CharacterSelection"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabyrinthClient"
+        mc:Ignorable="d"
+        xmlns:p="clr-namespace:LabyrinthClient.Properties"
+        Icon="/logo.png"
+        Title="Character selection" Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="379*"/>
+            <RowDefinition Height="325*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="293*"/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="44,10,19,0" VerticalAlignment="Top" Height="45" BorderBrush="White" Foreground="White" Click="BackButtonIsPressed">
+            <Button.Background>
+                <ImageBrush ImageSource="/BackButton.png"/>
+            </Button.Background>
+        </Button>
+        <Canvas Margin="172,66,280,5" Background="#FFE0E0E0" Grid.Column="1">
+            <Canvas HorizontalAlignment="Left" Height="271" Canvas.Left="100" Canvas.Top="27" VerticalAlignment="Center" Width="241">
+                <Image x:Name="CharacterImage" Height="204" Width="180" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="19" Canvas.Left="10"/>
+                <Image x:Name="CharacterSprites" Height="100" Canvas.Left="96" Canvas.Top="146" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </Canvas>
+            <Canvas HorizontalAlignment="Right" Height="224" Canvas.Left="392" Canvas.Top="41" VerticalAlignment="Center" Width="309">
+                <Label x:Name="CharacterName" Canvas.Left="2" Width="186" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="CharacterDescription" Canvas.Top="80" Height="116" Width="260" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button x:Name="selectCharacterButton" Content="{x:Static p:Resources.SelectCharacterButton}" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="106" Canvas.Left="154" Canvas.Top="178"/>
+            </Canvas>
+        </Canvas>
+        <ScrollViewer Margin="150,19,258,48" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <!-- Elementos dentro del scroll horizontal -->
+                <Button Width="90" Height="135" Margin="5" Click="PrincessIsSelected">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/princess/princess.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button Width="90" Height="135" Margin="5" Click="AdventurerIsSelected">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/adventurer/adventurer.png"/>
+                    </Button.Background>
+
+                </Button>
+                <Button Width="90" Height="135" Margin="5" Click="WizzardIsSelected">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/wizzard/wizzard.png"/>
+                    </Button.Background>
+                </Button>
+                <Button Width="90" Height="135" Margin="5" Click="KnightIsSelected">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/knight/knight.png"/>
+                    </Button.Background>
+
+                </Button>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

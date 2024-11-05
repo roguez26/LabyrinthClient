@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\ivanr\OneDrive\Escritorio\Tecnologias\Labyrinth\LabyrinthClient\LabyrinthClient\App.xaml
-5-1048386373
+8-347608151
 
-131512795999
+18-2053399793
 1685338780
-MainMenu.xaml;MainWindow.xaml;PlayerLobby.xaml;MyUser.xaml;Styles.xaml;
+AdminLobby.xaml;CharacterSelection.xaml;LobbySelection.xaml;MainMenu.xaml;MainWindow.xaml;PlayerLobby.xaml;MyUser.xaml;Styles.xaml;
 
 False
 

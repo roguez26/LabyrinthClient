@@ -20,6 +20,12 @@ namespace LabyrinthClient.ChatService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
         System.Threading.Tasks.Task SendMessageAsync(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Start", ReplyAction="http://tempuri.org/IChatService/StartResponse")]
+        void Start();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Start", ReplyAction="http://tempuri.org/IChatService/StartResponse")]
+        System.Threading.Tasks.Task StartAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,6 +69,14 @@ namespace LabyrinthClient.ChatService {
         
         public System.Threading.Tasks.Task SendMessageAsync(string message) {
             return base.Channel.SendMessageAsync(message);
+        }
+        
+        public void Start() {
+            base.Channel.Start();
+        }
+        
+        public System.Threading.Tasks.Task StartAsync() {
+            return base.Channel.StartAsync();
         }
     }
 }
