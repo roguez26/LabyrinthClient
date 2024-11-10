@@ -1,0 +1,101 @@
+# Archivos de Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Archivos de compilación
+bin/
+obj/
+
+# Paquetes de NuGet
+*.nupkg
+packages/
+# Ignorar el paquete de NuGet descargado, si se usa `restore`
+project.lock.json
+project.fragment.lock.json
+
+# Archivos de configuración de dependencia
+*.lock.json
+*.dnu
+artifacts/
+*.lib
+*.dll
+*.exe
+*.so
+*.dylib
+*.pdb
+*.cache
+*.ilk
+*.log
+*.cpg
+*.ncb
+*.aps
+*.pch
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.bak
+*.backup
+*.tmp
+*.tmpproj
+*.log
+
+# Archivos generados por el IDE
+.idea/
+*.ide
+*.code-workspace
+
+# Archivos temporales del sistema operativo
+.DS_Store
+Thumbs.db
+*.tmp
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos específicos de Windows
+*.manifest
+*.pfx
+
+# Archivos de publicación y empaquetado
+*.publish/
+*.clickonce/
+
+# Configuración de perfil de usuario de Visual Studio
+.vscode/
+*.vspx
+
+# Ignorar datos de configuración específicos de Rider
+.idea/
+*.sln.iml
+
+# Cache de Rider y ReSharper
+_ReSharper/
+*.ReSharper/*
+resharper.xml
+
+# Archivos específicos de Visual Studio Code
+.history
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/*.code-workspace
+
+# Archivos específicos de WPF
+GeneratedFiles/
+# WPF Annotations Cache (generalmente se generan al ejecutar)
+*.annotations.cache
+
+# Archivos de logs o debug
+*.log
+*.dmp
+*.stackdump
+
+# Archivos de configuración de la solución o el proyecto
+*.DotSettings.user
+*.DotSettings
+TestResult.xml
