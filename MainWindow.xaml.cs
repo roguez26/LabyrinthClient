@@ -23,12 +23,10 @@ using System.Globalization;
 using LabyrinthClient.Properties;
 using System.ServiceModel.Channels;
 using HelperClasses;
+using LabyrinthClient.Session;
 
 namespace LabyrinthClient
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -38,6 +36,7 @@ namespace LabyrinthClient
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             LoadCountries();
             InitializeTextBoxsWatermarks();
+         
         }
 
         private void LoadCountries()
@@ -96,7 +95,7 @@ namespace LabyrinthClient
                         if (client.VerificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
                         {
                             AddUser();
-                            loginTabItem.IsSelected = true;
+                            //loginTabItem.IsSelected = true;
                         }
                         else
                         {
@@ -132,13 +131,14 @@ namespace LabyrinthClient
         {
             UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();
+            String password = "";
 
             user.Username = UsernameTextbox.Text;
             user.Email = EmailTextbox.Text;
-            user.Password = EncryptPassword(PasswordBox.Password);
+            password = EncryptPassword(PasswordBox.Password);
 
             user.Country = (int)CountryCombobox.SelectedValue;
-            if (client.AddUser(user) > 0)
+            if (client.AddUser(user, password) > 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Se ha completado su registro, ya puede iniciar sesion", "Registro completado");
                 client.DeleteAllVerificationCodes();
@@ -193,15 +193,13 @@ namespace LabyrinthClient
             UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();
 
-            user.Email = emailForLoginTextBox.Text;
-            user.Password = EncryptPassword(passwordForLoginTextBox.Password);
-
-            user = client.UserVerification(user);
+            user = client.UserVerification(emailForLoginTextBox.Text, EncryptPassword(passwordForLoginTextBox.Password));
 
             if (string.IsNullOrEmpty(user.ErrorCode))
             {
-                MainMenu mainMenu = MainMenu.GetInstance(user);
-                mainMenu.Show();
+                CurrentSession.CurrentUser = user;
+                MainMenu.GetInstance().Show();
+                
                 this.Close();
             }
             else
@@ -241,5 +239,91 @@ namespace LabyrinthClient
             AddWatermarkToTextBox(lobbyTextBox, Properties.Resources.GlobalLobbyIdTextBoxPlaceholder);
         }
 
+        private void ChangeToJoinAsGuestIsPressed(object sender, RoutedEventArgs e)
+        {
+
+            changeToSignupButton.FontWeight = FontWeights.Regular;
+            changeToLoginButton.FontWeight = FontWeights.Regular;
+            changeToJoinAsGuest.FontWeight = FontWeights.Bold;
+            ChangeToJoinAsGuestMode(true);
+            ChangeToLoginMode(false);
+            ChangeToSignupMode(false);
+        }
+        private void ChangeToLoginIsPressed(object sender, RoutedEventArgs e)
+        {
+            changeToSignupButton.FontWeight = FontWeights.Regular;
+            changeToJoinAsGuest.FontWeight = FontWeights.Regular;
+            changeToLoginButton.FontWeight = FontWeights.Bold;
+            ChangeToJoinAsGuestMode(false);
+            ChangeToLoginMode(true);
+            ChangeToSignupMode(false);
+
+        }
+        private void ChangeToSignupIsPressed(object sender, RoutedEventArgs e)
+        {
+            changeToJoinAsGuest.FontWeight = FontWeights.Regular;
+            changeToLoginButton.FontWeight = FontWeights.Regular;
+            changeToSignupButton.FontWeight = FontWeights.Bold;
+            ChangeToJoinAsGuestMode(false);
+            ChangeToLoginMode(false);
+            ChangeToSignupMode(true);
+
+        }
+
+        private void ChangeToLoginMode(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                emailForLoginTextBox.Visibility = Visibility.Visible;
+                passwordForLoginTextBox.Visibility = Visibility.Visible;
+                LoginButton.Visibility = Visibility.Visible;
+            } else
+            {
+                emailForLoginTextBox.Visibility = Visibility.Collapsed;
+                passwordForLoginTextBox.Visibility = Visibility.Collapsed;
+                LoginButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ChangeToSignupMode(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                UsernameTextbox.Visibility = Visibility.Visible;
+                EmailTextbox.Visibility = Visibility.Visible;
+                PasswordBox.Visibility = Visibility.Visible;
+                CountryCombobox.Visibility = Visibility.Visible;
+                signupButton.Visibility = Visibility.Visible;
+            } else
+            {
+                UsernameTextbox.Visibility = Visibility.Collapsed;
+                EmailTextbox.Visibility = Visibility.Collapsed;
+                PasswordBox.Visibility = Visibility.Collapsed;
+                CountryCombobox.Visibility = Visibility.Collapsed;
+                signupButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ChangeToJoinAsGuestMode (bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                lobbyTextBox.Visibility = Visibility.Visible;
+                userNameForJoinAsGuestTextBox.Visibility = Visibility.Visible;
+                joinAsGuestButton.Visibility = Visibility.Visible;
+            } else
+            {
+                lobbyTextBox.Visibility = Visibility.Collapsed;
+                userNameForJoinAsGuestTextBox.Visibility= Visibility.Collapsed;
+                joinAsGuestButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ShowAndHideButtonIsPressed(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+     
     }
 }

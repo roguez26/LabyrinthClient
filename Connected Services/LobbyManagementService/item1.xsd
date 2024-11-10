@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
   <xs:element name="CreateLobby">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="lobbyCreator" nillable="true" type="q1:TransferUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateLobbyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateLobbyResult" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="JoinToGame">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="user" nillable="true" type="q2:TransferUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BroadcastCreated">
+  <xs:element name="JoinToGameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="JoinToGameResult" nillable="true" type="q3:ArrayOfTransferUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BroadcastCreatedResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="BroadcastJoined">
+  <xs:element name="NotifyUserHasJoined">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="user" nillable="true" type="q4:TransferUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="BroadcastJoinedResponse">
+  <xs:element name="NotifyUserHasJoinedResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

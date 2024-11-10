@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -74,6 +89,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\FriendsManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\LobbyManagementService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -100,6 +120,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Session\CurrentSession.cs" />
     <Compile Include="Settings1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -201,11 +222,24 @@
     <None Include="Connected Services\ChatService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\FriendsManagementService\FriendsManagementServiceImplementation.wsdl" />
+    <None Include="Connected Services\FriendsManagementService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FriendsManagementService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\LobbyManagementService\item.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\LobbyManagementService\item1.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LobbyManagementService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\LobbyManagementService\LabyrinthClient.LobbyManagementService.TransferUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\LobbyManagementService\LobbyManagementServiceImplementation.wsdl" />
     <None Include="Connected Services\UserManagementService\item.xsd">
@@ -215,9 +249,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\UserManagementService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\UserManagementService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\UserManagementService\LabyrinthClient.UserManagementService.TransferUser.datasource">
@@ -347,6 +378,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CatalogManagementService\" />
     <WCFMetadataStorage Include="Connected Services\ChatService\" />
+    <WCFMetadataStorage Include="Connected Services\FriendsManagementService\" />
     <WCFMetadataStorage Include="Connected Services\LobbyManagementService\" />
     <WCFMetadataStorage Include="Connected Services\UserManagementService\" />
   </ItemGroup>
@@ -361,21 +393,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ChatService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserManagementService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserManagementService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserManagementService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\UserManagementService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -396,10 +413,28 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HelperClasses\HelperClasses.csproj">
+    <ProjectReference Include="HelperClasses\HelperClasses.csproj">
       <Project>{6f24f411-777c-4d89-a79b-a3d429d03638}</Project>
       <Name>HelperClasses</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\ShowAndHideButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\AddFriendButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LobbyManagementService\item.disco" />
@@ -412,6 +447,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\LobbyManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\UserManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\KickOutButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FriendsManagementService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FriendsManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FriendsManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\FriendsManagementService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

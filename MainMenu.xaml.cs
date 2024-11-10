@@ -13,40 +13,38 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LabyrinthClient.Session;
 using LabyrinthClient.UserManagementService;
 
 namespace LabyrinthClient
 {
-    /// <summary>
-    /// Lógica de interacción para MainMenu.xaml
-    /// </summary>
     public partial class MainMenu : Window
     {
 
         private static MainMenu _instance;
-        private TransferUser _currentSession;
-         
-        private MainMenu(TransferUser user)
+        private MyUser _myUser;
+        private LobbySelection _lobbySelection;
+        private MainMenu()
         {
             InitializeComponent();
-            _currentSession = user;
-            UpdateData(_currentSession);
+            UpdateData();
+            
         }
 
-        private void UpdateData(TransferUser user)
+        private void UpdateData()
         {
-            userButton.Content = user.Username;
+            userButton.Content = CurrentSession.CurrentUser.Username;
 
-            if (!string.IsNullOrEmpty(user.ProfilePicture))
+            if (!string.IsNullOrEmpty(CurrentSession.CurrentUser.ProfilePicture))
             {
-                changeProfilePicture();
+                ChangeProfilePicture();
             }
         }
 
-        private void changeProfilePicture()
+        private void ChangeProfilePicture()
         {
             UserManagementService.UserManagementClient userManagement = new UserManagementService.UserManagementClient();
-            byte[] imageData = userManagement.GetUserProfilePicture(_currentSession.ProfilePicture);
+            byte[] imageData = userManagement.GetUserProfilePicture(CurrentSession.CurrentUser.ProfilePicture);
 
             if (imageData != null && imageData.Length > 0)
             {
@@ -65,15 +63,15 @@ namespace LabyrinthClient
             }
         }
 
-        public static MainMenu GetInstance(TransferUser user)
+        public static MainMenu GetInstance()
         {
             if (_instance == null || !_instance.IsVisible)
             {
-                _instance = new MainMenu(user);
+                _instance = new MainMenu();
                 _instance.Activate();
             } else
             {
-                _instance.UpdateData(user);
+                _instance.UpdateData();
             }
             
             return _instance;
@@ -81,23 +79,39 @@ namespace LabyrinthClient
 
         private void HostGameButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            AdminLobby adminLobby = new AdminLobby(_currentSession);
-            adminLobby.Show();
+            AdminLobby.GetInstance().Show();
+            this.Hide();
             this.Close();
         }
 
         private void JoinGameButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            LobbySelection lobbySelection = new LobbySelection(_currentSession);
-            lobbySelection.Show();
+            if (_lobbySelection == null)
+            {
+                _lobbySelection = new LobbySelection();
+                _lobbySelection.Closed += (s, args) => _lobbySelection = null;
+                _lobbySelection.Show();
+            }
+            else
+            {
+                _lobbySelection.Activate();
+            }
 
         }
 
-        private void userButtonIsPressed(object sender, RoutedEventArgs e)
+        private void UserButtonIsPressed(object sender, RoutedEventArgs e)
         {
 
-            MyUser myUser = MyUser.GetInstance(_currentSession);
-            myUser.Show();
+            if (_myUser == null)
+            {
+                _myUser = new MyUser();
+                _myUser.Closed += (s, args) => _myUser = null;
+                _myUser.Show();
+            }
+            else
+            {
+                _myUser.Activate();
+            }
         }
     }
 }

@@ -5,14 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabyrinthClient"
         mc:Ignorable="d"
-        Title="LobbySelection" Height="161" Width="355">
-    <Grid Margin="0,0,0,1">
+        Title="LobbySelection" Height="161" Width="355"
+        WindowStyle="ToolWindow"
+        Background="#1c1b3b">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="lobbyCodeTextBox" HorizontalAlignment="Center" Margin="0,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" />
-        <Button Content="Join" HorizontalAlignment="Left" Margin="188,107,0,0" VerticalAlignment="Top" Width="50" Click="JoinButtonIsPressed"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="259,107,0,0" VerticalAlignment="Top" Width="56" Click="CancelButtonIsPressed"/>
+        <TextBox x:Name="lobbyCodeTextBox" Margin="0,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" Height="32" 
+                 Style="{DynamicResource CustomTextBoxStyle}"/>
+        <Button Content="Join" Width="76" Click="JoinButtonIsPressed"
+                Style="{StaticResource CustomButtonStyle}" HorizontalAlignment="Left" Margin="154,81,0,0" VerticalAlignment="Top"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="248,81,0,0" Width="79" Click="CancelButtonIsPressed"
+                Style="{StaticResource CustomButtonStyle}" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

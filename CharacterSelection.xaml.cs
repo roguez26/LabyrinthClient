@@ -18,16 +18,11 @@ using System.Windows.Threading;
 
 namespace LabyrinthClient
 {
-    /// <summary>
-    /// Lógica de interacción para CharacterSelection.xaml
-    /// </summary>
-
     public partial class CharacterSelection : Window
     {
-        // Define el timer
-        DispatcherTimer animationTimer = new DispatcherTimer();
+        DispatcherTimer _animationTimer = new DispatcherTimer();
         int currentFrame = 0;
-        List<BitmapImage> walkFrames = new List<BitmapImage>();
+        List<BitmapImage> _walkFrames = new List<BitmapImage>();
 
         public CharacterSelection()
         {
@@ -37,18 +32,20 @@ namespace LabyrinthClient
 
         private void BackButtonIsPressed(object sender, RoutedEventArgs e)
         {
-
+            AdminLobby.GetInstance().Show();
+            this.Close();
+           
         }
 
         private void initializeAnimationTimer()
         {
-            animationTimer.Interval = TimeSpan.FromMilliseconds(100); 
-            animationTimer.Tick += UpdateFrame;
+            _animationTimer.Interval = TimeSpan.FromMilliseconds(100); 
+            _animationTimer.Tick += UpdateFrame;
         }
 
         private void InitializeWalkFrames(string characterName)
         {
-            walkFrames.Clear();
+            _walkFrames.Clear();
             for (int i = 0; i <= 15; i++)
             {
                 var image = new BitmapImage();
@@ -56,29 +53,29 @@ namespace LabyrinthClient
                 image.UriSource = new Uri($"pack://application:,,,/Skins/{characterName}/sprites/{characterName}_{i:00}.png");
                 image.CacheOption = BitmapCacheOption.OnLoad; 
                 image.EndInit();
-                walkFrames.Add(image);
+                _walkFrames.Add(image);
             }
         }
 
         private void UpdateFrame(object sender, EventArgs e)
         {
-            CharacterSprites.Source = walkFrames[currentFrame];
-            currentFrame = (currentFrame + 1) % walkFrames.Count; 
+            CharacterSprites.Source = _walkFrames[currentFrame];
+            currentFrame = (currentFrame + 1) % _walkFrames.Count; 
 
         }
 
         private void StartAnimation(string characterName)
         {
-            animationTimer.Stop();
+            _animationTimer.Stop();
             InitializeWalkFrames(characterName);
-            animationTimer.Start();
+            _animationTimer.Start();
         }
 
         private void StopAnimation()
         {
-            animationTimer.Stop();
+            _animationTimer.Stop();
             currentFrame = 0;
-            CharacterSprites.Source = walkFrames[currentFrame]; 
+            CharacterSprites.Source = _walkFrames[currentFrame]; 
         }
 
         private void PrincessIsSelected(object sender, RoutedEventArgs e)
@@ -115,6 +112,7 @@ namespace LabyrinthClient
             CharacterImage.Source = new BitmapImage(new Uri("pack://application:,,,/Skins/knight/knight.png"));
             StartAnimation(Characters.KnightNameLabel.ToString());
         }
+
     }
 
 }

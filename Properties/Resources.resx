@@ -318,4 +318,10 @@
   <data name="SelectCharacterButton" xml:space="preserve">
     <value>Select character</value>
   </data>
+  <data name="LobbyMembersLabel" xml:space="preserve">
+    <value>Lobby members</value>
+  </data>
+  <data name="InviteFriendButton" xml:space="preserve">
+    <value>Invite friend</value>
+  </data>
 </root>

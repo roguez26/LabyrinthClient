@@ -33,40 +33,39 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ILobbyManagementService_CreateLobby_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateLobby" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_CreateLobby_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateLobbyResponse" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManagementService_JoinToGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinToGame" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManagementService_BroadcastCreated_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:BroadcastCreated" />
+  <wsdl:message name="ILobbyManagementService_JoinToGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinToGameResponse" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManagementService_BroadcastCreated_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:BroadcastCreatedResponse" />
+  <wsdl:message name="ILobbyManagementService_NotifyUserHasJoined_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyUserHasJoined" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManagementService_BroadcastJoined_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:BroadcastJoined" />
-  </wsdl:message>
-  <wsdl:message name="ILobbyManagementService_BroadcastJoined_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:BroadcastJoinedResponse" />
+  <wsdl:message name="ILobbyManagementService_NotifyUserHasJoined_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyUserHasJoinedResponse" />
   </wsdl:message>
   <wsdl:portType name="ILobbyManagementService">
     <wsdl:operation name="CreateLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/CreateLobby" message="tns:ILobbyManagementService_CreateLobby_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/CreateLobbyResponse" message="tns:ILobbyManagementService_CreateLobby_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="JoinToGame">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/JoinToGame" message="tns:ILobbyManagementService_JoinToGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/JoinToGameResponse" message="tns:ILobbyManagementService_JoinToGame_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="BroadcastCreated">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/BroadcastCreated" message="tns:ILobbyManagementService_BroadcastCreated_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/BroadcastCreatedResponse" message="tns:ILobbyManagementService_BroadcastCreated_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="BroadcastJoined">
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/BroadcastJoined" message="tns:ILobbyManagementService_BroadcastJoined_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/BroadcastJoinedResponse" message="tns:ILobbyManagementService_BroadcastJoined_InputCallbackMessage" />
+    <wsdl:operation name="NotifyUserHasJoined">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoined" message="tns:ILobbyManagementService_NotifyUserHasJoined_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoinedResponse" message="tns:ILobbyManagementService_NotifyUserHasJoined_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ILobbyManagementService" type="tns:ILobbyManagementService">
@@ -77,15 +76,12 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="JoinToGame">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/JoinToGame" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="BroadcastCreated">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/BroadcastCreated" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -93,8 +89,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="BroadcastJoined">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/BroadcastJoined" style="document" />
+    <wsdl:operation name="NotifyUserHasJoined">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoined" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -109,7 +105,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8093/LobbyManagementService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MSI\axel_</Upn>
+          <Upn>ROGUEZ\ivanr</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

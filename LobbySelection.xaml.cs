@@ -1,4 +1,5 @@
 ﻿using LabyrinthClient.LobbyManagementService;
+using LabyrinthClient.Session;
 using LabyrinthClient.UserManagementService;
 using System;
 using System.Collections.Generic;
@@ -17,49 +18,35 @@ using System.Windows.Shapes;
 
 namespace LabyrinthClient
 {
-    /// <summary>
-    /// Lógica de interacción para LobbySelection.xaml
-    /// </summary>
-    public partial class LobbySelection : Window, LobbyManagementService.ILobbyManagementServiceCallback
+
+    public partial class LobbySelection : Window
     {
-        private LobbyManagementService.LobbyManagementServiceClient lobbyManagementServiceClient;
-        private TransferUser currentSession;
-        public LobbySelection(TransferUser user)
+     
+        public LobbySelection()
         {
             InitializeComponent();
             InstanceContext context = new InstanceContext(this);
-            lobbyManagementServiceClient = new LobbyManagementService.LobbyManagementServiceClient(context);
-            currentSession = user;
         }
 
         private void JoinButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            lobbyManagementServiceClient.JoinToGame(lobbyCodeTextBox.Text, currentSession.Username);
-
-            PlayerLobby playerLobby = new PlayerLobby(currentSession);
+            
+            PlayerLobby playerLobby = new PlayerLobby();
             playerLobby.Show();
-            this.Close();
-            MainMenu.GetInstance(currentSession).Close();
-
+            if (playerLobby.JoinToLobby(lobbyCodeTextBox.Text))
+            {
+                this.Close();
+                MainMenu.GetInstance().Close();
+            }
+            
+           
+            
         }
 
         private void CancelButtonIsPressed(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
-
-        public void BroadcastCreated(string message)
-        {
-        
-        }
-
-        public void BroadcastJoined(string userName)
-        {
-            Dispatcher.Invoke(() =>
-            {
-
-                
-            });
-        }
+       
     }
 }

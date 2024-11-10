@@ -7,30 +7,148 @@
         xmlns:p="clr-namespace:LabyrinthClient.Properties"
         mc:Ignorable="d"
         Icon="/GraphicItems/logo.png"
-        Title="PlayerLobby" Height="720" Width="1280">
+        Title="PlayerLobby" 
+        Height="814" Width="1479"
+        WindowState="Maximized"
+        Background="#1c1b3b">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Recurso con datos de ejemplo -->
+
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="47*"/>
+            <RowDefinition Height="50*"/>
             <RowDefinition Height="543*"/>
             <RowDefinition Height="114*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="148*"/>
-            <ColumnDefinition Width="309*"/>
-            <ColumnDefinition Width="148*"/>
+            <ColumnDefinition Width="342*"/>
+            <ColumnDefinition Width="625*"/>
+            <ColumnDefinition Width="342*"/>
         </Grid.ColumnDefinitions>
-        <Canvas HorizontalAlignment="Left" Height="336" Grid.Row="1" VerticalAlignment="Top">
-            <ListBox x:Name="MessagesListBox" Width="296" Height="297" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="10" Canvas.Top="34" />
-            <TextBox x:Name="MessageTextBox" TextWrapping="Wrap" Width="236" Height="22" BorderBrush="Black" HorizontalAlignment="Left" Canvas.Left="10" Canvas.Top="347" VerticalAlignment="Top"/>
-            <Button x:Name="SendButton" Content="Send" Click="SendButtonIsPressed" Width="53" Height="22" HorizontalAlignment="Center" Canvas.Left="253" Canvas.Top="347" VerticalAlignment="Top"/>
-        </Canvas>
-        <Rectangle HorizontalAlignment="Center" Height="111" Stroke="Black" VerticalAlignment="Center" Width="448" Grid.Column="1" Grid.Row="2" RadiusX="0" RadiusY="0"/>
-        <Rectangle HorizontalAlignment="Center" Height="296" Stroke="Black" VerticalAlignment="Top" Width="296" Grid.Column="2" Grid.Row="1" Margin="0,27,0,0"/>
-        <Button HorizontalAlignment="Left" Margin="52,11,0,0" VerticalAlignment="Top" Width="45" Height="45" BorderBrush="White" Foreground="White" Click="BackButtonIsPressed" Grid.RowSpan="2">
+        <StackPanel HorizontalAlignment="Left" Height="367" VerticalAlignment="Top" Margin="48,32,0,0"  Width="337" Grid.Row="1" Background="#252b5d" Grid.ColumnSpan="2">
+
+            <ListBox x:Name="MessagesListBox" Width="296" Height="278" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Top="33" Canvas.Left="5" Margin="10, 10, 10, 10"/>
+            <DockPanel Height="52" Width="295">
+                <TextBox x:Name="MessageTextBox" TextWrapping="Wrap" BorderBrush="Black" Width="215" Height="40"
+                         Style="{DynamicResource CustomTextBoxStyle}"/>
+                <Button x:Name="SendButton" Content="Send" Click="SendButtonIsPressed" Width="59" Height="38"
+                        Style="{DynamicResource CustomButtonStyle}"/>
+
+            </DockPanel>
+
+        </StackPanel>
+        <Button HorizontalAlignment="Left" Margin="52,11,0,0" VerticalAlignment="Top" Width="45" Height="45" Foreground="White" Click="BackButtonIsPressed" Grid.RowSpan="2">
             <Button.Background>
                 <ImageBrush ImageSource="/GraphicItems/BackButton.png"/>
             </Button.Background>
         </Button>
-        <Canvas Grid.Column="1" Grid.Row="1" Background="#FFDC5353" Width="490" Height="490"/>
+        <Canvas Grid.Column="1" Grid.Row="1" Background="#1b2447" Height="550" Width="550"/>
+        <StackPanel Grid.Column="2" Margin="0,28,43,0" Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top" Height="364" Background="#252b5d" Cursor="" >
+            <Label FontWeight="Bold"
+       Foreground="Black"
+       Height="43"
+       Width="109"
+       Margin="10, 10, 10, 10">
+                <TextBlock Text="{x:Static p:Resources.LobbyMembersLabel}"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" Height="33" Width="99"
+                           Foreground="White"/>
+            </Label>
+
+            <ListView x:Name="DynamicListView" ItemsSource="{Binding items}" Width="301" Height="246">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="1" Width="277" Height="54" HorizontalAlignment="Center">
+                            <Canvas Margin="0,0,0,-2">
+                                <!-- Texto -->
+                                <TextBlock
+                            Width="136" Canvas.Top="20" Text="{Binding username}" Canvas.Left="10" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold"/>
+                                <!-- Botón para agregar amigos -->
+                                <Button
+                            Width="25" VerticalAlignment="Top" Canvas.Top="15" Canvas.Left="230" Height="25" HorizontalAlignment="Left" Click="AddFriendButtonIsPressed" BorderBrush="{x:Null}">
+                                    <Button.Style
+            >
+                                        <Style
+                                    TargetType="{x:Type Button}">
+                                            <Style.Triggers
+            >
+                                                <DataTrigger
+                                            Binding="{Binding isFriend}" Value="true">
+                                                    <Setter
+                                                Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                    <Button.Background
+            >
+                                        <ImageBrush
+                                    ImageSource="/GraphicItems/AddFriendButton.png"/>
+                                    </Button.Background>
+                                </Button>
+
+                                <Button
+                            Width="98" VerticalAlignment="Center" Canvas.Top="10" Canvas.Left="168" Height="30" HorizontalAlignment="Left" Content="Select character" Click="SelectCharacterButtonIsPressed" BorderBrush="{x:Null}">
+                                    <Button.Style
+            >
+                                        <Style
+                                    BasedOn="{StaticResource CustomButtonStyle}" TargetType="{x:Type Button}">
+                                            <Style.Triggers
+            >
+                                                <DataTrigger
+                                            Binding="{Binding isCurrentUser}" Value="False">
+                                                    <Setter
+                                                Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Canvas>
+
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Content="{x:Static p:Resources.InviteFriendButton}" 
+        Width="111"
+        Click="InviteFriendButtonIsPressed"
+        Style="{StaticResource CustomButtonStyle}" Height="30" Margin="10, 10, 10, 10" />
+
+        </StackPanel>
+        <Label 
+            x:Name="lobbyCodeLabel"
+            Content="LobbyCode"
+            Grid.Column="1" 
+               HorizontalAlignment="Center" 
+               Margin="0,6,0,0" 
+               VerticalAlignment="Top"
+               FontWeight="Bold"
+            Foreground="White"
+               />
+        <StackPanel Grid.Column="1" Grid.Row="2" Background="#252b5d">
+            <Label Content="Players ready:" Width="142" Margin="10, 10, 10, 10"
+                   Foreground="White"/>
+            <Button Content="{x:Static p:Resources.ReadyButton}" Height="32" RenderTransformOrigin="0.5,0.5" Width="238"
+                    Style="{DynamicResource CustomButtonStyle}">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

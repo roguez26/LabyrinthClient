@@ -403,6 +403,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Invite friend.
+        /// </summary>
+        public static string InviteFriendButton {
+            get {
+                return ResourceManager.GetString("InviteFriendButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Join as guest.
         /// </summary>
         public static string JoinAsGuestTabItem {
@@ -435,6 +444,15 @@ namespace LabyrinthClient.Properties {
         public static string KnightNameLabel {
             get {
                 return ResourceManager.GetString("KnightNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Lobby members.
+        /// </summary>
+        public static string LobbyMembersLabel {
+            get {
+                return ResourceManager.GetString("LobbyMembersLabel", resourceCulture);
             }
         }
         

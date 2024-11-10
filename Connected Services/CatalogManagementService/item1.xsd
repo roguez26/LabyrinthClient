@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
   <xs:element name="GetAllCountries">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +9,7 @@
   <xs:element name="GetAllCountriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/CatalogManagementService" minOccurs="0" name="GetAllCountriesResult" nillable="true" type="q1:ArrayOfTransferCountry" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="GetAllCountriesResult" nillable="true" type="q1:ArrayOfTransferCountry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -23,7 +23,7 @@
   <xs:element name="GetCountryByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/CatalogManagementService" minOccurs="0" name="GetCountryByIdResult" nillable="true" type="q2:TransferCountry" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="GetCountryByIdResult" nillable="true" type="q2:TransferCountry" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -37,7 +37,7 @@
   <xs:element name="GetStatsByUserIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/CatalogManagementService" minOccurs="0" name="GetStatsByUserIdResult" nillable="true" type="q3:TransferStats" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="GetStatsByUserIdResult" nillable="true" type="q3:TransferStats" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

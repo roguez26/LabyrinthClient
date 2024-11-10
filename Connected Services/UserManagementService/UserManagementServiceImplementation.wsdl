@@ -33,8 +33,7 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/UserManagementService" />
-      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManagement_AddUser_InputMessage">
@@ -54,6 +53,12 @@
   </wsdl:message>
   <wsdl:message name="IUserManagement_UpdateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_ChangeUserProfilePicture_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangeUserProfilePicture" />
@@ -104,6 +109,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/UpdateUser" message="tns:IUserManagement_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/UpdateUserResponse" message="tns:IUserManagement_UpdateUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/UpdatePassword" message="tns:IUserManagement_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/UpdatePasswordResponse" message="tns:IUserManagement_UpdatePassword_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ChangeUserProfilePicture">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture" message="tns:IUserManagement_ChangeUserProfilePicture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse" message="tns:IUserManagement_ChangeUserProfilePicture_OutputMessage" />
@@ -152,6 +161,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/UpdateUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap12:operation soapAction="http://tempuri.org/IUserManagement/UpdatePassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -220,7 +238,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8091/UserManagementService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MSI\axel_</Upn>
+          <Upn>ROGUEZ\ivanr</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

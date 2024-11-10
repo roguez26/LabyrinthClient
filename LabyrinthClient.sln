@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LabyrinthClient", "LabyrinthClient.csproj", "{D88FD025-5004-4794-9521-69FA14D407AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperClasses", "..\HelperClasses\HelperClasses.csproj", "{6F24F411-777C-4D89-A79B-A3D429D03638}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelperClasses", "HelperClasses\HelperClasses.csproj", "{6F24F411-777C-4D89-A79B-A3D429D03638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

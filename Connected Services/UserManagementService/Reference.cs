@@ -15,7 +15,7 @@ namespace LabyrinthClient.UserManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TransferUser", Namespace="http://schemas.datacontract.org/2004/07/UserManagementService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferUser", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
     [System.SerializableAttribute()]
     public partial class TransferUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -172,7 +172,7 @@ namespace LabyrinthClient.UserManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TransferCountry", Namespace="http://schemas.datacontract.org/2004/07/CatalogManagementService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferCountry", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
     [System.SerializableAttribute()]
     public partial class TransferCountry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -236,22 +236,28 @@ namespace LabyrinthClient.UserManagementService {
     public interface IUserManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
-        int AddUser(LabyrinthClient.UserManagementService.TransferUser user);
+        int AddUser(LabyrinthClient.UserManagementService.TransferUser user, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
-        System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user);
+        System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UserVerification", ReplyAction="http://tempuri.org/IUserManagement/UserVerificationResponse")]
-        LabyrinthClient.UserManagementService.TransferUser UserVerification(LabyrinthClient.UserManagementService.TransferUser user);
+        LabyrinthClient.UserManagementService.TransferUser UserVerification(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UserVerification", ReplyAction="http://tempuri.org/IUserManagement/UserVerificationResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(LabyrinthClient.UserManagementService.TransferUser user);
+        System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
         int UpdateUser(LabyrinthClient.UserManagementService.TransferUser newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
         System.Threading.Tasks.Task<int> UpdateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdatePassword", ReplyAction="http://tempuri.org/IUserManagement/UpdatePasswordResponse")]
+        int UpdatePassword(string pasword, string newPassword, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdatePassword", ReplyAction="http://tempuri.org/IUserManagement/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<int> UpdatePasswordAsync(string pasword, string newPassword, string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
         string ChangeUserProfilePicture(int userId, byte[] imagenData);
@@ -317,20 +323,20 @@ namespace LabyrinthClient.UserManagementService {
                 base(binding, remoteAddress) {
         }
         
-        public int AddUser(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.AddUser(user);
+        public int AddUser(LabyrinthClient.UserManagementService.TransferUser user, string password) {
+            return base.Channel.AddUser(user, password);
         }
         
-        public System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.AddUserAsync(user);
+        public System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user, string password) {
+            return base.Channel.AddUserAsync(user, password);
         }
         
-        public LabyrinthClient.UserManagementService.TransferUser UserVerification(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.UserVerification(user);
+        public LabyrinthClient.UserManagementService.TransferUser UserVerification(string email, string password) {
+            return base.Channel.UserVerification(email, password);
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(LabyrinthClient.UserManagementService.TransferUser user) {
-            return base.Channel.UserVerificationAsync(user);
+        public System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(string email, string password) {
+            return base.Channel.UserVerificationAsync(email, password);
         }
         
         public int UpdateUser(LabyrinthClient.UserManagementService.TransferUser newUser) {
@@ -339,6 +345,14 @@ namespace LabyrinthClient.UserManagementService {
         
         public System.Threading.Tasks.Task<int> UpdateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser) {
             return base.Channel.UpdateUserAsync(newUser);
+        }
+        
+        public int UpdatePassword(string pasword, string newPassword, string email) {
+            return base.Channel.UpdatePassword(pasword, newPassword, email);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePasswordAsync(string pasword, string newPassword, string email) {
+            return base.Channel.UpdatePasswordAsync(pasword, newPassword, email);
         }
         
         public string ChangeUserProfilePicture(int userId, byte[] imagenData) {
