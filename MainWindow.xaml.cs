@@ -24,6 +24,7 @@ using LabyrinthClient.Properties;
 using System.ServiceModel.Channels;
 using HelperClasses;
 using LabyrinthClient.Session;
+using System.Collections.Specialized;
 
 namespace LabyrinthClient
 {
@@ -46,67 +47,93 @@ namespace LabyrinthClient
                 CatalogManagementService.CatalogManagementClient client = new CatalogManagementService.CatalogManagementClient();
                 var countries = client.GetAllCountries();
                 CountryCombobox.ItemsSource = countries;
-                Console.WriteLine(countries);
                 CountryCombobox.DisplayMemberPath = "CountryName";
                 CountryCombobox.SelectedValuePath = "CountryId";
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar países: {exception.Message}");
+               
+            }
+        }
+        private void LoginButtonIsPressed(object sender, RoutedEventArgs e)
+        {
+            UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
+            UserManagementService.TransferUser user = new UserManagementService.TransferUser();
+            try
+            {
+                user = client.UserVerification(emailForLoginTextBox.Text, EncryptPassword(passwordForLoginTextBox.Password));
+            } catch(FaultException<LabyrinthException> exception)
+            {
+               
+            }
+            
+
+           
+
+            if (string.IsNullOrEmpty(user.ErrorCode))
+            {
+                CurrentSession.CurrentUser = user;
+                MainMenu.GetInstance().Show();
+                this.Close();
+            }
+            else
+            {
+               
             }
         }
 
         private void SignupButtonIsPressed(object sender, RoutedEventArgs e)
         {
             UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
-            UserManagementService.TransferUser user = new UserManagementService.TransferUser();
-            CatalogManagementService.CatalogManagementClient catalogManagementClient = new CatalogManagementService.CatalogManagementClient();
-            int response = 0;
 
-            if (FieldValidator.IsValidUsername(UsernameTextbox.Text) && FieldValidator.IsValidPassword(PasswordBox.Password) && FieldValidator.IsValidEmail(EmailTextbox.Text))
+            if (verificationCodeTextBox.IsVisible)
             {
-                if (!verificationCodeTextBox.IsVisible)
-                {
-                    if (!client.IsEmailRegistered(EmailTextbox.Text))
+               if (!string.IsNullOrEmpty(verificationCodeTextBox.Text))
+               {
+                    if (client.VerificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
                     {
-                        ChangeToVerificationMode(true);
-                        response = client.AddVerificationCode(EmailTextbox.Text);
-                        switch (response)
-                        {
-                            case 0:; break;
-                            case 1: /*ShowMessage(, )*/; break;
-                            case -1:; break;
-                        }
+                        AddUser();
+                        ChangeToVerificationMode(false);
                     }
                     else
                     {
-                        DialogResult dialogResult = MessageBox.Show("El correo ya se encuentra registrado, pruebe con otro", "Correo ya registrado");
+                        MessageBox.Show("El codigo no coincide");
+                        //mensaje de el codigo no coincide
                     }
+               } 
+                else
+               {
+                    MessageBox.Show("Codigo vacio");
+                }
+                
+                
+            } 
+            else
+            {
+                if (FieldValidator.IsValidUsername(UsernameTextbox.Text) && FieldValidator.IsValidPassword(PasswordBox.Password) && FieldValidator.IsValidEmail(EmailTextbox.Text))
+                {
+                    if (client.AddVerificationCode(EmailTextbox.Text) > 0)
+                    {
+                        MessageBox.Show("Se ha enviado el correo");
+                        //mensaje de se ha enviado el correo
+                        ChangeToVerificationMode(true);
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo enviar el correo");
+                        //mensaje no se pudo enviar el correo
+                    }
                 }
                 else
                 {
-                    if (string.IsNullOrEmpty(verificationCodeTextBox.Text))
-                    {
-                        ShowMessage("Campo de codigo vacio", "Asegurese de llenar el campo con el codigo de verificacion que se envio a su correo");
-                    }
-                    else
-                    {
-                        if (client.VerificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
-                        {
-                            AddUser();
-                            //loginTabItem.IsSelected = true;
-                        }
-                        else
-                        {
-                            ShowMessage("", "FailIncorrectVerificationCodeMessage");
-                        }
-                    }
+                    MessageBox.Show("Los campos estan incompletos");
+                    //mensaje de campos incompletos
                 }
             }
         }
 
-        private void ChangeToVerificationMode(Boolean isActive)
+        private void ChangeToVerificationMode(bool isActive)
         {
             if (isActive)
             {
@@ -131,7 +158,7 @@ namespace LabyrinthClient
         {
             UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();
-            String password = "";
+            string password = "";
 
             user.Username = UsernameTextbox.Text;
             user.Email = EmailTextbox.Text;
@@ -188,25 +215,7 @@ namespace LabyrinthClient
             };
         }
 
-        private void LoginButtonIsPressed(object sender, RoutedEventArgs e)
-        {
-            UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
-            UserManagementService.TransferUser user = new UserManagementService.TransferUser();
-
-            user = client.UserVerification(emailForLoginTextBox.Text, EncryptPassword(passwordForLoginTextBox.Password));
-
-            if (string.IsNullOrEmpty(user.ErrorCode))
-            {
-                CurrentSession.CurrentUser = user;
-                MainMenu.GetInstance().Show();
-                
-                this.Close();
-            }
-            else
-            {
-                ShowMessage("FailLoginErrorTitle", user.ErrorCode);
-            }
-        }
+        
 
         public string EncryptPassword(string password)
         {
@@ -223,11 +232,11 @@ namespace LabyrinthClient
             return stringBuilder.ToString();
         }
 
-        private void ShowMessage(string errorTitleCode, string errorMessageCode)
+        private void ShowMessage(string errorMessageCode)
         {
             string message = Messages.ResourceManager.GetString(errorMessageCode);
-            string title = Messages.ResourceManager.GetString(errorTitleCode);
-            MessageBox.Show(message, title);
+            MessageBox.Show(message);
+            
         }
 
         private void InitializeTextBoxsWatermarks()

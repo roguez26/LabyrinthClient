@@ -20,4 +20,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TransferCountry" nillable="true" type="tns:TransferCountry" />
+  <xs:complexType name="LabyrinthException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LabyrinthException" nillable="true" type="tns:LabyrinthException" />
 </xs:schema>

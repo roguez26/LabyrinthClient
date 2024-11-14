@@ -1,0 +1,6 @@
+C:\Users\ivanr\OneDrive\Escritorio\Labyrinth_Project\Client\LabyrinthClient\HelperClasses\bin\Debug\HelperClasses.dll
+C:\Users\ivanr\OneDrive\Escritorio\Labyrinth_Project\Client\LabyrinthClient\HelperClasses\bin\Debug\HelperClasses.pdb
+C:\Users\ivanr\OneDrive\Escritorio\Labyrinth_Project\Client\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.csproj.AssemblyReference.cache
+C:\Users\ivanr\OneDrive\Escritorio\Labyrinth_Project\Client\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.csproj.CoreCompileInputs.cache
+C:\Users\ivanr\OneDrive\Escritorio\Labyrinth_Project\Client\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.dll
+C:\Users\ivanr\OneDrive\Escritorio\Labyrinth_Project\Client\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.pdb

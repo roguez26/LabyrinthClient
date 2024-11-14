@@ -248,13 +248,13 @@ CornerRadius="15"
                 <TextBox 
                     x:Name="verificationCodeTextBox" 
                     HorizontalAlignment="Left" 
-                    Grid.Row="1" TextWrapping="Wrap"
-                    VerticalAlignment="Center" 
+                    Grid.Row="1" TextWrapping="Wrap" 
                     Width="260" 
                     Height="25"
-                    Canvas.Left="-263"
-                    Canvas.Top="3"
-                    Visibility="Collapsed"/>
+                    Canvas.Left="62"
+                    Canvas.Top="78"
+                    Visibility="Collapsed"
+                    Style="{StaticResource CustomTextBoxStyle}"/>
 
 
 

@@ -32,8 +32,8 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
+      <xsd:import schemaLocation="http://localhost:8081/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IUserManagement_AddUser_InputMessage">
@@ -42,11 +42,17 @@
   <wsdl:message name="IUserManagement_AddUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_AddUser_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q1:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="IUserManagement_UserVerification_InputMessage">
     <wsdl:part name="parameters" element="tns:UserVerification" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_UserVerification_OutputMessage">
     <wsdl:part name="parameters" element="tns:UserVerificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_UserVerification_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q2:LabyrinthException" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_UpdateUser_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUser" />
@@ -54,11 +60,17 @@
   <wsdl:message name="IUserManagement_UpdateUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_UpdateUser_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q3:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="IUserManagement_UpdatePassword_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePassword" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_UpdatePassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_UpdatePassword_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q4:LabyrinthException" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_ChangeUserProfilePicture_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangeUserProfilePicture" />
@@ -66,11 +78,17 @@
   <wsdl:message name="IUserManagement_ChangeUserProfilePicture_OutputMessage">
     <wsdl:part name="parameters" element="tns:ChangeUserProfilePictureResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_ChangeUserProfilePicture_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q5:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="IUserManagement_GetUserProfilePicture_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserProfilePicture" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_GetUserProfilePicture_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserProfilePictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_GetUserProfilePicture_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q6:LabyrinthException" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_VerificateCode_InputMessage">
     <wsdl:part name="parameters" element="tns:VerificateCode" />
@@ -84,11 +102,17 @@
   <wsdl:message name="IUserManagement_AddVerificationCode_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddVerificationCodeResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_AddVerificationCode_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q7:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="IUserManagement_IsEmailRegistered_InputMessage">
     <wsdl:part name="parameters" element="tns:IsEmailRegistered" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_IsEmailRegistered_OutputMessage">
     <wsdl:part name="parameters" element="tns:IsEmailRegisteredResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManagement_IsEmailRegistered_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q8:LabyrinthException" />
   </wsdl:message>
   <wsdl:message name="IUserManagement_DeleteAllVerificationCodes_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAllVerificationCodes" />
@@ -96,30 +120,39 @@
   <wsdl:message name="IUserManagement_DeleteAllVerificationCodes_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAllVerificationCodesResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManagement_DeleteAllVerificationCodes_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q9:LabyrinthException" />
+  </wsdl:message>
   <wsdl:portType name="IUserManagement">
     <wsdl:operation name="AddUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/AddUser" message="tns:IUserManagement_AddUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/AddUserResponse" message="tns:IUserManagement_AddUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/AddUserLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_AddUser_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UserVerification">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/UserVerification" message="tns:IUserManagement_UserVerification_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/UserVerificationResponse" message="tns:IUserManagement_UserVerification_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/UserVerificationLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_UserVerification_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/UpdateUser" message="tns:IUserManagement_UpdateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/UpdateUserResponse" message="tns:IUserManagement_UpdateUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/UpdateUserLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_UpdateUser_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdatePassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/UpdatePassword" message="tns:IUserManagement_UpdatePassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/UpdatePasswordResponse" message="tns:IUserManagement_UpdatePassword_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/UpdatePasswordLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_UpdatePassword_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="ChangeUserProfilePicture">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture" message="tns:IUserManagement_ChangeUserProfilePicture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse" message="tns:IUserManagement_ChangeUserProfilePicture_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/ChangeUserProfilePictureLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_ChangeUserProfilePicture_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetUserProfilePicture">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/GetUserProfilePicture" message="tns:IUserManagement_GetUserProfilePicture_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/GetUserProfilePictureResponse" message="tns:IUserManagement_GetUserProfilePicture_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/GetUserProfilePictureLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_GetUserProfilePicture_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="VerificateCode">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/VerificateCode" message="tns:IUserManagement_VerificateCode_InputMessage" />
@@ -128,14 +161,17 @@
     <wsdl:operation name="AddVerificationCode">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/AddVerificationCode" message="tns:IUserManagement_AddVerificationCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/AddVerificationCodeResponse" message="tns:IUserManagement_AddVerificationCode_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/AddVerificationCodeLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_AddVerificationCode_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="IsEmailRegistered">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/IsEmailRegistered" message="tns:IUserManagement_IsEmailRegistered_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/IsEmailRegisteredResponse" message="tns:IUserManagement_IsEmailRegistered_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/IsEmailRegisteredLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_IsEmailRegistered_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="DeleteAllVerificationCodes">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodes" message="tns:IUserManagement_DeleteAllVerificationCodes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesResponse" message="tns:IUserManagement_DeleteAllVerificationCodes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IUserManagement_DeleteAllVerificationCodes_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IUserManagement" type="tns:IUserManagement">
@@ -149,6 +185,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UserVerification">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/UserVerification" style="document" />
@@ -158,6 +197,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdateUser">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/UpdateUser" style="document" />
@@ -167,6 +209,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="UpdatePassword">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/UpdatePassword" style="document" />
@@ -176,6 +221,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="ChangeUserProfilePicture">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/ChangeUserProfilePicture" style="document" />
@@ -185,6 +233,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetUserProfilePicture">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/GetUserProfilePicture" style="document" />
@@ -194,6 +245,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="VerificateCode">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/VerificateCode" style="document" />
@@ -212,6 +266,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="IsEmailRegistered">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/IsEmailRegistered" style="document" />
@@ -221,6 +278,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="DeleteAllVerificationCodes">
       <soap12:operation soapAction="http://tempuri.org/IUserManagement/DeleteAllVerificationCodes" style="document" />
@@ -230,6 +290,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="UserManagementServiceImplementation">

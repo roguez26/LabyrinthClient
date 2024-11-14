@@ -231,41 +231,93 @@ namespace LabyrinthClient.UserManagementService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class LabyrinthException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserManagementService.IUserManagement")]
     public interface IUserManagement {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/AddUserLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         int AddUser(LabyrinthClient.UserManagementService.TransferUser user, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
         System.Threading.Tasks.Task<int> AddUserAsync(LabyrinthClient.UserManagementService.TransferUser user, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UserVerification", ReplyAction="http://tempuri.org/IUserManagement/UserVerificationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/UserVerificationLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         LabyrinthClient.UserManagementService.TransferUser UserVerification(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UserVerification", ReplyAction="http://tempuri.org/IUserManagement/UserVerificationResponse")]
         System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser> UserVerificationAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/UpdateUserLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         int UpdateUser(LabyrinthClient.UserManagementService.TransferUser newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdateUser", ReplyAction="http://tempuri.org/IUserManagement/UpdateUserResponse")]
         System.Threading.Tasks.Task<int> UpdateUserAsync(LabyrinthClient.UserManagementService.TransferUser newUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdatePassword", ReplyAction="http://tempuri.org/IUserManagement/UpdatePasswordResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/UpdatePasswordLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         int UpdatePassword(string pasword, string newPassword, string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/UpdatePassword", ReplyAction="http://tempuri.org/IUserManagement/UpdatePasswordResponse")]
         System.Threading.Tasks.Task<int> UpdatePasswordAsync(string pasword, string newPassword, string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/ChangeUserProfilePictureLabyrinthExceptionFaul" +
+            "t", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         string ChangeUserProfilePicture(int userId, byte[] imagenData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
         System.Threading.Tasks.Task<string> ChangeUserProfilePictureAsync(int userId, byte[] imagenData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/GetUserProfilePictureResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/GetUserProfilePictureLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         byte[] GetUserProfilePicture(string path);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/GetUserProfilePictureResponse")]
@@ -278,18 +330,22 @@ namespace LabyrinthClient.UserManagementService {
         System.Threading.Tasks.Task<bool> VerificateCodeAsync(string email, string code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/AddVerificationCodeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/AddVerificationCodeLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         int AddVerificationCode(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/AddVerificationCodeResponse")]
         System.Threading.Tasks.Task<int> AddVerificationCodeAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/IsEmailRegistered", ReplyAction="http://tempuri.org/IUserManagement/IsEmailRegisteredResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/IsEmailRegisteredLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         bool IsEmailRegistered(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/IsEmailRegistered", ReplyAction="http://tempuri.org/IUserManagement/IsEmailRegisteredResponse")]
         System.Threading.Tasks.Task<bool> IsEmailRegisteredAsync(string email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodes", ReplyAction="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesLabyrinthExceptionFa" +
+            "ult", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         int DeleteAllVerificationCodes();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteAllVerificationCodes", ReplyAction="http://tempuri.org/IUserManagement/DeleteAllVerificationCodesResponse")]
