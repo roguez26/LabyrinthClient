@@ -13,8 +13,11 @@
         Width="590"
         WindowStyle="ToolWindow">
 
-    <Grid Margin="10,10,10,8">
-
+    <Grid Margin="0,0,0,-6">
+        <Grid.Background>
+            <ImageBrush 
+        ImageSource="/GraphicItems/MyUserCover.png" />
+        </Grid.Background>
         <Canvas 
             Margin="328,215,34,27">
             <Button 

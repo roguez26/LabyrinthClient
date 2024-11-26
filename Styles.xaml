@@ -1,13 +1,17 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:local="clr-namespace:LabyrinthClient">
 
     <SolidColorBrush x:Key="IsMouseOverButton">#61677A</SolidColorBrush>
     <SolidColorBrush x:Key="DisplayButton">#221F3B</SolidColorBrush>
-    
+
+    <SolidColorBrush x:Key="CustomButtonNormal" Color="#00010a" />
+    <SolidColorBrush x:Key="CustomButtonMouseIsOver" Color="#282828" />
+
 
     <Style x:Key="CustomButtonStyle" TargetType="Button">
         <!-- Estilo predeterminado -->
-        <Setter Property="Background" Value="#4b5183" />
+        <Setter Property="Background" Value="{StaticResource CustomButtonNormal}" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="10,5" />
@@ -18,8 +22,6 @@
         <Setter Property="Height" Value="34"/>
         <Setter Property="FontWeight" Value="Bold"/>
 
-
-        <!-- Plantilla del botón -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -31,14 +33,11 @@
             </Setter.Value>
         </Setter>
 
-        <!-- Triggers para cambiar apariencia -->
         <Style.Triggers>
-            <!-- Cambiar a gris cuando el mouse pasa por encima -->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#AB886D" />
+                <Setter Property="Background" Value="{StaticResource CustomButtonMouseIsOver}" />
             </Trigger>
 
-            <!-- Cambiar a blanco con letras negras cuando es presionado -->
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="Black" />
@@ -46,19 +45,16 @@
         </Style.Triggers>
     </Style>
 
-    <!-- Estilo para los mainwindow-->
     <Style x:Key="CustomMainWindowOption" TargetType="Button">
-        <!-- Estilo predeterminado -->
-        <Setter Property="Background" Value="#1b2447" />
+        <Setter Property="Background" Value="{StaticResource CustomButtonNormal}" />
         <Setter Property="Foreground" Value="White" />
-       
         <Setter Property="Padding" Value="10,5" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="Cursor" Value="Hand" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="126" />
 
-        <!-- Plantilla del botón -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -70,19 +66,16 @@
             </Setter.Value>
         </Setter>
 
-        <!-- Triggers para cambiar apariencia -->
         <Style.Triggers>
-            <!-- Cambiar a gris cuando el mouse pasa por encima -->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#803D3B" />
+                <Setter Property="Background" Value="{StaticResource CustomButtonMouseIsOver}" />
             </Trigger>
 
-            <!-- Cambiar a blanco con letras negras cuando es presionado -->
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="White" />
                 <Setter Property="Foreground" Value="Black" />
-                <Setter Property="Foreground" Value="Black" />
             </Trigger>
+            
         </Style.Triggers>
     </Style>
 
@@ -286,7 +279,7 @@
         </Setter>
     </Style>
 
-    
+
     <Style x:Key="CustomIconButtonStyle" TargetType="Button">
         <!-- Estilos predeterminados -->
         <Setter Property="Width" Value="44" />
@@ -308,7 +301,7 @@
                     <Border Background="{TemplateBinding Background}"
                         Width="{TemplateBinding Width}"
                         Height="{TemplateBinding Height}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <ContentPresenter HorizontalAlignment="Right" VerticalAlignment="Center" Margin="50, 50, 50, 50"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -332,6 +325,59 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <local:EmptyStringToVisibilityConverter x:Key="EmptyStringToVisibilityConverter" />
+
+    <Style x:Key="CustomTextBoxWithPlaceholderStyle" TargetType="TextBox">
+        <!-- Estilo predeterminado -->
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="32" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <!-- Alineación del texto al centro -->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="8">
+                        <Grid>
+                            <!-- Placeholder TextBlock -->
+                            <TextBlock 
+                            Text="{TemplateBinding Tag}" 
+                            Foreground="Gray" 
+                            Margin="10,0,0,0"  
+                            VerticalAlignment="Center" 
+                            IsHitTestVisible="False"
+                            Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyStringToVisibilityConverter}}" />
+                        
+                        <!-- ScrollViewer para contenido del TextBox -->
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="0" VerticalAlignment="Center" />
+                    </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Triggers para cambiar apariencia -->
+        <Style.Triggers>
+            <!-- Cambiar borde a azul cuando se selecciona -->
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="#3498db" />
+            </Trigger>
+
+            <!-- Cambiar borde a gris oscuro cuando se pasa el mouse -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="DarkGray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
 
 
 </ResourceDictionary>

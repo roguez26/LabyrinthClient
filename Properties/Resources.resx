@@ -324,4 +324,25 @@
   <data name="InviteFriendButton" xml:space="preserve">
     <value>Invite friend</value>
   </data>
+  <data name="ShowFriendsButton" xml:space="preserve">
+    <value>Show friends</value>
+  </data>
+  <data name="ShowFriendRequestsButton" xml:space="preserve">
+    <value>Show friends requests</value>
+  </data>
+  <data name="AcceptButton" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="YesButton" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="NoButton" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="RejectButton" xml:space="preserve">
+    <value>Reject</value>
+  </data>
 </root>

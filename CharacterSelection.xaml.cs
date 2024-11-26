@@ -32,7 +32,6 @@ namespace LabyrinthClient
 
         private void BackButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            AdminLobby.GetInstance().Show();
             this.Close();
            
         }

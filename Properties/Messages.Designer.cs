@@ -70,6 +70,24 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a This username is being used by another player.
+        /// </summary>
+        internal static string FailDuplicatedUsernameMessage {
+            get {
+                return ResourceManager.GetString("FailDuplicatedUsernameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have already sent a friend request to this user.
+        /// </summary>
+        internal static string FailFriendRequestDuplicated {
+            get {
+                return ResourceManager.GetString("FailFriendRequestDuplicated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The password is incorrect.
         /// </summary>
         internal static string FailIncorrectPasswordMessage {
@@ -88,20 +106,47 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Login error.
+        ///   Busca una cadena traducida similar a The email is not valid. Make sure it is in the correct format..
         /// </summary>
-        internal static string FailLoginErrorTitle {
+        internal static string FailInvalidEmailMessage {
             get {
-                return ResourceManager.GetString("FailLoginErrorTitle", resourceCulture);
+                return ResourceManager.GetString("FailInvalidEmailMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Update profile error.
+        ///   Busca una cadena traducida similar a Password must be between 8 and 64 characters, and include at least one capital letter, one number, and one special character.
         /// </summary>
-        internal static string FailProfileNotUpdatedErrorTitle {
+        internal static string FailInvalidPasswordMessage {
             get {
-                return ResourceManager.GetString("FailProfileNotUpdatedErrorTitle", resourceCulture);
+                return ResourceManager.GetString("FailInvalidPasswordMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The username must be between 3 and 50 characters and only letters and numbers..
+        /// </summary>
+        internal static string FailInvalidUsernameMessage {
+            get {
+                return ResourceManager.GetString("FailInvalidUsernameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The lobby was not found.
+        /// </summary>
+        internal static string FailLobbyNotFoundMessage {
+            get {
+                return ResourceManager.GetString("FailLobbyNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a No countries found in the database.
+        /// </summary>
+        internal static string FailNoCountriesMessage {
+            get {
+                return ResourceManager.GetString("FailNoCountriesMessage", resourceCulture);
             }
         }
         
@@ -115,29 +160,110 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a We have sent you a verification code..
+        ///   Busca una cadena traducida similar a Are you sure you want to accept this friend request?.
         /// </summary>
-        internal static string InfoVerificationCodeSentMessage {
+        internal static string InfoAcceptRequestConfirmationMessage {
             get {
-                return ResourceManager.GetString("InfoVerificationCodeSentMessage", resourceCulture);
+                return ResourceManager.GetString("InfoAcceptRequestConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to quit the game?.
+        /// </summary>
+        internal static string InfoExitConfirmationMessage {
+            get {
+                return ResourceManager.GetString("InfoExitConfirmationMessage", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Busca una cadena traducida similar a Profile has been updated successfully.
         /// </summary>
-        internal static string SuccessProfileUpdatedMessage {
+        internal static string InfoProfileUpdatedMessage {
             get {
-                return ResourceManager.GetString("SuccessProfileUpdatedMessage", resourceCulture);
+                return ResourceManager.GetString("InfoProfileUpdatedMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Profile updated.
+        ///   Busca una cadena traducida similar a Are you sure you want to reject this friend request?.
         /// </summary>
-        internal static string SuccessProfileUpdatedTitle {
+        internal static string InfoRejectRequestConfirmationMessage {
             get {
-                return ResourceManager.GetString("SuccessProfileUpdatedTitle", resourceCulture);
+                return ResourceManager.GetString("InfoRejectRequestConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The request has been accepted successfully.
+        /// </summary>
+        internal static string InfoRequestAcceptedMessage {
+            get {
+                return ResourceManager.GetString("InfoRequestAcceptedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The request has been rejected successfully.
+        /// </summary>
+        internal static string InfoRequestRejectedMessage {
+            get {
+                return ResourceManager.GetString("InfoRequestRejectedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have sent a friend request successfully.
+        /// </summary>
+        internal static string InfoSentFriendRequestMessage {
+            get {
+                return ResourceManager.GetString("InfoSentFriendRequestMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to change your password?.
+        /// </summary>
+        internal static string InfoUpdatePasswordConfirmationMessage {
+            get {
+                return ResourceManager.GetString("InfoUpdatePasswordConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Are you sure you want to change your profile data?.
+        /// </summary>
+        internal static string InfoUpdateProfileConfirmationMessage {
+            get {
+                return ResourceManager.GetString("InfoUpdateProfileConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ¿Are you sure you want to update your profile picture?.
+        /// </summary>
+        internal static string InfoUpdateProfilePictureConfirmationMessage {
+            get {
+                return ResourceManager.GetString("InfoUpdateProfilePictureConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Your registration is complete, you can now log in.
+        /// </summary>
+        internal static string InfoUserRegisteredMessage {
+            get {
+                return ResourceManager.GetString("InfoUserRegisteredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a We have sent you a verification code to your email.
+        /// </summary>
+        internal static string InfoVerificationCodeSentMessage {
+            get {
+                return ResourceManager.GetString("InfoVerificationCodeSentMessage", resourceCulture);
             }
         }
     }

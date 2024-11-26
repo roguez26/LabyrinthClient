@@ -76,6 +76,51 @@ namespace LabyrinthClient.CatalogManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class LabyrinthException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorCode {
+            get {
+                return this.ErrorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorCodeField, value) != true)) {
+                    this.ErrorCodeField = value;
+                    this.RaisePropertyChanged("ErrorCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="TransferStats", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
     [System.SerializableAttribute()]
     public partial class TransferStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -171,19 +216,36 @@ namespace LabyrinthClient.CatalogManagementService {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="CatalogManagementService.ICatalogManagement")]
     public interface ICatalogManagement {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/AddCountry", ReplyAction="http://tempuri.org/ICatalogManagement/AddCountryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.CatalogManagementService.LabyrinthException), Action="http://tempuri.org/ICatalogManagement/AddCountryLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        LabyrinthClient.CatalogManagementService.TransferCountry AddCountry(LabyrinthClient.CatalogManagementService.TransferCountry country);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/AddCountry", ReplyAction="http://tempuri.org/ICatalogManagement/AddCountryResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> AddCountryAsync(LabyrinthClient.CatalogManagementService.TransferCountry country);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/DeleteAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/DeleteAllCountriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.CatalogManagementService.LabyrinthException), Action="http://tempuri.org/ICatalogManagement/DeleteAllCountriesLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int DeleteAllCountries();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/DeleteAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/DeleteAllCountriesResponse")]
+        System.Threading.Tasks.Task<int> DeleteAllCountriesAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/GetAllCountriesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.CatalogManagementService.LabyrinthException), Action="http://tempuri.org/ICatalogManagement/GetAllCountriesLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         LabyrinthClient.CatalogManagementService.TransferCountry[] GetAllCountries();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetAllCountries", ReplyAction="http://tempuri.org/ICatalogManagement/GetAllCountriesResponse")]
         System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry[]> GetAllCountriesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/GetCountryByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.CatalogManagementService.LabyrinthException), Action="http://tempuri.org/ICatalogManagement/GetCountryByIdLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         LabyrinthClient.CatalogManagementService.TransferCountry GetCountryById(int idCountry);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetCountryById", ReplyAction="http://tempuri.org/ICatalogManagement/GetCountryByIdResponse")]
         System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> GetCountryByIdAsync(int idCountry);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/GetStatsByUserIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.CatalogManagementService.LabyrinthException), Action="http://tempuri.org/ICatalogManagement/GetStatsByUserIdLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         LabyrinthClient.CatalogManagementService.TransferStats GetStatsByUserId(int userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICatalogManagement/GetStatsByUserId", ReplyAction="http://tempuri.org/ICatalogManagement/GetStatsByUserIdResponse")]
@@ -215,6 +277,22 @@ namespace LabyrinthClient.CatalogManagementService {
         
         public CatalogManagementClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public LabyrinthClient.CatalogManagementService.TransferCountry AddCountry(LabyrinthClient.CatalogManagementService.TransferCountry country) {
+            return base.Channel.AddCountry(country);
+        }
+        
+        public System.Threading.Tasks.Task<LabyrinthClient.CatalogManagementService.TransferCountry> AddCountryAsync(LabyrinthClient.CatalogManagementService.TransferCountry country) {
+            return base.Channel.AddCountryAsync(country);
+        }
+        
+        public int DeleteAllCountries() {
+            return base.Channel.DeleteAllCountries();
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteAllCountriesAsync() {
+            return base.Channel.DeleteAllCountriesAsync();
         }
         
         public LabyrinthClient.CatalogManagementService.TransferCountry[] GetAllCountries() {

@@ -25,19 +25,26 @@ using System.ServiceModel.Channels;
 using HelperClasses;
 using LabyrinthClient.Session;
 using System.Collections.Specialized;
+using System.Threading;
 
 namespace LabyrinthClient
 {
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, UserManagementService.IUserManagementCallback
     {
-
+        private UserManagementService.UserManagementClient client;
         public MainWindow()
         {
+            DataContext = this;
+            InstanceContext context = new InstanceContext(this);
+            client = new UserManagementService.UserManagementClient(context);
             InitializeComponent();
-            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             LoadCountries();
-            InitializeTextBoxsWatermarks();
-         
+            CultureInfo ui_culture = new CultureInfo("en-US");
+            CultureInfo culture = new CultureInfo("en-US");
+
+            Thread.CurrentThread.CurrentUICulture = ui_culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+
         }
 
         private void LoadCountries()
@@ -50,86 +57,74 @@ namespace LabyrinthClient
                 CountryCombobox.DisplayMemberPath = "CountryName";
                 CountryCombobox.SelectedValuePath = "CountryId";
             }
-            catch (Exception ex)
+            catch (FaultException<LabyrinthException> ex)
             {
-               
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
             }
         }
         private void LoginButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
-            UserManagementService.TransferUser user = new UserManagementService.TransferUser();
             try
             {
-                user = client.UserVerification(emailForLoginTextBox.Text, EncryptPassword(passwordForLoginTextBox.Password));
-            } catch(FaultException<LabyrinthException> exception)
+                if (FieldValidator.IsValidEmail(emailForLoginTextBox.Text) //&& FieldValidator.IsValidPassword(passwordForLoginTextBox.Password)
+                    ) 
+                {
+                    UserManagementService.TransferUser user = new UserManagementService.TransferUser();
+
+                    user = client.VerificateUser(emailForLoginTextBox.Text, EncryptPassword(passwordForLoginTextBox.Password));
+                    if (user.IdUser > 0)
+                    {
+                        CurrentSession.CurrentUser = user;
+                        MainMenu.GetInstance().Show();
+                        this.Close();
+                    }
+                }
+            }
+            catch (ArgumentException ex)
             {
-               
+                ExceptionHandler.HandleException(ex);
+            }
+            catch (FaultException<LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
             }
             
-
-           
-
-            if (string.IsNullOrEmpty(user.ErrorCode))
-            {
-                CurrentSession.CurrentUser = user;
-                MainMenu.GetInstance().Show();
-                this.Close();
-            }
-            else
-            {
-               
-            }
         }
 
         private void SignupButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
-
-            if (verificationCodeTextBox.IsVisible)
+            try
             {
-               if (!string.IsNullOrEmpty(verificationCodeTextBox.Text))
-               {
-                    if (client.VerificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
-                    {
-                        AddUser();
-                        ChangeToVerificationMode(false);
-                    }
-                    else
-                    {
-                        MessageBox.Show("El codigo no coincide");
-                        //mensaje de el codigo no coincide
-                    }
-               } 
-                else
-               {
-                    MessageBox.Show("Codigo vacio");
-                }
-                
-                
-            } 
-            else
-            {
-                if (FieldValidator.IsValidUsername(UsernameTextbox.Text) && FieldValidator.IsValidPassword(PasswordBox.Password) && FieldValidator.IsValidEmail(EmailTextbox.Text))
+                if (verificationCodeTextBox.IsVisible)
                 {
-                    if (client.AddVerificationCode(EmailTextbox.Text) > 0)
+                    if (!string.IsNullOrEmpty(verificationCodeTextBox.Text))
                     {
-                        MessageBox.Show("Se ha enviado el correo");
-                        //mensaje de se ha enviado el correo
-                        ChangeToVerificationMode(true);
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo enviar el correo");
-                        //mensaje no se pudo enviar el correo
+                        if (client.VerificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
+                        {
+                            AddUser();
+                            ChangeToVerificationMode(false);
+                        }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Los campos estan incompletos");
-                    //mensaje de campos incompletos
+                    if (FieldValidator.IsValidUsername(UsernameTextbox.Text) && FieldValidator.IsValidPassword(PasswordBox.Password) && FieldValidator.IsValidEmail(EmailTextbox.Text))
+                    {
+                        if (client.AddVerificationCode(EmailTextbox.Text, UsernameTextbox.Text) > 0)
+                        {
+                            Message message = new Message("InfoVerificationCodeSentMessage");
+                            ChangeToVerificationMode(true);
+                        }
+                    }
                 }
+            }
+            catch (ArgumentException ex)
+            {
+                ExceptionHandler.HandleException(ex);
+            }
+            catch (FaultException<LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
             }
         }
 
@@ -151,12 +146,10 @@ namespace LabyrinthClient
                 CountryCombobox.Visibility = Visibility.Visible;
                 verificationCodeTextBox.Visibility = Visibility.Collapsed;
             }
-
         }
 
         private void AddUser()
         {
-            UserManagementService.UserManagementClient client = new UserManagementService.UserManagementClient();
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();
             string password = "";
 
@@ -165,57 +158,56 @@ namespace LabyrinthClient
             password = EncryptPassword(PasswordBox.Password);
 
             user.Country = (int)CountryCombobox.SelectedValue;
+           
             if (client.AddUser(user, password) > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Se ha completado su registro, ya puede iniciar sesion", "Registro completado");
-                client.DeleteAllVerificationCodes();
+                Message message = new Message("InfoUserRegisteredMessage");
                 verificationCodeTextBox.Clear();
                 ChangeToVerificationMode(false);
-            }
-            else
-            {
-                DialogResult dialogResult = MessageBox.Show("Ha habido un error en su registro, revise su conexion e intente mas tarde", "No se pudo completar su registro");
             }
         }
         private void ExitButtonIsPressed(Object sender, RoutedEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("¿Esta seguro de que desea salir", "Confirmacion de salida", MessageBoxButtons.YesNo);
-            if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+            Message message = new Message("InfoExitConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
+            message.ShowDialog();
+            if (message.UserDialogResult == Message.DialogResult.Confirm)
             {
                 this.Close();
             }
         }
+        
+        private void JoinAsGuestButtonIsPressed(Object sender, RoutedEventArgs e)
+        {
+            Lobby lobbyForGuest = new Lobby();
+            lobbyForGuest.IsRegistered = false;
+            lobbyForGuest.JoinAsGuest(lobbyTextBox.Text,userNameForJoinAsGuestTextBox.Text);
+            lobbyForGuest.Show();
+            this.Close();
+        }
+
 
         private void LanguageButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("ToDo", "Cambiar lenguaje");
-        }
+            var currentCulture = Thread.CurrentThread.CurrentUICulture.Name;
 
-        private void AddWatermarkToTextBox(TextBox textBox, string watermarkText)
-        {
-            textBox.Text = watermarkText;
-            textBox.Foreground = Brushes.Gray;
-
-            textBox.GotFocus += (@sender, @event) =>
+            if (currentCulture == "es-ES")
             {
-                if (textBox.Text == watermarkText)
-                {
-                    textBox.Text = "";
-                    textBox.Foreground = Brushes.Black;
-                }
-            };
+                CultureInfo ui_culture = new CultureInfo("en-US");
+                CultureInfo culture = new CultureInfo("en-US");
 
-            textBox.LostFocus += (@sender, @event) =>
+                Thread.CurrentThread.CurrentUICulture = ui_culture;
+                Thread.CurrentThread.CurrentCulture = culture;
+            }
+            else
             {
-                if (string.IsNullOrEmpty(textBox.Text))
-                {
-                    textBox.Text = watermarkText;
-                    textBox.Foreground = Brushes.Gray;
-                }
-            };
-        }
+                CultureInfo ui_culture = new CultureInfo("es-ES");
+                CultureInfo culture = new CultureInfo("es-ES");
 
-        
+                Thread.CurrentThread.CurrentUICulture = ui_culture;
+                Thread.CurrentThread.CurrentCulture = culture;
+            }
+
+        }
 
         public string EncryptPassword(string password)
         {
@@ -230,22 +222,6 @@ namespace LabyrinthClient
                 stringBuilder.AppendFormat("{0:x2}", stream[i]);
             }
             return stringBuilder.ToString();
-        }
-
-        private void ShowMessage(string errorMessageCode)
-        {
-            string message = Messages.ResourceManager.GetString(errorMessageCode);
-            MessageBox.Show(message);
-            
-        }
-
-        private void InitializeTextBoxsWatermarks()
-        {
-            AddWatermarkToTextBox(UsernameTextbox, Properties.Resources.GlobalUsernameTextBoxPlaceholder);
-            AddWatermarkToTextBox(EmailTextbox, Properties.Resources.GlobalEmailTextBoxPlaceholder);
-            AddWatermarkToTextBox(emailForLoginTextBox, Properties.Resources.GlobalEmailTextBoxPlaceholder);
-            AddWatermarkToTextBox(userNameForJoinAsGuestTextBox, Properties.Resources.GlobalUsernameTextBoxPlaceholder);
-            AddWatermarkToTextBox(lobbyTextBox, Properties.Resources.GlobalLobbyIdTextBoxPlaceholder);
         }
 
         private void ChangeToJoinAsGuestIsPressed(object sender, RoutedEventArgs e)
@@ -328,11 +304,44 @@ namespace LabyrinthClient
             }
         }
 
-        private void ShowAndHideButtonIsPressed(object sender, RoutedEventArgs e)
+        public void ReceiveProfilePicture(int userId, byte[] dataImage)
         {
+        }
+    }
 
+    public class ExceptionHandler
+    {
+        public static Message.DialogResult HandleLabyrinthException(string messageText)
+        {
+            Message message = new Message(messageText);
+            message.ShowDialog();
+            return message.UserDialogResult;
         }
 
-     
+        public static Message.DialogResult HandleException(Exception ex)
+        {
+            Message message = new Message(ex.Message);
+            message.ShowDialog();
+            return message.UserDialogResult;
+        }
     }
+
+
+    public class EmptyStringToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string text = value as string;
+            return string.IsNullOrWhiteSpace(text) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    
+
+
 }

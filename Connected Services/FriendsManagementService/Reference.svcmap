@@ -25,6 +25,7 @@
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="9b82f50c-16ae-491e-9722-5cb1e8472c8b" SourceId="1" SourceUrl="http://localhost:8084/?xsd=xsd1" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="6fe213f7-0b9c-48cf-a4b2-8162087855c0" SourceId="1" SourceUrl="http://localhost:8084/?xsd=xsd0" />
     <MetadataFile FileName="FriendsManagementServiceImplementation.wsdl" MetadataType="Wsdl" ID="23c330c5-149d-4404-805f-100b5bb9a656" SourceId="1" SourceUrl="http://localhost:8084/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="31ffe99a-47be-49f4-adbe-ca9b090b84fa" SourceId="1" SourceUrl="http://localhost:8084/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -9,14 +9,352 @@
 //------------------------------------------------------------------------------
 
 namespace LabyrinthClient.FriendsManagementService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class LabyrinthException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorCode {
+            get {
+                return this.ErrorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorCodeField, value) != true)) {
+                    this.ErrorCodeField = value;
+                    this.RaisePropertyChanged("ErrorCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferUser", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class TransferUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProfilePictureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LabyrinthClient.FriendsManagementService.TransferCountry TransferCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((this.CountryField.Equals(value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUser {
+            get {
+                return this.IdUserField;
+            }
+            set {
+                if ((this.IdUserField.Equals(value) != true)) {
+                    this.IdUserField = value;
+                    this.RaisePropertyChanged("IdUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProfilePicture {
+            get {
+                return this.ProfilePictureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfilePictureField, value) != true)) {
+                    this.ProfilePictureField = value;
+                    this.RaisePropertyChanged("ProfilePicture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public LabyrinthClient.FriendsManagementService.TransferCountry TransferCountry {
+            get {
+                return this.TransferCountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransferCountryField, value) != true)) {
+                    this.TransferCountryField = value;
+                    this.RaisePropertyChanged("TransferCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferCountry", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class TransferCountry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CountryIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CountryId {
+            get {
+                return this.CountryIdField;
+            }
+            set {
+                if ((this.CountryIdField.Equals(value) != true)) {
+                    this.CountryIdField = value;
+                    this.RaisePropertyChanged("CountryId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferFriendRequest", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class TransferFriendRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdFriendRequestField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LabyrinthClient.FriendsManagementService.TransferUser RequesterField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LabyrinthClient.FriendsManagementService.FriendRequestStatus StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdFriendRequest {
+            get {
+                return this.IdFriendRequestField;
+            }
+            set {
+                if ((this.IdFriendRequestField.Equals(value) != true)) {
+                    this.IdFriendRequestField = value;
+                    this.RaisePropertyChanged("IdFriendRequest");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public LabyrinthClient.FriendsManagementService.TransferUser Requester {
+            get {
+                return this.RequesterField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RequesterField, value) != true)) {
+                    this.RequesterField = value;
+                    this.RaisePropertyChanged("Requester");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public LabyrinthClient.FriendsManagementService.FriendRequestStatus Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((this.StatusField.Equals(value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FriendRequestStatus", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    public enum FriendRequestStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pending = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Accepted = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Rejected = 2,
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FriendsManagementService.IFriendsManagementService")]
     public interface IFriendsManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManagementService/SendFriendRequest", ReplyAction="http://tempuri.org/IFriendsManagementService/SendFriendRequestResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.FriendsManagementService.LabyrinthException), Action="http://tempuri.org/IFriendsManagementService/SendFriendRequestLabyrinthExceptionF" +
+            "ault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         int SendFriendRequest(int userId, int friendId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManagementService/GetMyFriendsList", ReplyAction="http://tempuri.org/IFriendsManagementService/GetMyFriendsListResponse")]
+        LabyrinthClient.FriendsManagementService.TransferUser[] GetMyFriendsList(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManagementService/GetFriendRequestsList", ReplyAction="http://tempuri.org/IFriendsManagementService/GetFriendRequestsListResponse")]
+        LabyrinthClient.FriendsManagementService.TransferFriendRequest[] GetFriendRequestsList(int idUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManagementService/IsFriend", ReplyAction="http://tempuri.org/IFriendsManagementService/IsFriendResponse")]
+        bool IsFriend(int userId, int friendId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFriendsManagementService/AttendFriendRequest", ReplyAction="http://tempuri.org/IFriendsManagementService/AttendFriendRequestResponse")]
+        int AttendFriendRequest(int friendRequestId, LabyrinthClient.FriendsManagementService.FriendRequestStatus status);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -48,6 +386,22 @@ namespace LabyrinthClient.FriendsManagementService {
         
         public int SendFriendRequest(int userId, int friendId) {
             return base.Channel.SendFriendRequest(userId, friendId);
+        }
+        
+        public LabyrinthClient.FriendsManagementService.TransferUser[] GetMyFriendsList(int idUser) {
+            return base.Channel.GetMyFriendsList(idUser);
+        }
+        
+        public LabyrinthClient.FriendsManagementService.TransferFriendRequest[] GetFriendRequestsList(int idUser) {
+            return base.Channel.GetFriendRequestsList(idUser);
+        }
+        
+        public bool IsFriend(int userId, int friendId) {
+            return base.Channel.IsFriend(userId, friendId);
+        }
+        
+        public int AttendFriendRequest(int friendRequestId, LabyrinthClient.FriendsManagementService.FriendRequestStatus status) {
+            return base.Channel.AttendFriendRequest(friendRequestId, status);
         }
     }
 }

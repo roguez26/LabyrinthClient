@@ -5,13 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabyrinthClient"
         mc:Ignorable="d"
-        Title="CustomMessageBox" Height="200" Width="400"
-        WindowStyle="ToolWindow">
-    <StackPanel>
-        <TextBlock x:Name="MessageTextBlock" Text="Custom Message" Margin="10" TextAlignment="Left" Height="51" Width="354"/>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10" Width="286">
-            <Button Content="Aceptar" Click="OnAcceptButtonClick" Margin="5"/>
-            <Button Content="Rechazar" Click="OnRejectButtonClick" Margin="5"/>
-        </StackPanel>
-    </StackPanel>
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen"
+        xmlns:p="clr-namespace:LabyrinthClient.Properties"
+        Closing="MessageWindowIsClosed"
+        Title="" Height="182" Width="485">
+    <Grid Margin="0,0,0,2">
+        <TextBlock x:Name="MessageTextBlock" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" 
+                   Margin="0,18,0,0" 
+                   FontSize="12" 
+                   Width="425" 
+                   TextWrapping="Wrap"/>
+        <Button x:Name="confirmButton" 
+                Content="{x:Static p:Resources.AcceptButton}" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Bottom" 
+                Width="75" 
+                Height="30" 
+                Margin="291,0,0,10"
+                Click="ConfirmButtonIsPressed"/>
+        <Button x:Name="dismissButton" 
+                Content="{x:Static p:Resources.CancelButton}" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Width="75" 
+                Height="30" 
+                Margin="0,0,19,10"
+                Click="DismissButtonIsPressed"/>
+    </Grid>
 </Window>

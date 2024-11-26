@@ -32,6 +32,7 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8084/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8084/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
       <xsd:import schemaLocation="http://localhost:8084/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
@@ -41,10 +42,54 @@
   <wsdl:message name="IFriendsManagementService_SendFriendRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:SendFriendRequestResponse" />
   </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_SendFriendRequest_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q1:LabyrinthException" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_GetMyFriendsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyFriendsList" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_GetMyFriendsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMyFriendsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_GetFriendRequestsList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendRequestsList" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_GetFriendRequestsList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendRequestsListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_IsFriend_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFriend" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_IsFriend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFriendResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_AttendFriendRequest_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttendFriendRequest" />
+  </wsdl:message>
+  <wsdl:message name="IFriendsManagementService_AttendFriendRequest_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttendFriendRequestResponse" />
+  </wsdl:message>
   <wsdl:portType name="IFriendsManagementService">
     <wsdl:operation name="SendFriendRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManagementService/SendFriendRequest" message="tns:IFriendsManagementService_SendFriendRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManagementService/SendFriendRequestResponse" message="tns:IFriendsManagementService_SendFriendRequest_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFriendsManagementService/SendFriendRequestLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:IFriendsManagementService_SendFriendRequest_LabyrinthExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMyFriendsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManagementService/GetMyFriendsList" message="tns:IFriendsManagementService_GetMyFriendsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManagementService/GetMyFriendsListResponse" message="tns:IFriendsManagementService_GetMyFriendsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendRequestsList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManagementService/GetFriendRequestsList" message="tns:IFriendsManagementService_GetFriendRequestsList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManagementService/GetFriendRequestsListResponse" message="tns:IFriendsManagementService_GetFriendRequestsList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFriend">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManagementService/IsFriend" message="tns:IFriendsManagementService_IsFriend_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManagementService/IsFriendResponse" message="tns:IFriendsManagementService_IsFriend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttendFriendRequest">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFriendsManagementService/AttendFriendRequest" message="tns:IFriendsManagementService_AttendFriendRequest_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFriendsManagementService/AttendFriendRequestResponse" message="tns:IFriendsManagementService_AttendFriendRequest_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IFriendsManagementService" type="tns:IFriendsManagementService">
@@ -52,6 +97,45 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="SendFriendRequest">
       <soap12:operation soapAction="http://tempuri.org/IFriendsManagementService/SendFriendRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMyFriendsList">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManagementService/GetMyFriendsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendRequestsList">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManagementService/GetFriendRequestsList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFriend">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManagementService/IsFriend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttendFriendRequest">
+      <soap12:operation soapAction="http://tempuri.org/IFriendsManagementService/AttendFriendRequest" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -12,7 +12,7 @@
         Width="1277"
         WindowState="Maximized"
         WindowStyle="SingleBorderWindow" 
-        Background="#1c1b3b">
+        >
 
     <Window.Resources>
         <ResourceDictionary>
@@ -20,11 +20,12 @@
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        
     </Window.Resources>
 
 
 
-    <Grid Opacity="0.9">
+    <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="400*"/>
             <ColumnDefinition Width="529*"/>
@@ -32,7 +33,7 @@
         </Grid.ColumnDefinitions>
         <Grid.Background>
             <ImageBrush 
-                ImageSource="/GraphicItems/LoginCover.jpg" Opacity="0.09"/>
+                ImageSource="/GraphicItems/LoginCover.png"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition 
@@ -44,24 +45,26 @@
             <RowDefinition Height="29*"/>
         </Grid.RowDefinitions>
         <Border 
-            Margin="300,0,0,32" 
+            Margin="300,0,0,58" 
 HorizontalAlignment="Left"
-Background="#252b5d" 
-CornerRadius="15" 
-            Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" Width="60"  Height="147" Grid.RowSpan="2">
-            <Border.Effect>
-                <DropShadowEffect/>
-            </Border.Effect>
-            <Canvas>
+CornerRadius="8" 
+            Grid.Column="2" Grid.Row="3" VerticalAlignment="Bottom" Width="59"  Height="121" Grid.RowSpan="2"
+            >
+            <Border.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Border.Background>
+
+            <Canvas >
+
 
                 <Button 
                     Content="" 
                     HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Width="40" 
-                    Height="40" 
+                    VerticalAlignment="Center" 
+                    Width="30" 
+                    Height="30" 
                     Click="ExitButtonIsPressed" 
-                    Style="{StaticResource CustomIconButtonStyle}" Canvas.Left="10" Canvas.Top="92">
+                    Style="{StaticResource CustomIconButtonStyle}" Canvas.Left="18" Canvas.Top="74">
 
                     <Button.Effect>
                         <DropShadowEffect/>
@@ -76,11 +79,11 @@ CornerRadius="15"
                     Content="" 
                     HorizontalAlignment="Left" 
                     VerticalAlignment="Top" 
-                    Width="44" 
-                    Height="44"
+                    Width="30" 
+                    Height="30"
                     Foreground="White" 
                     Click="LanguageButtonIsPressed"
-                    Style="{StaticResource CustomIconButtonStyle}" Canvas.Left="8" Canvas.Top="10">
+                    Style="{StaticResource CustomIconButtonStyle}" Canvas.Left="16" Canvas.Top="21">
                     <Button.Effect>
                         <DropShadowEffect/>
                     </Button.Effect>
@@ -96,59 +99,56 @@ CornerRadius="15"
             VerticalAlignment="Top" 
             Width="401" 
             Source="/GraphicItems/TitleStyle.png" 
-            OpacityMask="Black" 
             Grid.Column="1" 
             Height="125" 
             Grid.Row="2" 
-            Margin="0,10,0,0">
+            Margin="0,10,0,0" Stretch="Fill" RenderTransformOrigin="0.5,0.5">
             <Image.Effect>
                 <DropShadowEffect/>
             </Image.Effect>
         </Image>
         <Border 
             Margin="0,10,0,22" 
-            HorizontalAlignment="Center"
-            Background="#252b5d" 
-            CornerRadius="15" 
+            HorizontalAlignment="Center" 
+            CornerRadius="8" 
             Grid.Column="1" 
             Grid.Row="3" 
-            Width="377">
-            <Border.Effect>
-                <DropShadowEffect/>
-            </Border.Effect>
-            <Canvas>
+            Width="377" 
+            >
+            <Border.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Border.Background>
+
+            <Canvas >
                 <Grid 
                     HorizontalAlignment="Center" 
                     Height="26" 
-                    Canvas.Left="27" 
                     Canvas.Top="10" 
-                    VerticalAlignment="Top" 
-                    Width="330">
+                    VerticalAlignment="Center" 
+                    Width="377">
                     <Button 
                         x:Name="changeToLoginButton"
                         FontWeight="Bold"
                         Content="{x:Static p:Resources.GlobalLogin}" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Center" 
-                        Width="110"
                         Height="30"
                         Click="ChangeToLoginIsPressed"
-                        Style="{StaticResource CustomMainWindowOption}" />
+                        Style="{StaticResource CustomMainWindowOption}" 
+                        />
                     <Button 
                         x:Name="changeToSignupButton"
                         Content="{x:Static p:Resources.GlobalSignup}" 
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center" 
-                        Width="110"
                         Height="30"
                         Click="ChangeToSignupIsPressed"
-                        Style="{StaticResource CustomMainWindowOption}"/>
+                        Style="{StaticResource CustomMainWindowOption}" Cursor=""/>
                     <Button 
                         x:Name="changeToJoinAsGuest"
                         Content="{x:Static p:Resources.JoinAsGuestTabItem}" 
-                        HorizontalAlignment="Left" 
+                        HorizontalAlignment="Right" 
                         VerticalAlignment="Center" 
-                        Width="110" 
                         Height="30"
                         Margin="220,0,0,0"
                         Click="ChangeToJoinAsGuestIsPressed"
@@ -156,16 +156,17 @@ CornerRadius="15"
 
                 </Grid>
 
-                <TextBox 
-                    x:Name="emailForLoginTextBox"
-                    Width="258" Height="25"
-                    VerticalAlignment="Top"
-                    TextWrapping="Wrap" 
-                    Style="{StaticResource CustomTextBoxStyle}" 
-                    HorizontalAlignment="Left" 
-                    Canvas.Left="64" 
-                    Canvas.Top="78" 
-                    Visibility="Visible"/>
+                <TextBox x:Name="emailForLoginTextBox"
+                     Width="258"
+                     Height="25"
+                     VerticalAlignment="Top"
+                     TextWrapping="Wrap"
+                     HorizontalAlignment="Left"
+                     Canvas.Left="64"
+                     Canvas.Top="78"
+                     Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
+                     Tag="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" />
+
 
                 <PasswordBox 
                     x:Name="passwordForLoginTextBox"
@@ -257,11 +258,6 @@ CornerRadius="15"
                     Style="{StaticResource CustomTextBoxStyle}"/>
 
 
-
-
-
-
-
                 <TextBox 
                     x:Name="lobbyTextBox"
                     Width="258" Height="25"
@@ -294,7 +290,8 @@ CornerRadius="15"
                     HorizontalAlignment="Left"
                     Canvas.Left="64" 
                     Canvas.Top="278"
-                    Visibility="Collapsed"/>
+                    Visibility="Collapsed"
+                    Click="JoinAsGuestButtonIsPressed"/>
             </Canvas>
 
         </Border>

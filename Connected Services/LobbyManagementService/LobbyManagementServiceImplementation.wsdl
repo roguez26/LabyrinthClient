@@ -32,8 +32,8 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
+      <xsd:import schemaLocation="http://localhost:8083/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ILobbyManagementService_CreateLobby_InputMessage">
@@ -42,11 +42,14 @@
   <wsdl:message name="ILobbyManagementService_CreateLobby_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateLobbyResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_CreateLobby_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q1:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="ILobbyManagementService_JoinToGame_InputMessage">
     <wsdl:part name="parameters" element="tns:JoinToGame" />
   </wsdl:message>
-  <wsdl:message name="ILobbyManagementService_JoinToGame_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinToGameResponse" />
+  <wsdl:message name="ILobbyManagementService_RemoveUserFromLobby_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveUserFromLobby" />
   </wsdl:message>
   <wsdl:message name="ILobbyManagementService_NotifyUserHasJoined_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyUserHasJoined" />
@@ -54,18 +57,51 @@
   <wsdl:message name="ILobbyManagementService_NotifyUserHasJoined_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:NotifyUserHasJoinedResponse" />
   </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_NotifyUserHasLeft_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyUserHasLeft" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_NotifyUserHasLeft_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:NotifyUserHasLeftResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_GestMembersList_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GestMembersList" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_GestMembersList_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:GestMembersListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_KickOutPlayer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:KickOutPlayer" />
+  </wsdl:message>
+  <wsdl:message name="ILobbyManagementService_KickOutPlayer_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:KickOutPlayerResponse" />
+  </wsdl:message>
   <wsdl:portType name="ILobbyManagementService">
     <wsdl:operation name="CreateLobby">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/CreateLobby" message="tns:ILobbyManagementService_CreateLobby_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/CreateLobbyResponse" message="tns:ILobbyManagementService_CreateLobby_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ILobbyManagementService/CreateLobbyLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:ILobbyManagementService_CreateLobby_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="JoinToGame">
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/JoinToGame" message="tns:ILobbyManagementService_JoinToGame_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/JoinToGameResponse" message="tns:ILobbyManagementService_JoinToGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromLobby">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/RemoveUserFromLobby" message="tns:ILobbyManagementService_RemoveUserFromLobby_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="NotifyUserHasJoined">
       <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoined" message="tns:ILobbyManagementService_NotifyUserHasJoined_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoinedResponse" message="tns:ILobbyManagementService_NotifyUserHasJoined_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyUserHasLeft">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasLeft" message="tns:ILobbyManagementService_NotifyUserHasLeft_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasLeftResponse" message="tns:ILobbyManagementService_NotifyUserHasLeft_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GestMembersList">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/GestMembersList" message="tns:ILobbyManagementService_GestMembersList_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/GestMembersListResponse" message="tns:ILobbyManagementService_GestMembersList_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="KickOutPlayer">
+      <wsdl:output wsaw:Action="http://tempuri.org/ILobbyManagementService/KickOutPlayer" message="tns:ILobbyManagementService_KickOutPlayer_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/ILobbyManagementService/KickOutPlayerResponse" message="tns:ILobbyManagementService_KickOutPlayer_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ILobbyManagementService" type="tns:ILobbyManagementService">
@@ -79,9 +115,24 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="JoinToGame">
       <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/JoinToGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUserFromLobby">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/RemoveUserFromLobby" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyUserHasJoined">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoined" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -89,8 +140,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="NotifyUserHasJoined">
-      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoined" style="document" />
+    <wsdl:operation name="NotifyUserHasLeft">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/NotifyUserHasLeft" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GestMembersList">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/GestMembersList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="KickOutPlayer">
+      <soap12:operation soapAction="http://tempuri.org/ILobbyManagementService/KickOutPlayer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

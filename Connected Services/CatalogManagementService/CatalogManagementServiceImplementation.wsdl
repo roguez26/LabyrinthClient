@@ -32,15 +32,36 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ICatalogManagement_AddCountry_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCountry" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogManagement_AddCountry_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogManagement_AddCountry_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q1:LabyrinthException" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogManagement_DeleteAllCountries_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllCountries" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogManagement_DeleteAllCountries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAllCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogManagement_DeleteAllCountries_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q2:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="ICatalogManagement_GetAllCountries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCountries" />
   </wsdl:message>
   <wsdl:message name="ICatalogManagement_GetAllCountries_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICatalogManagement_GetAllCountries_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q3:LabyrinthException" />
   </wsdl:message>
   <wsdl:message name="ICatalogManagement_GetCountryById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCountryById" />
@@ -48,29 +69,72 @@
   <wsdl:message name="ICatalogManagement_GetCountryById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCountryByIdResponse" />
   </wsdl:message>
+  <wsdl:message name="ICatalogManagement_GetCountryById_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q4:LabyrinthException" />
+  </wsdl:message>
   <wsdl:message name="ICatalogManagement_GetStatsByUserId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStatsByUserId" />
   </wsdl:message>
   <wsdl:message name="ICatalogManagement_GetStatsByUserId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStatsByUserIdResponse" />
   </wsdl:message>
+  <wsdl:message name="ICatalogManagement_GetStatsByUserId_LabyrinthExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/LabyrinthCommon" name="detail" element="q5:LabyrinthException" />
+  </wsdl:message>
   <wsdl:portType name="ICatalogManagement">
+    <wsdl:operation name="AddCountry">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/AddCountry" message="tns:ICatalogManagement_AddCountry_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/AddCountryResponse" message="tns:ICatalogManagement_AddCountry_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICatalogManagement/AddCountryLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:ICatalogManagement_AddCountry_LabyrinthExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCountries">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/DeleteAllCountries" message="tns:ICatalogManagement_DeleteAllCountries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/DeleteAllCountriesResponse" message="tns:ICatalogManagement_DeleteAllCountries_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICatalogManagement/DeleteAllCountriesLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:ICatalogManagement_DeleteAllCountries_LabyrinthExceptionFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetAllCountries">
       <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/GetAllCountries" message="tns:ICatalogManagement_GetAllCountries_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/GetAllCountriesResponse" message="tns:ICatalogManagement_GetAllCountries_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICatalogManagement/GetAllCountriesLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:ICatalogManagement_GetAllCountries_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCountryById">
       <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/GetCountryById" message="tns:ICatalogManagement_GetCountryById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/GetCountryByIdResponse" message="tns:ICatalogManagement_GetCountryById_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICatalogManagement/GetCountryByIdLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:ICatalogManagement_GetCountryById_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetStatsByUserId">
       <wsdl:input wsaw:Action="http://tempuri.org/ICatalogManagement/GetStatsByUserId" message="tns:ICatalogManagement_GetStatsByUserId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICatalogManagement/GetStatsByUserIdResponse" message="tns:ICatalogManagement_GetStatsByUserId_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/ICatalogManagement/GetStatsByUserIdLabyrinthExceptionFault" name="LabyrinthExceptionFault" message="tns:ICatalogManagement_GetStatsByUserId_LabyrinthExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_ICatalogManagement" type="tns:ICatalogManagement">
     <wsp:PolicyReference URI="#NetTcpBinding_ICatalogManagement_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="AddCountry">
+      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/AddCountry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAllCountries">
+      <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/DeleteAllCountries" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="GetAllCountries">
       <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/GetAllCountries" style="document" />
       <wsdl:input>
@@ -79,6 +143,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetCountryById">
       <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/GetCountryById" style="document" />
@@ -88,6 +155,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
     <wsdl:operation name="GetStatsByUserId">
       <soap12:operation soapAction="http://tempuri.org/ICatalogManagement/GetStatsByUserId" style="document" />
@@ -97,6 +167,9 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+      <wsdl:fault name="LabyrinthExceptionFault">
+        <soap12:fault use="literal" name="LabyrinthExceptionFault" namespace="" />
+      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CatalogManagementServiceImplementation">

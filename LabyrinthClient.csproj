@@ -73,8 +73,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AdminLobby.xaml.cs">
-      <DependentUpon>AdminLobby.xaml</DependentUpon>
+    <Compile Include="Connected Services\MenuManagementService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Lobby.xaml.cs">
+      <DependentUpon>Lobby.xaml</DependentUpon>
     </Compile>
     <Compile Include="CharacterSelection.xaml.cs">
       <DependentUpon>CharacterSelection.xaml</DependentUpon>
@@ -132,7 +137,7 @@
     <Compile Include="MyUser.xaml.cs">
       <DependentUpon>MyUser.xaml</DependentUpon>
     </Compile>
-    <Page Include="AdminLobby.xaml">
+    <Page Include="Lobby.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -164,10 +169,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PlayerLobby.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MyUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,9 +179,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayerLobby.xaml.cs">
-      <DependentUpon>PlayerLobby.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -198,6 +196,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Characters.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Messages.es.resx" />
     <EmbeddedResource Include="Properties\Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
@@ -236,6 +235,15 @@
     <None Include="Connected Services\FriendsManagementService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\FriendsManagementService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FriendsManagementService\LabyrinthClient.FriendsManagementService.TransferFriendRequest.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\FriendsManagementService\LabyrinthClient.FriendsManagementService.TransferUser.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\LobbyManagementService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -245,10 +253,17 @@
     <None Include="Connected Services\LobbyManagementService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\LobbyManagementService\LabyrinthClient.LobbyManagementService.TransferUser.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\LobbyManagementService\LobbyManagementServiceImplementation.wsdl" />
+    <None Include="Connected Services\MenuManagementService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MenuManagementService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MenuManagementService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MenuManagementService\MenuManagementServiceImplementation.wsdl" />
     <None Include="Connected Services\UserManagementService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -262,6 +277,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\UserManagementService\UserManagementServiceImplementation.wsdl" />
+    <Resource Include="GraphicItems\Fonts\PressStart2P-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -387,6 +403,7 @@
     <WCFMetadataStorage Include="Connected Services\ChatService\" />
     <WCFMetadataStorage Include="Connected Services\FriendsManagementService\" />
     <WCFMetadataStorage Include="Connected Services\LobbyManagementService\" />
+    <WCFMetadataStorage Include="Connected Services\MenuManagementService\" />
     <WCFMetadataStorage Include="Connected Services\UserManagementService\" />
   </ItemGroup>
   <ItemGroup>
@@ -487,6 +504,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\FriendsManagementService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\LoginCover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\MyUserCover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\MainMenuCover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GraphicItems\LobbyCover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MenuManagementService\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MenuManagementService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MenuManagementService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\MenuManagementService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

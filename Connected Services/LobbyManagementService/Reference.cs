@@ -29,19 +29,16 @@ namespace LabyrinthClient.LobbyManagementService {
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ErrorCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdUserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProfilePictureField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private LabyrinthClient.LobbyManagementService.TransferCountry TransferCountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LabyrinthClient.LobbyManagementService.TransferStats TransferStatsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UsernameField;
@@ -83,19 +80,6 @@ namespace LabyrinthClient.LobbyManagementService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ErrorCode {
-            get {
-                return this.ErrorCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ErrorCodeField, value) != true)) {
-                    this.ErrorCodeField = value;
-                    this.RaisePropertyChanged("ErrorCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int IdUser {
             get {
                 return this.IdUserField;
@@ -104,19 +88,6 @@ namespace LabyrinthClient.LobbyManagementService {
                 if ((this.IdUserField.Equals(value) != true)) {
                     this.IdUserField = value;
                     this.RaisePropertyChanged("IdUser");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
                 }
             }
         }
@@ -143,6 +114,19 @@ namespace LabyrinthClient.LobbyManagementService {
                 if ((object.ReferenceEquals(this.TransferCountryField, value) != true)) {
                     this.TransferCountryField = value;
                     this.RaisePropertyChanged("TransferCountry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public LabyrinthClient.LobbyManagementService.TransferStats TransferStats {
+            get {
+                return this.TransferStatsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransferStatsField, value) != true)) {
+                    this.TransferStatsField = value;
+                    this.RaisePropertyChanged("TransferStats");
                 }
             }
         }
@@ -231,21 +215,166 @@ namespace LabyrinthClient.LobbyManagementService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferStats", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class TransferStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GamesPlayedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GamesWonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GamesPlayed {
+            get {
+                return this.GamesPlayedField;
+            }
+            set {
+                if ((this.GamesPlayedField.Equals(value) != true)) {
+                    this.GamesPlayedField = value;
+                    this.RaisePropertyChanged("GamesPlayed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GamesWon {
+            get {
+                return this.GamesWonField;
+            }
+            set {
+                if ((this.GamesWonField.Equals(value) != true)) {
+                    this.GamesWonField = value;
+                    this.RaisePropertyChanged("GamesWon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StatId {
+            get {
+                return this.StatIdField;
+            }
+            set {
+                if ((this.StatIdField.Equals(value) != true)) {
+                    this.StatIdField = value;
+                    this.RaisePropertyChanged("StatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class LabyrinthException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorCode {
+            get {
+                return this.ErrorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorCodeField, value) != true)) {
+                    this.ErrorCodeField = value;
+                    this.RaisePropertyChanged("ErrorCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="LobbyManagementService.ILobbyManagementService", CallbackContract=typeof(LabyrinthClient.LobbyManagementService.ILobbyManagementServiceCallback))]
     public interface ILobbyManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/CreateLobby", ReplyAction="http://tempuri.org/ILobbyManagementService/CreateLobbyResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.LobbyManagementService.LabyrinthException), Action="http://tempuri.org/ILobbyManagementService/CreateLobbyLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         string CreateLobby(LabyrinthClient.LobbyManagementService.TransferUser lobbyCreator);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/CreateLobby", ReplyAction="http://tempuri.org/ILobbyManagementService/CreateLobbyResponse")]
         System.Threading.Tasks.Task<string> CreateLobbyAsync(LabyrinthClient.LobbyManagementService.TransferUser lobbyCreator);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/JoinToGame", ReplyAction="http://tempuri.org/ILobbyManagementService/JoinToGameResponse")]
-        LabyrinthClient.LobbyManagementService.TransferUser[] JoinToGame(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/JoinToGame")]
+        void JoinToGame(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/JoinToGame", ReplyAction="http://tempuri.org/ILobbyManagementService/JoinToGameResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.LobbyManagementService.TransferUser[]> JoinToGameAsync(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/JoinToGame")]
+        System.Threading.Tasks.Task JoinToGameAsync(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/RemoveUserFromLobby")]
+        void RemoveUserFromLobby(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ILobbyManagementService/RemoveUserFromLobby")]
+        System.Threading.Tasks.Task RemoveUserFromLobbyAsync(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -253,6 +382,15 @@ namespace LabyrinthClient.LobbyManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoined", ReplyAction="http://tempuri.org/ILobbyManagementService/NotifyUserHasJoinedResponse")]
         void NotifyUserHasJoined(LabyrinthClient.LobbyManagementService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/NotifyUserHasLeft", ReplyAction="http://tempuri.org/ILobbyManagementService/NotifyUserHasLeftResponse")]
+        void NotifyUserHasLeft(LabyrinthClient.LobbyManagementService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/GestMembersList", ReplyAction="http://tempuri.org/ILobbyManagementService/GestMembersListResponse")]
+        void GestMembersList(LabyrinthClient.LobbyManagementService.TransferUser[] members);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILobbyManagementService/KickOutPlayer", ReplyAction="http://tempuri.org/ILobbyManagementService/KickOutPlayerResponse")]
+        void KickOutPlayer(LabyrinthClient.LobbyManagementService.TransferUser user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -291,12 +429,20 @@ namespace LabyrinthClient.LobbyManagementService {
             return base.Channel.CreateLobbyAsync(lobbyCreator);
         }
         
-        public LabyrinthClient.LobbyManagementService.TransferUser[] JoinToGame(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user) {
-            return base.Channel.JoinToGame(lobbyCode, user);
+        public void JoinToGame(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user) {
+            base.Channel.JoinToGame(lobbyCode, user);
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.LobbyManagementService.TransferUser[]> JoinToGameAsync(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user) {
+        public System.Threading.Tasks.Task JoinToGameAsync(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user) {
             return base.Channel.JoinToGameAsync(lobbyCode, user);
+        }
+        
+        public void RemoveUserFromLobby(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user) {
+            base.Channel.RemoveUserFromLobby(lobbyCode, user);
+        }
+        
+        public System.Threading.Tasks.Task RemoveUserFromLobbyAsync(string lobbyCode, LabyrinthClient.LobbyManagementService.TransferUser user) {
+            return base.Channel.RemoveUserFromLobbyAsync(lobbyCode, user);
         }
     }
 }

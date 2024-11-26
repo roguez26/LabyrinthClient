@@ -25,22 +25,15 @@ namespace LabyrinthClient
         public LobbySelection()
         {
             InitializeComponent();
-            InstanceContext context = new InstanceContext(this);
         }
 
         private void JoinButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            
-            PlayerLobby playerLobby = new PlayerLobby();
+            Lobby playerLobby = new Lobby();
+            playerLobby.JoinToLobby(lobbyCodeTextBox.Text);
             playerLobby.Show();
-            if (playerLobby.JoinToLobby(lobbyCodeTextBox.Text))
-            {
-                this.Close();
-                MainMenu.GetInstance().Close();
-            }
-            
-           
-            
+            this.Close();
+            MainMenu.GetInstance().Close();
         }
 
         private void CancelButtonIsPressed(object sender, RoutedEventArgs e)

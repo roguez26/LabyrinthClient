@@ -61,6 +61,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Accept.
+        /// </summary>
+        public static string AcceptButton {
+            get {
+                return ResourceManager.GetString("AcceptButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Add friend.
         /// </summary>
         public static string AddFriendButton {
@@ -111,6 +120,15 @@ namespace LabyrinthClient.Properties {
         public static string AlienNameLabel {
             get {
                 return ResourceManager.GetString("AlienNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cancel.
+        /// </summary>
+        public static string CancelButton {
+            get {
+                return ResourceManager.GetString("CancelButton", resourceCulture);
             }
         }
         
@@ -502,6 +520,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a No.
+        /// </summary>
+        public static string NoButton {
+            get {
+                return ResourceManager.GetString("NoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Old password.
         /// </summary>
         public static string OldPasswordLabel {
@@ -565,6 +592,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Reject.
+        /// </summary>
+        public static string RejectButton {
+            get {
+                return ResourceManager.GetString("RejectButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ToDo.
         /// </summary>
         public static string RobotDescriptionTextBlock {
@@ -615,6 +651,24 @@ namespace LabyrinthClient.Properties {
         public static string SelectLanguageLabel {
             get {
                 return ResourceManager.GetString("SelectLanguageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Show friends requests.
+        /// </summary>
+        public static string ShowFriendRequestsButton {
+            get {
+                return ResourceManager.GetString("ShowFriendRequestsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Show friends.
+        /// </summary>
+        public static string ShowFriendsButton {
+            get {
+                return ResourceManager.GetString("ShowFriendsButton", resourceCulture);
             }
         }
         
@@ -678,6 +732,15 @@ namespace LabyrinthClient.Properties {
         public static string WizardNameLabel {
             get {
                 return ResourceManager.GetString("WizardNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Yes.
+        /// </summary>
+        public static string YesButton {
+            get {
+                return ResourceManager.GetString("YesButton", resourceCulture);
             }
         }
     }

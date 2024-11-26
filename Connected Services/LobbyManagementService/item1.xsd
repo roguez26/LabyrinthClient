@@ -23,10 +23,11 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="JoinToGameResponse">
+  <xs:element name="RemoveUserFromLobby">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="JoinToGameResult" nillable="true" type="q3:ArrayOfTransferUser" />
+        <xs:element minOccurs="0" name="lobbyCode" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="user" nillable="true" type="q3:TransferUser" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -38,6 +39,42 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="NotifyUserHasJoinedResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyUserHasLeft">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="user" nillable="true" type="q5:TransferUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NotifyUserHasLeftResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GestMembersList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="members" nillable="true" type="q6:ArrayOfTransferUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GestMembersListResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KickOutPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/LabyrinthCommon" minOccurs="0" name="user" nillable="true" type="q7:TransferUser" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KickOutPlayerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

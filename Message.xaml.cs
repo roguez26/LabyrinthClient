@@ -1,5 +1,7 @@
-﻿using System;
+﻿using LabyrinthClient.Properties;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,24 +16,57 @@ using System.Windows.Shapes;
 
 namespace LabyrinthClient
 {
-    /// <summary>
-    /// Lógica de interacción para Message.xaml
-    /// </summary>
     public partial class Message : Window
     {
-        public Message()
+        public enum DialogResult
+        {
+            Neutral,
+            Confirm,
+            Dismiss
+        }
+
+        public DialogResult UserDialogResult { get; private set; }
+
+        public Message(string messageCode)
         {
             InitializeComponent();
+            MessageTextBlock.Text = Messages.ResourceManager.GetString(messageCode);
+
+            confirmButton.Visibility = Visibility.Collapsed;
+            dismissButton.Content = Properties.Resources.AcceptButton;
         }
 
-        private void OnAcceptButtonClick(object sender, RoutedEventArgs e)
+        public Message(string messageCode, string confirmButtonText, string dismissButtonText)
         {
+            InitializeComponent();
 
+            MessageTextBlock.Text = Messages.ResourceManager.GetString(messageCode);
+
+            confirmButton.Content = confirmButtonText;
+
+            dismissButton.Content = dismissButtonText;
         }
 
-        private void OnRejectButtonClick(object sender, RoutedEventArgs e)
+        private void ConfirmButtonIsPressed(object sender, RoutedEventArgs e)
         {
-
+            UserDialogResult = DialogResult.Confirm;
+            Close();
         }
+
+        private void DismissButtonIsPressed(object sender, RoutedEventArgs e)
+        {
+            UserDialogResult = DialogResult.Dismiss;
+            Close();
+        }
+
+        private void MessageWindowIsClosed(object sender, CancelEventArgs e)
+        {
+            if (UserDialogResult != DialogResult.Confirm && UserDialogResult != DialogResult.Dismiss)
+            {
+                UserDialogResult = DialogResult.Neutral;
+            }
+        }
+
     }
 }
+

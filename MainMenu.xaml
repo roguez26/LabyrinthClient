@@ -7,20 +7,27 @@
         xmlns:p="clr-namespace:LabyrinthClient.Properties"
         mc:Ignorable="d"
         Icon="/GraphicItems/logo.png"
-        Title="Menu" Height="720" Width="1280"
+        Title="Menu" Height="814" Width="1479"
         WindowStartupLocation="CenterScreen"
-        Background="#1c1b3b"
         WindowState="Maximized">
 
     <Window.Resources>
+
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+
+
     </Window.Resources>
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush 
+        ImageSource="/GraphicItems/MainMenuCover.png"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="99*" />
             <RowDefinition Height="221*"/>
@@ -41,7 +48,6 @@
             VerticalAlignment="Top" 
             Width="400" 
             Source="/GraphicItems/TitleStyle.png" 
-            OpacityMask="Black" 
             Grid.Column="1" 
             Height="125" 
             Margin="0,25,0,0" Grid.ColumnSpan="2" Grid.Row="1">
@@ -68,10 +74,13 @@
                 Style="{StaticResource CustomButtonStyle}"/>
         <Border 
                 HorizontalAlignment="Center"
-                Background="#242b5f" 
+      
                 CornerRadius="15" 
                 Width="378" Height="61"
                 VerticalAlignment="Top" Margin="0,74,0,0" Grid.Column="3" Grid.RowSpan="2" >
+            <Border.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Border.Background>
             <Button x:Name="userButton"
                     Background="Transparent" 
                     Content="username"
@@ -90,28 +99,163 @@
        VerticalAlignment="Top" 
        Grid.Column="3" 
        Margin="330,88,0,0" Grid.RowSpan="2">
-            <!-- Agregamos un Clip para hacer la imagen circular -->
             <Image.Clip>
                 <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
             </Image.Clip>
         </Image>
 
-        <!-- Botón de Usuario -->
+        <StackPanel Margin="68,38,68,0" Orientation="Vertical" Grid.Row="2" VerticalAlignment="Top" Height="364" Cursor="" Grid.RowSpan="2" >
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.494"/>
+            </StackPanel.Background>
+            <Label 
+                FontWeight="Bold"
+                Height="36"
+                Width="298"
+                Margin="10, 10, 10, 10">
+                <TextBlock 
+                    Text="{x:Static p:Resources.FriendsListLabel}"
+                    FontSize="24"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top" Height="30" Width="144"
+                    Foreground="White"/>
+            </Label>
+            <DockPanel Height="34" LastChildFill="False" Width="323">
+                <Button x:Name="seeFriendsButton" Content="{x:Static p:Resources.ShowFriendsButton}" 
+                     Width="111"
+                     Click="ShowFriendsButtonIsPressed"
+                     Style="{StaticResource CustomButtonStyle}" 
+                     Height="30" Margin="10, 0, 0, 5" />
+                <Button Content="{x:Static p:Resources.ShowFriendRequestsButton}" 
+                     Width="140"
+                     Click="ShowFriendRequestButtonIsPressed"
+                     Style="{StaticResource CustomButtonStyle}" 
+                     Height="30" Margin="10, 0, 0, 5" />
+            </DockPanel>
 
-        <!-- Imagen de Usuario -->
+            <Canvas Height="256">
+                <ListView x:Name="DynamicFriendsListView" ItemsSource="{Binding Items}" Width="301" Height="246" HorizontalAlignment="Left" Canvas.Left="14" VerticalAlignment="Center" Visibility="Visible" Background="{x:Null}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="1" Width="285" Height="55" HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                </Border.Background>
+                                <Canvas Margin="0,0,0,-2">
+                                    <!-- Imagen de perfil circular -->
+                                    <Image Width="40" Height="40" Canvas.Left="10" Canvas.Top="7" Source="{Binding ProfilePicture}">
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
+                                        </Image.Clip>
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
 
-        <!-- Rectángulo 1 -->
-        <Rectangle Grid.Row="0"
-                   Stroke="Black"
-                   Width="250" Height="246"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top" Margin="0,64,0,0" Grid.RowSpan="2"/>
+                                    <!-- Texto: Nombre de usuario -->
+                                    <TextBlock Width="136" Canvas.Top="20" Text="{Binding Username}" Canvas.Left="60" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                                </Canvas>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-        <!-- Rectángulo 2 -->
-        <Rectangle Grid.Row="3"
-                   Stroke="Black"
-                   Width="250" Height="242"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top" Margin="0,1,0,0"/>
+                <ListView x:Name="DynamicRequestsListView" ItemsSource="{Binding RequestItems}" Width="301" Height="246" HorizontalAlignment="Left" Canvas.Left="14" VerticalAlignment="Center" Visibility="Collapsed" Background="{x:Null}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5" Width="285" Height="55" HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                </Border.Background>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Source="{Binding ProfilePicture}">
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
+                                        </Image.Clip>
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+
+                                    <TextBlock Text="{Binding Username}" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Grid.Column="1" Margin="10" Foreground="White"/>
+
+                                    <Button Width="50" Height="25" Margin="0, 0, 2, 0" Content="{x:Static p:Resources.AcceptButton}" Click="AcceptButtonIsPressed" BorderBrush="{x:Null}" Grid.Column="2">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource CustomButtonStyle}" TargetType="Button" />
+                                        </Button.Style>
+                                    </Button>
+
+                                    <Button Width="50" Height="25" Margin="2, 0, 0, 0" Content="{x:Static p:Resources.RejectButton}" Click="RejectButtonIsPressed" BorderBrush="{x:Null}" Grid.Column="3">
+                                        <Button.Style>
+                                            <Style BasedOn="{StaticResource CustomButtonStyle}" TargetType="Button" />
+                                        </Button.Style>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Canvas>
+
+
+        </StackPanel>
+        <StackPanel Margin="68,74,68,10" Grid.RowSpan="3">
+            <StackPanel.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </StackPanel.Background>
+            <Label 
+                 FontWeight="Bold"
+                 Height="36"
+                 Width="298"
+                 Margin="10, 10, 10, 10">
+                <TextBlock 
+                     Text="{x:Static p:Resources.FriendsListLabel}"
+                     FontSize="24"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Top" Height="30" Width="144"
+                     Foreground="White"/>
+            </Label>
+            <Canvas Height="256">
+                <ListView x:Name="DynamicTopListView" ItemsSource="{Binding TopPlayersItems}" Width="301" Height="246" HorizontalAlignment="Left" Canvas.Left="14" VerticalAlignment="Center" Visibility="Visible" Background="{x:Null}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="1" Width="285" Height="55" HorizontalAlignment="Center">
+                                <Border.Background>
+                                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                                </Border.Background>
+                                <Canvas Margin="0,0,0,-2">
+                                    <Image Width="40" Height="40" Canvas.Left="10" Canvas.Top="7" Source="{Binding ProfilePicture}">
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
+                                        </Image.Clip>
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+
+                                    <TextBlock Width="136" Canvas.Top="20" Text="{Binding Username}" Canvas.Left="60" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                                    <TextBlock Width="136" Canvas.Top="20" Text="{Binding GamesWon}" Canvas.Left="170" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
+
+                                </Canvas>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Canvas>
+
+        </StackPanel>
     </Grid>
 </Window>

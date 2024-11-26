@@ -123,25 +123,67 @@
   <data name="FailUserNotFoundMessage" xml:space="preserve">
     <value>User has not been found</value>
   </data>
-  <data name="SuccessProfileUpdatedTitle" xml:space="preserve">
-    <value>Profile updated</value>
-  </data>
-  <data name="SuccessProfileUpdatedMessage" xml:space="preserve">
+  <data name="InfoProfileUpdatedMessage" xml:space="preserve">
     <value>Profile has been updated successfully</value>
-  </data>
-  <data name="FailLoginErrorTitle" xml:space="preserve">
-    <value>Login error</value>
-  </data>
-  <data name="FailProfileNotUpdatedErrorTitle" xml:space="preserve">
-    <value>Update profile error</value>
   </data>
   <data name="FailDuplicatedEmailMessage" xml:space="preserve">
     <value>This email is registered already by another user</value>
   </data>
   <data name="InfoVerificationCodeSentMessage" xml:space="preserve">
-    <value>We have sent you a verification code.</value>
+    <value>We have sent you a verification code to your email</value>
   </data>
   <data name="FailIncorrectVerificationCodeMessage" xml:space="preserve">
     <value>Incorrect verification code</value>
+  </data>
+  <data name="FailInvalidUsernameMessage" xml:space="preserve">
+    <value>The username must be between 3 and 50 characters and only letters and numbers.</value>
+  </data>
+  <data name="FailInvalidPasswordMessage" xml:space="preserve">
+    <value>Password must be between 8 and 64 characters, and include at least one capital letter, one number, and one special character</value>
+  </data>
+  <data name="FailInvalidEmailMessage" xml:space="preserve">
+    <value>The email is not valid. Make sure it is in the correct format.</value>
+  </data>
+  <data name="InfoUserRegisteredMessage" xml:space="preserve">
+    <value>Your registration is complete, you can now log in</value>
+  </data>
+  <data name="InfoExitConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to quit the game?</value>
+  </data>
+  <data name="FailNoCountriesMessage" xml:space="preserve">
+    <value>No countries found in the database</value>
+  </data>
+  <data name="InfoSentFriendRequestMessage" xml:space="preserve">
+    <value>You have sent a friend request successfully</value>
+  </data>
+  <data name="FailFriendRequestDuplicated" xml:space="preserve">
+    <value>You have already sent a friend request to this user</value>
+  </data>
+  <data name="FailDuplicatedUsernameMessage" xml:space="preserve">
+    <value>This username is being used by another player</value>
+  </data>
+  <data name="InfoUpdateProfilePictureConfirmationMessage" xml:space="preserve">
+    <value>¿Are you sure you want to update your profile picture?</value>
+  </data>
+  <data name="InfoUpdatePasswordConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to change your password?</value>
+  </data>
+  <data name="InfoUpdateProfileConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to change your profile data?</value>
+  </data>
+  <data name="InfoRequestAcceptedMessage" xml:space="preserve">
+    <value>The request has been accepted successfully</value>
+  </data>
+  <data name="InfoAcceptRequestConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to accept this friend request?</value>
+  </data>
+  <data name="InfoRejectRequestConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to reject this friend request?</value>
+  </data>
+  <data name="InfoRequestRejectedMessage" xml:space="preserve">
+    <value>The request has been rejected successfully</value>
+  </data>
+  <data name="FailLobbyNotFoundMessage" xml:space="preserve">
+    <value>The lobby was not found</value>
   </data>
 </root>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LabyrinthCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="LabyrinthException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LabyrinthException" nillable="true" type="tns:LabyrinthException" />
+  <xs:complexType name="ArrayOfTransferUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransferUser" nillable="true" type="tns:TransferUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransferUser" nillable="true" type="tns:ArrayOfTransferUser" />
+  <xs:complexType name="TransferUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Country" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdUser" type="xs:int" />
+      <xs:element minOccurs="0" name="ProfilePicture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransferCountry" nillable="true" type="tns:TransferCountry" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferUser" nillable="true" type="tns:TransferUser" />
+  <xs:complexType name="TransferCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryId" type="xs:int" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferCountry" nillable="true" type="tns:TransferCountry" />
+  <xs:complexType name="ArrayOfTransferFriendRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransferFriendRequest" nillable="true" type="tns:TransferFriendRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransferFriendRequest" nillable="true" type="tns:ArrayOfTransferFriendRequest" />
+  <xs:complexType name="TransferFriendRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdFriendRequest" type="xs:int" />
+      <xs:element minOccurs="0" name="Requester" nillable="true" type="tns:TransferUser" />
+      <xs:element minOccurs="0" name="Status" type="tns:FriendRequestStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferFriendRequest" nillable="true" type="tns:TransferFriendRequest" />
+  <xs:simpleType name="FriendRequestStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Accepted" />
+      <xs:enumeration value="Rejected" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FriendRequestStatus" nillable="true" type="tns:FriendRequestStatus" />
+</xs:schema>

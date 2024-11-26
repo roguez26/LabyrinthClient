@@ -17,35 +17,29 @@ namespace HelperClasses
 
         public static bool IsValidUsername(string username)
         {
-            bool isValid = true;
-            if (string.IsNullOrEmpty(username) && !Regex.IsMatch(username, _usernamePattern))
+            if (string.IsNullOrEmpty(username) || !Regex.IsMatch(username, _usernamePattern))
             {
-                MessageBox.Show("El nombre de usuario debe tener entre 3 y 50 caracteres y solo puede contener letras y números.");
-                isValid = false;
+                throw new ArgumentException("FailInvalidUsernameMessage");
             }
-            return isValid;
+            return true;
         }
 
         public static bool IsValidPassword(string password)
         {
-            bool isValid = true;
-            if (string.IsNullOrEmpty(password) && !Regex.IsMatch(password, _passwordPattern))
+            if (string.IsNullOrEmpty(password) || !Regex.IsMatch(password, _passwordPattern))
             {
-                MessageBox.Show("La contraseña debe tener entre 8 y 64 caracteres, e incluir al menos una letra mayúscula, un número y un carácter especial.");
-                isValid = false;
+                throw new ArgumentException("FailInvalidPasswordMessage");
             }
-            return isValid;
+            return true;
         }
 
         public static bool IsValidEmail(string email)
         {
-            bool isValid = true;
-            if (string.IsNullOrEmpty(email) && !Regex.IsMatch(email, _emailPattern))
+            if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, _emailPattern))
             {
-                MessageBox.Show("El correo electrónico no es válido. Asegúrate de que esté en el formato correcto.");
-                isValid = false;
+                throw new ArgumentException("FailInvalidEmailMessage");
             }
-            return isValid;
+            return true;
         }
     }
 }

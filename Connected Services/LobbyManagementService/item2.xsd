@@ -4,11 +4,10 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Country" type="xs:int" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdUser" type="xs:int" />
-      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProfilePicture" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TransferCountry" nillable="true" type="tns:TransferCountry" />
+      <xs:element minOccurs="0" name="TransferStats" nillable="true" type="tns:TransferStats" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -20,6 +19,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TransferCountry" nillable="true" type="tns:TransferCountry" />
+  <xs:complexType name="TransferStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GamesPlayed" type="xs:int" />
+      <xs:element minOccurs="0" name="GamesWon" type="xs:int" />
+      <xs:element minOccurs="0" name="StatId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferStats" nillable="true" type="tns:TransferStats" />
+  <xs:complexType name="LabyrinthException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LabyrinthException" nillable="true" type="tns:LabyrinthException" />
   <xs:complexType name="ArrayOfTransferUser">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="TransferUser" nillable="true" type="tns:TransferUser" />
