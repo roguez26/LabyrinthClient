@@ -31,12 +31,3 @@ C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\LabyrinthClie
 C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperCl.D8CC79D7.Up2Date
 C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.dll
 C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.pdb
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\bin\Debug\HelperClasses.dll
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\bin\Debug\HelperClasses.pdb
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.csproj.AssemblyReference.cache
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.csproj.CoreCompileInputs.cache
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperCl.D8CC79D7.Up2Date
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.dll
-C:\Users\axel_\OneDrive\Escritorio\LabyrinthClient\LabyrinthClient\HelperClasses\obj\Debug\HelperClasses.pdb

@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\lobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinthclient\\labyrinthclient\\lobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:lobby.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|c:\\users\\axel_\\onedrive\\escritorio\\labyrinthclient\\labyrinthclient\\characterselection.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:characterselection.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\lobbyselection.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D88FD025-5004-4794-9521-69FA14D407AA}|LabyrinthClient.csproj|solutionrelative:lobbyselection.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,52 +30,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CharacterSelection.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\CharacterSelection.xaml.cs",
-              "RelativeDocumentMoniker": "CharacterSelection.xaml.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\CharacterSelection.xaml.cs",
-              "RelativeToolTip": "CharacterSelection.xaml.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T06:32:10.04Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LobbySelection.xaml",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\LobbySelection.xaml",
-              "RelativeDocumentMoniker": "LobbySelection.xaml",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\LobbySelection.xaml",
-              "RelativeToolTip": "LobbySelection.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-06T06:25:00.739Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Lobby.xaml.cs",
               "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\Lobby.xaml.cs",
               "RelativeDocumentMoniker": "Lobby.xaml.cs",
               "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\Lobby.xaml.cs",
               "RelativeToolTip": "Lobby.xaml.cs",
-              "ViewState": "AgIAAJQEAAAAAAAAAAAkwLUEAAANAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwFcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T05:40:25.097Z",
+              "WhenOpened": "2025-01-06T07:29:24.986Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainMenu.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\MainMenu.xaml.cs",
-              "RelativeDocumentMoniker": "MainMenu.xaml.cs",
-              "ToolTip": "C:\\Users\\axel_\\OneDrive\\Escritorio\\LabyrinthClient\\LabyrinthClient\\MainMenu.xaml.cs",
-              "RelativeToolTip": "MainMenu.xaml.cs",
-              "ViewState": "AgIAAHMBAAAAAAAAAAAgwIwBAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-06T05:39:32.828Z"
             }
           ]
         }
