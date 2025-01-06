@@ -123,14 +123,8 @@
   <data name="AdvantageCardLabel" xml:space="preserve">
     <value>No advantage card yet</value>
   </data>
-  <data name="AdventurerDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
-  </data>
   <data name="AdventurerNameLabel" xml:space="preserve">
     <value>Adventurer</value>
-  </data>
-  <data name="AlienDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
   </data>
   <data name="AlienNameLabel" xml:space="preserve">
     <value>Alien</value>
@@ -163,7 +157,7 @@
     <value>Failed to connect to the server. Please check your internet connection.</value>
   </data>
   <data name="GlobalEmailTextBoxPlaceholder" xml:space="preserve">
-    <value>Email address (e.g. example@gmail.com)</value>
+    <value>Email address </value>
   </data>
   <data name="GlobalInviteFriendButton" xml:space="preserve">
     <value>Invite friend</value>
@@ -207,17 +201,11 @@
   <data name="HostGameButton" xml:space="preserve">
     <value>Host game</value>
   </data>
-  <data name="HunterDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
-  </data>
   <data name="HunterNameLabel" xml:space="preserve">
     <value>Hunter</value>
   </data>
   <data name="JoinAsGuestTabItem" xml:space="preserve">
     <value>Join as guest</value>
-  </data>
-  <data name="KnightDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
   </data>
   <data name="KnightNameLabel" xml:space="preserve">
     <value>Knight</value>
@@ -228,14 +216,8 @@
   <data name="NextTreasureLabel" xml:space="preserve">
     <value>Next treasure</value>
   </data>
-  <data name="NinjaDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
-  </data>
   <data name="NinjaNameLabel" xml:space="preserve">
     <value>Ninja</value>
-  </data>
-  <data name="PirateDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
   </data>
   <data name="PirateNameLabel" xml:space="preserve">
     <value>Pirate</value>
@@ -252,14 +234,8 @@
   <data name="ReadyButton" xml:space="preserve">
     <value>Ready</value>
   </data>
-  <data name="RobotDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
-  </data>
   <data name="RobotNameLabel" xml:space="preserve">
     <value>Robot</value>
-  </data>
-  <data name="ScientistDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
   </data>
   <data name="ScientistNameLabel" xml:space="preserve">
     <value>Scientist</value>
@@ -278,9 +254,6 @@
   </data>
   <data name="VolcanoComboBoxItem" xml:space="preserve">
     <value>Volcano</value>
-  </data>
-  <data name="WizardDescriptionTextBlock" xml:space="preserve">
-    <value>ToDo</value>
   </data>
   <data name="WizardNameLabel" xml:space="preserve">
     <value>Wizard</value>
@@ -312,9 +285,6 @@
   <data name="ChangeProfilePictureButton" xml:space="preserve">
     <value>Change profile picture</value>
   </data>
-  <data name="VerificationCodeTextBox" xml:space="preserve">
-    <value>Verification code</value>
-  </data>
   <data name="SelectCharacterButton" xml:space="preserve">
     <value>Select character</value>
   </data>
@@ -325,10 +295,10 @@
     <value>Invite friend</value>
   </data>
   <data name="ShowFriendsButton" xml:space="preserve">
-    <value>Show friends</value>
+    <value>Friends</value>
   </data>
   <data name="ShowFriendRequestsButton" xml:space="preserve">
-    <value>Show friends requests</value>
+    <value>Friends requests</value>
   </data>
   <data name="AcceptButton" xml:space="preserve">
     <value>Accept</value>
@@ -344,5 +314,8 @@
   </data>
   <data name="RejectButton" xml:space="preserve">
     <value>Reject</value>
+  </data>
+  <data name="GlobalVerificationCodeTextBoxPlaceHolder" xml:space="preserve">
+    <value>Verification code</value>
   </data>
 </root>

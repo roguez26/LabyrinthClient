@@ -23,7 +23,7 @@ namespace LabyrinthClient.UserManagementService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryField;
+        private string CountryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
@@ -33,9 +33,6 @@ namespace LabyrinthClient.UserManagementService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProfilePictureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LabyrinthClient.UserManagementService.TransferCountry TransferCountryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private LabyrinthClient.UserManagementService.TransferStats TransferStatsField;
@@ -54,14 +51,14 @@ namespace LabyrinthClient.UserManagementService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Country {
+        public string CountryCode {
             get {
-                return this.CountryField;
+                return this.CountryCodeField;
             }
             set {
-                if ((this.CountryField.Equals(value) != true)) {
-                    this.CountryField = value;
-                    this.RaisePropertyChanged("Country");
+                if ((object.ReferenceEquals(this.CountryCodeField, value) != true)) {
+                    this.CountryCodeField = value;
+                    this.RaisePropertyChanged("CountryCode");
                 }
             }
         }
@@ -106,19 +103,6 @@ namespace LabyrinthClient.UserManagementService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LabyrinthClient.UserManagementService.TransferCountry TransferCountry {
-            get {
-                return this.TransferCountryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TransferCountryField, value) != true)) {
-                    this.TransferCountryField = value;
-                    this.RaisePropertyChanged("TransferCountry");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public LabyrinthClient.UserManagementService.TransferStats TransferStats {
             get {
                 return this.TransferStatsField;
@@ -140,67 +124,6 @@ namespace LabyrinthClient.UserManagementService {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TransferCountry", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
-    [System.SerializableAttribute()]
-    public partial class TransferCountry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CountryNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CountryId {
-            get {
-                return this.CountryIdField;
-            }
-            set {
-                if ((this.CountryIdField.Equals(value) != true)) {
-                    this.CountryIdField = value;
-                    this.RaisePropertyChanged("CountryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CountryName {
-            get {
-                return this.CountryNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
-                    this.CountryNameField = value;
-                    this.RaisePropertyChanged("CountryName");
                 }
             }
         }
@@ -354,8 +277,14 @@ namespace LabyrinthClient.UserManagementService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserManagementService.IUserManagement", CallbackContract=typeof(LabyrinthClient.UserManagementService.IUserManagementCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserManagementService.IUserManagement")]
     public interface IUserManagement {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetRanking", ReplyAction="http://tempuri.org/IUserManagement/GetRankingResponse")]
+        LabyrinthClient.UserManagementService.TransferUser[] GetRanking();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetRanking", ReplyAction="http://tempuri.org/IUserManagement/GetRankingResponse")]
+        System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser[]> GetRankingAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/AddUser", ReplyAction="http://tempuri.org/IUserManagement/AddUserResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/AddUserLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
@@ -392,21 +321,23 @@ namespace LabyrinthClient.UserManagementService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteAllUsers", ReplyAction="http://tempuri.org/IUserManagement/DeleteAllUsersResponse")]
         System.Threading.Tasks.Task<int> DeleteAllUsersAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteUser", ReplyAction="http://tempuri.org/IUserManagement/DeleteUserResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/DeleteUserLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int DeleteUser(int userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteUser", ReplyAction="http://tempuri.org/IUserManagement/DeleteUserResponse")]
+        System.Threading.Tasks.Task<int> DeleteUserAsync(int userId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/ChangeUserProfilePictureLabyrinthExceptionFaul" +
             "t", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
-        string ChangeUserProfilePicture(int userId, byte[] imagenData);
+        int ChangeUserProfilePicture(int userId, byte[] imagenData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ChangeUserProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ChangeUserProfilePictureResponse")]
-        System.Threading.Tasks.Task<string> ChangeUserProfilePictureAsync(int userId, byte[] imagenData);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagement/GetUserProfilePicture")]
-        void GetUserProfilePicture(int userId, string path);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserManagement/GetUserProfilePicture")]
-        System.Threading.Tasks.Task GetUserProfilePictureAsync(int userId, string path);
+        System.Threading.Tasks.Task<int> ChangeUserProfilePictureAsync(int userId, byte[] imagenData);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/VerificateCode", ReplyAction="http://tempuri.org/IUserManagement/VerificateCodeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.UserManagementService.LabyrinthException), Action="http://tempuri.org/IUserManagement/VerificateCodeLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
         bool VerificateCode(string email, string code);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/VerificateCode", ReplyAction="http://tempuri.org/IUserManagement/VerificateCodeResponse")]
@@ -426,18 +357,11 @@ namespace LabyrinthClient.UserManagementService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/IsEmailRegistered", ReplyAction="http://tempuri.org/IUserManagement/IsEmailRegisteredResponse")]
         System.Threading.Tasks.Task<bool> IsEmailRegisteredAsync(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetRanking", ReplyAction="http://tempuri.org/IUserManagement/GetRankingResponse")]
-        LabyrinthClient.UserManagementService.TransferUser[] GetRanking();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/DeleteVerificationCodeResponse")]
+        int DeleteVerificationCode(string email);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/GetRanking", ReplyAction="http://tempuri.org/IUserManagement/GetRankingResponse")]
-        System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser[]> GetRankingAsync();
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserManagementCallback {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/ReceiveProfilePicture", ReplyAction="http://tempuri.org/IUserManagement/ReceiveProfilePictureResponse")]
-        void ReceiveProfilePicture(int userId, byte[] dataImage);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManagement/DeleteVerificationCode", ReplyAction="http://tempuri.org/IUserManagement/DeleteVerificationCodeResponse")]
+        System.Threading.Tasks.Task<int> DeleteVerificationCodeAsync(string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -446,26 +370,33 @@ namespace LabyrinthClient.UserManagementService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserManagementClient : System.ServiceModel.DuplexClientBase<LabyrinthClient.UserManagementService.IUserManagement>, LabyrinthClient.UserManagementService.IUserManagement {
+    public partial class UserManagementClient : System.ServiceModel.ClientBase<LabyrinthClient.UserManagementService.IUserManagement>, LabyrinthClient.UserManagementService.IUserManagement {
         
-        public UserManagementClient(System.ServiceModel.InstanceContext callbackInstance) : 
-                base(callbackInstance) {
+        public UserManagementClient() {
         }
         
-        public UserManagementClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
-                base(callbackInstance, endpointConfigurationName) {
+        public UserManagementClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
         }
         
-        public UserManagementClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public UserManagementClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public UserManagementClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        public UserManagementClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
         }
         
-        public UserManagementClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(callbackInstance, binding, remoteAddress) {
+        public UserManagementClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public LabyrinthClient.UserManagementService.TransferUser[] GetRanking() {
+            return base.Channel.GetRanking();
+        }
+        
+        public System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser[]> GetRankingAsync() {
+            return base.Channel.GetRankingAsync();
         }
         
         public int AddUser(LabyrinthClient.UserManagementService.TransferUser user, string password) {
@@ -508,20 +439,20 @@ namespace LabyrinthClient.UserManagementService {
             return base.Channel.DeleteAllUsersAsync();
         }
         
-        public string ChangeUserProfilePicture(int userId, byte[] imagenData) {
+        public int DeleteUser(int userId) {
+            return base.Channel.DeleteUser(userId);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeleteUserAsync(int userId) {
+            return base.Channel.DeleteUserAsync(userId);
+        }
+        
+        public int ChangeUserProfilePicture(int userId, byte[] imagenData) {
             return base.Channel.ChangeUserProfilePicture(userId, imagenData);
         }
         
-        public System.Threading.Tasks.Task<string> ChangeUserProfilePictureAsync(int userId, byte[] imagenData) {
+        public System.Threading.Tasks.Task<int> ChangeUserProfilePictureAsync(int userId, byte[] imagenData) {
             return base.Channel.ChangeUserProfilePictureAsync(userId, imagenData);
-        }
-        
-        public void GetUserProfilePicture(int userId, string path) {
-            base.Channel.GetUserProfilePicture(userId, path);
-        }
-        
-        public System.Threading.Tasks.Task GetUserProfilePictureAsync(int userId, string path) {
-            return base.Channel.GetUserProfilePictureAsync(userId, path);
         }
         
         public bool VerificateCode(string email, string code) {
@@ -548,12 +479,12 @@ namespace LabyrinthClient.UserManagementService {
             return base.Channel.IsEmailRegisteredAsync(email);
         }
         
-        public LabyrinthClient.UserManagementService.TransferUser[] GetRanking() {
-            return base.Channel.GetRanking();
+        public int DeleteVerificationCode(string email) {
+            return base.Channel.DeleteVerificationCode(email);
         }
         
-        public System.Threading.Tasks.Task<LabyrinthClient.UserManagementService.TransferUser[]> GetRankingAsync() {
-            return base.Channel.GetRankingAsync();
+        public System.Threading.Tasks.Task<int> DeleteVerificationCodeAsync(string email) {
+            return base.Channel.DeleteVerificationCodeAsync(email);
         }
     }
 }

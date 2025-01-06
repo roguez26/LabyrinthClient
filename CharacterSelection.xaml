@@ -20,13 +20,19 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/GraphicItems/CharacterSelectionBackground.jpg"/>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Canvas Margin="115,14,115,182" Background="#A64D79">
+        <Canvas Margin="115,14,115,182" Background="#FF288195">
+            <Canvas.Effect>
+                <DropShadowEffect/>
+            </Canvas.Effect>
 
             <Image x:Name="CharacterImage" Height="116" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="10" Canvas.Left="24"/>
             <Image x:Name="CharacterSprites" Height="76" Canvas.Left="132" Canvas.Top="51" Width="80" HorizontalAlignment="Center" VerticalAlignment="Top"/>
@@ -37,44 +43,82 @@
                    Canvas.Left="393" Width="127" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10" Height="33"/>
             <Label x:Name="CharacterDescription" 
                    Foreground="White"
-                   Canvas.Top="70" Height="58" Width="217" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="303"/>
+                   Canvas.Top="65" Height="58" Width="305" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="215"/>
+
             <Button 
                 x:Name="selectCharacterButton" 
                 Content="{x:Static p:Resources.SelectCharacterButton}" 
                 VerticalAlignment="Top" 
                 Height="30" 
-                Width="106" 
+                Width="Auto" 
                 Canvas.Left="414" 
                 Canvas.Top="135"
-                Style="{DynamicResource CustomButtonStyle}"/>
-
+                Style="{DynamicResource CustomButtonStyle}" Click="selectCharacterButtonIsPressed"/>
         </Canvas>
-        <ScrollViewer Margin="0,227,0,28" HorizontalAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" Width="320">
+
+        <ScrollViewer Margin="0,227,0,28" HorizontalAlignment="Center" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" VerticalContentAlignment="Top" Width="600" BorderBrush="Transparent">
             <StackPanel Orientation="Horizontal" Height="152">
                 <!-- Elementos dentro del scroll horizontal -->
-                <Button Width="61" Height="94" Margin="5" Click="PrincessIsSelected">
+                <Button Width="60" Height="94" Margin="5" Click="AdventurerIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/adventurous/adventurous.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="AlienIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/alien/alien.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="HunterIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/hunter/hunter.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="KnightIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/knight/knight.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="NinjaIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/ninja/ninja.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="PirateIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/pirate/pirate.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="PrincessIsSelected" BorderBrush="Transparent">
                     <Button.Background>
                         <ImageBrush ImageSource="/Skins/princess/princess.png"/>
                     </Button.Background>
-
                 </Button>
-                <Button Width="61" Height="94" Margin="5" Click="AdventurerIsSelected">
+
+                <Button Width="60" Height="94" Margin="5" Click="RobotIsSelected" BorderBrush="Transparent">
                     <Button.Background>
-                        <ImageBrush ImageSource="/Skins/adventurer/adventurer.png"/>
+                        <ImageBrush ImageSource="/Skins/robot/robot.png"/>
                     </Button.Background>
-
                 </Button>
-                <Button Width="61" Height="94" Margin="5" Click="WizzardIsSelected">
+
+                <Button Width="60" Height="94" Margin="5" Click="ScientistIsSelected" BorderBrush="Transparent">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Skins/scientist/scientist.png"/>
+                    </Button.Background>
+                </Button>
+
+                <Button Width="60" Height="94" Margin="5" Click="WizzardIsSelected" BorderBrush="Transparent">
                     <Button.Background>
                         <ImageBrush ImageSource="/Skins/wizzard/wizzard.png"/>
                     </Button.Background>
                 </Button>
-                <Button Width="61" Height="94" Margin="5" Click="KnightIsSelected">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Skins/knight/knight.png"/>
-                    </Button.Background>
 
-                </Button>
             </StackPanel>
         </ScrollViewer>
 

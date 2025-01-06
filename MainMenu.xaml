@@ -95,14 +95,18 @@
        Source="/GraphicItems/userProfilePicture.png"
        Height="34"
        Width="34"
-       HorizontalAlignment="Left" 
-       VerticalAlignment="Top" 
-       Grid.Column="3" 
-       Margin="330,88,0,0" Grid.RowSpan="2">
+       HorizontalAlignment="Left"
+       VerticalAlignment="Top"
+       Grid.Column="3"
+       Margin="330,88,0,0"
+       Grid.RowSpan="2"
+       Stretch="UniformToFill">
             <Image.Clip>
                 <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
             </Image.Clip>
         </Image>
+
+
 
         <StackPanel Margin="68,38,68,0" Orientation="Vertical" Grid.Row="2" VerticalAlignment="Top" Height="364" Cursor="" Grid.RowSpan="2" >
             <StackPanel.Background>
@@ -117,7 +121,7 @@
                     Text="{x:Static p:Resources.FriendsListLabel}"
                     FontSize="24"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Top" Height="30" Width="144"
+                    VerticalAlignment="Top" Height="30" Width="285"
                     Foreground="White"/>
             </Label>
             <DockPanel Height="34" LastChildFill="False" Width="323">
@@ -143,16 +147,22 @@
                                 </Border.Background>
                                 <Canvas Margin="0,0,0,-2">
                                     <!-- Imagen de perfil circular -->
-                                    <Image Width="40" Height="40" Canvas.Left="10" Canvas.Top="7" Source="{Binding ProfilePicture}">
-                                        <Image.Clip>
-                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
-                                        </Image.Clip>
+                                    <Image Width="40" 
+       Height="40" 
+       Canvas.Left="10" 
+       Canvas.Top="7" 
+       Source="{Binding ProfilePicture}" 
+       Stretch="UniformToFill">
                                         <Image.Style>
                                             <Style TargetType="Image">
                                                 <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
                                             </Style>
                                         </Image.Style>
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                        </Image.Clip>
                                     </Image>
+
 
                                     <!-- Texto: Nombre de usuario -->
                                     <TextBlock Width="136" Canvas.Top="20" Text="{Binding Username}" Canvas.Left="60" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
@@ -177,16 +187,22 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Width="40" Height="40" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Source="{Binding ProfilePicture}">
-                                        <Image.Clip>
-                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
-                                        </Image.Clip>
+                                    <Image Width="40" 
+       Height="40" 
+       Canvas.Left="10" 
+       Canvas.Top="7" 
+       Source="{Binding ProfilePicture}" 
+       Stretch="UniformToFill">
                                         <Image.Style>
                                             <Style TargetType="Image">
                                                 <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
                                             </Style>
                                         </Image.Style>
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                        </Image.Clip>
                                     </Image>
+
 
                                     <TextBlock Text="{Binding Username}" VerticalAlignment="Center" FontSize="12" FontWeight="Bold" Grid.Column="1" Margin="10" Foreground="White"/>
 
@@ -216,11 +232,11 @@
             </StackPanel.Background>
             <Label 
                  FontWeight="Bold"
-                 Height="36"
+                 Height="43"
                  Width="298"
                  Margin="10, 10, 10, 10">
                 <TextBlock 
-                     Text="{x:Static p:Resources.FriendsListLabel}"
+                     Text="{x:Static p:Resources.RankingLabel}"
                      FontSize="24"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Top" Height="30" Width="144"
@@ -235,19 +251,25 @@
                                     <SolidColorBrush Color="Black" Opacity="0.5"/>
                                 </Border.Background>
                                 <Canvas Margin="0,0,0,-2">
-                                    <Image Width="40" Height="40" Canvas.Left="10" Canvas.Top="7" Source="{Binding ProfilePicture}">
-                                        <Image.Clip>
-                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
-                                        </Image.Clip>
+                                    <Image Width="40" 
+       Height="40" 
+       Canvas.Left="10" 
+       Canvas.Top="7" 
+       Source="{Binding ProfilePicture}" 
+       Stretch="UniformToFill">
                                         <Image.Style>
                                             <Style TargetType="Image">
                                                 <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
                                             </Style>
                                         </Image.Style>
+                                        <Image.Clip>
+                                            <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                        </Image.Clip>
                                     </Image>
 
+
                                     <TextBlock Width="136" Canvas.Top="20" Text="{Binding Username}" Canvas.Left="60" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
-                                    <TextBlock Width="136" Canvas.Top="20" Text="{Binding GamesWon}" Canvas.Left="170" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
+                                    <TextBlock Width="136" Canvas.Top="20" Text="{Binding GamesWon}" Canvas.Left="210" HorizontalAlignment="Left" FontSize="12" FontWeight="Bold" Foreground="White"/>
 
                                 </Canvas>
                             </Border>

@@ -23,26 +23,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace LabyrinthClient
 {
 
-    public partial class MyUser : Window, MenuManagementService.IMenuManagementServiceCallback
+    public partial class MyUser : Window
     {
-        private UserManagementService.UserManagementClient _client;
-
+        private const int  MaxLongProfilePicture = 1048576;
         public MyUser()
         {
             InitializeComponent();
-            DataContext = this;
-            InstanceContext context = new InstanceContext(this);
-            _client = new UserManagementClient(context);
+            InitializeUserData();
+            LoadCountriesFromResources();
+            LoadStats();
+        }
+
+        private void InitializeUserData()
+        {
             userNameTextBox.Text = CurrentSession.CurrentUser.Username;
-
             emailTextBox.Text = CurrentSession.CurrentUser.Email;
-
-            ChargeCountriesAndStats();
-
             if (CurrentSession.ProfilePicture != null)
             {
                 userProfilePictureImage.Source = CurrentSession.ProfilePicture;
@@ -53,17 +53,12 @@ namespace LabyrinthClient
             }
         }
 
-        private void ChargeCountriesAndStats()
+        private void LoadStats()
         {
-            CatalogManagementService.CatalogManagementClient catalogClient = new CatalogManagementService.CatalogManagementClient();
-            countryComboBox.DisplayMemberPath = "CountryName";
-            countryComboBox.SelectedValuePath = "CountryId";
-            countryComboBox.SelectedValue = CurrentSession.CurrentUser.TransferCountry.CountryId;
+            CatalogManagementService.CatalogManagementClient catalogManagementClient = new CatalogManagementService.CatalogManagementClient();
             try
             {
-                CatalogManagementService.TransferStats stats = catalogClient.GetStatsByUserId(CurrentSession.CurrentUser.IdUser);
-                CatalogManagementService.TransferCountry[] countries = catalogClient.GetAllCountries();
-                countryComboBox.ItemsSource = countries;
+                CatalogManagementService.TransferStats stats = catalogManagementClient.GetStatsByUserId(CurrentSession.CurrentUser.IdUser);
                 if (stats.StatId > 0)
                 {
                     gamesPlayedCuantityLabel.Content = stats.GamesPlayed;
@@ -74,12 +69,37 @@ namespace LabyrinthClient
             {
                 ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
             }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
         }
-
 
         private void EditProfileButtonIsPressed(object sender, RoutedEventArgs e)
         {
             ChangeToEditMode(true);
+            LoadCountriesFromResources();
+        }
+        private void LoadCountriesFromResources()
+        {
+            var resourceSet = Countries.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentUICulture, true, true);
+            var countries = resourceSet.Cast<System.Collections.DictionaryEntry>()
+                                        .Select(entry => new
+                                        {
+                                            CountryCode = entry.Key.ToString(),
+                                            CountryName = entry.Value.ToString()
+                                        })
+                                        .OrderBy(country => country.CountryName)
+                                        .ToList();
+
+            countryComboBox.ItemsSource = countries;
+            countryComboBox.DisplayMemberPath = "CountryName";
+            countryComboBox.SelectedValuePath = "CountryCode";
+            countryComboBox.SelectedValue = CurrentSession.CurrentUser.CountryCode;
         }
 
         private void AcceptButtonIsPressed(object sender, RoutedEventArgs e)
@@ -90,14 +110,14 @@ namespace LabyrinthClient
             {
                 response = UpdatePassword();
             }
-            else if (userNameTextBox.Text != CurrentSession.CurrentUser.Username || emailTextBox.Text != CurrentSession.CurrentUser.Email || (int)countryComboBox.SelectedValue != CurrentSession.CurrentUser.TransferCountry.CountryId)
+            else if (userNameTextBox.Text != CurrentSession.CurrentUser.Username || emailTextBox.Text != CurrentSession.CurrentUser.Email || countryComboBox.SelectedValue.ToString() != CurrentSession.CurrentUser.CountryCode)
             {
                 response = UpdateUser();
             }
 
             if (response > 0)
             {
-                Message message = new Message("InfoProfileUpdatedMessage");
+                Message message = new Message(Messages.InfoProfileUpdatedMessage);
                 message.ShowDialog();
                 MainMenu.GetInstance();
                 ChangeToEditMode(false);
@@ -113,21 +133,30 @@ namespace LabyrinthClient
             int response = 0;
             string oldPassword = EncryptPassword(oldPasswordPasswordBox.Password);
             string newPassword = EncryptPassword(newPasswordPasswordBox.Password);
+            Message message = new Message("InfoUpdatePasswordConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
+            message.ShowDialog();
 
             try
             {
-                Message message = new Message("InfoUpdatePasswordConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
-                message.ShowDialog();
-                if (message.UserDialogResult == Message.DialogResult.Confirm)
+                if (message.UserDialogResult == Message.CustomDialogResult.Confirm)
                 {
-                    response = _client.UpdatePassword(oldPassword, newPassword, CurrentSession.CurrentUser.Email);
+                    UserManagementService.UserManagementClient userManagementClient = new UserManagementService.UserManagementClient();
+                    response = userManagementClient.UpdatePassword(oldPassword, newPassword, CurrentSession.CurrentUser.Email);
                 }
             }
             catch (FaultException<UserManagementService.LabyrinthException> ex)
             {
                 ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
             }
-            
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
+
             return response;
         }
 
@@ -138,30 +167,37 @@ namespace LabyrinthClient
             user.IdUser = CurrentSession.CurrentUser.IdUser;
             user.Username = userNameTextBox.Text;
             user.Email = emailTextBox.Text;
-            user.Country = (int)countryComboBox.SelectedValue;
-            user.TransferCountry = CurrentSession.CurrentUser.TransferCountry;
-            user.TransferCountry.CountryId = ((CatalogManagementService.TransferCountry)countryComboBox.SelectedItem).CountryId;
-            user.TransferCountry.CountryName = ((CatalogManagementService.TransferCountry)countryComboBox.SelectedItem).CountryName;
+            user.CountryCode = countryComboBox.SelectedValue.ToString();
             return user;
         }
 
         private int UpdateUser()
         {
             int result = 0;
+            Message message = new Message("InfoUpdateProfileConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
+            message.ShowDialog();
+
             try
             {
-                Message message = new Message("InfoUpdateProfileConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
-                message.ShowDialog();
-                if (message.UserDialogResult == Message.DialogResult.Confirm)
+                if (message.UserDialogResult == Message.CustomDialogResult.Confirm)
                 {
+                    UserManagementService.UserManagementClient userManagementClient = new UserManagementService.UserManagementClient();
                     TransferUser newUser = GetTransferUser();
-                    result = _client.UpdateUser(newUser);
+                    result = userManagementClient.UpdateUser(newUser);
                     CurrentSession.CurrentUser = newUser;
                 }
             }
             catch (FaultException<UserManagementService.LabyrinthException> ex)
             {
                 ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
             }
             return result;
         }
@@ -239,18 +275,9 @@ namespace LabyrinthClient
 
         private void ChangeToEditDataMode(bool isEditable)
         {
-            if (isEditable)
-            {
-                userNameTextBox.IsEnabled = isEditable;
-                countryComboBox.IsEnabled = isEditable;
-                emailTextBox.IsEnabled = isEditable;
-            } 
-            else
-            {
-                userNameTextBox.IsEnabled = isEditable;
-                countryComboBox.IsEnabled = isEditable;
-                emailTextBox.IsEnabled = isEditable;
-            }
+            userNameTextBox.IsEnabled = isEditable;
+            countryComboBox.IsEnabled = isEditable;
+            emailTextBox.IsEnabled = isEditable;
         }
 
         private void ChangeProfilePictureButtonIsPressed(object sender, RoutedEventArgs e)
@@ -260,35 +287,40 @@ namespace LabyrinthClient
 
             if (openFileDialog.ShowDialog() == true)
             {
-                Message message = new Message("InfoUpdateProfilePictureConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
-                message.ShowDialog();
-                if (message.UserDialogResult == Message.DialogResult.Confirm)
+                Message confirmationMessage = new Message("InfoUpdateProfilePictureConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
+                confirmationMessage.ShowDialog();
+                if (confirmationMessage.UserDialogResult == Message.CustomDialogResult.Confirm)
                 {
                     string filePath = openFileDialog.FileName;
                     byte[] fileBytes = File.ReadAllBytes(filePath);
 
-                    try
+                    if (fileBytes.Length <= MaxLongProfilePicture)
                     {
-                        string newPath = _client.ChangeUserProfilePicture(CurrentSession.CurrentUser.IdUser, fileBytes);
-                        if (!string.IsNullOrEmpty(newPath))
+                        try
                         {
-                            CurrentSession.CurrentUser.ProfilePicture = newPath;
+                            UserManagementService.UserManagementClient userManagementClient = new UserManagementService.UserManagementClient();
+                            userManagementClient.ChangeUserProfilePicture(CurrentSession.CurrentUser.IdUser, fileBytes);
                             CurrentSession.ProfilePicture = ProfilePictureManager.ByteArrayToBitmapImage(fileBytes);
                             userProfilePictureImage.Source = CurrentSession.ProfilePicture;
                             MainMenu.GetInstance();
                             ChangeToEditMode(false);
                         }
+                        catch (IOException)
+                        {
+                            Message message = new Message(Messages.FailHandleProfilePictureMessage);
+                            message.ShowDialog();
+                        }
                     }
-                    catch (IOException ex)
+                    else
                     {
-                        MessageBox.Show($"Error al subir la imagen: {ex.Message}");
+                        Message message = new Message(Messages.FailTooLongProfilePictureMessage);
+                        message.ShowDialog();
                     }
                 }
-                
             }
         }
 
-        public string EncryptPassword(string password)
+        public static string EncryptPassword(string password)
         {
             SHA256 sha256 = SHA256Managed.Create();
             ASCIIEncoding encoding = new ASCIIEncoding();
@@ -303,9 +335,5 @@ namespace LabyrinthClient
             return stringBuilder.ToString();
         }
 
-        public void AttendInvitation(string lobbyCode)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8083" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.30:8083" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3fac6014-d973-4236-ac3a-1d92ef50375a" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c88841b1-de2e-4d91-b573-42c09d3a9fb5" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="e91c1465-9e14-4f18-8642-d53b5970f42c" SourceId="1" SourceUrl="http://localhost:8083/?xsd=xsd2" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="752e77e7-b40d-4ad4-a18c-5c8d4016186d" SourceId="1" SourceUrl="http://localhost:8083/?disco" />
-    <MetadataFile FileName="LobbyManagementServiceImplementation.wsdl" MetadataType="Wsdl" ID="d8505cf5-715f-465c-a6f1-57381a7d4d5b" SourceId="1" SourceUrl="http://localhost:8083/?wsdl" />
+    <MetadataFile FileName="LobbyManagementServiceImplementation1.wsdl" MetadataType="Wsdl" ID="360d6896-809c-4031-a50b-a2821dcd4bdc" SourceId="1" SourceUrl="http://192.168.0.30:8083/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="540cc3e2-6dba-4d77-ac74-e5e39d6cc299" SourceId="1" SourceUrl="http://192.168.0.30:8083/?xsd=xsd2" />
+    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="a334b846-27db-424e-9e54-3bd201e4c3e4" SourceId="1" SourceUrl="http://192.168.0.30:8083/?xsd=xsd0" />
+    <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="8178bb12-bf3a-4aa5-9506-677b94a4221c" SourceId="1" SourceUrl="http://192.168.0.30:8083/?xsd=xsd1" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="80fc8e6e-3548-403e-8ef7-7c0880a162d7" SourceId="1" SourceUrl="http://192.168.0.30:8083/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

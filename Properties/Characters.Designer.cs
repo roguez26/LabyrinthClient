@@ -61,7 +61,7 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a He is here for a new adventure.
+        ///   Busca una cadena traducida similar a He is here for a new adventure..
         /// </summary>
         internal static string AdventurerDescriptionLabel {
             get {
@@ -79,7 +79,43 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a From a land far, far away.
+        ///   Busca una cadena traducida similar a He comes from a distant galaxy to explore the unknown..
+        /// </summary>
+        internal static string AlienDescriptionLabel {
+            get {
+                return ResourceManager.GetString("AlienDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Alien.
+        /// </summary>
+        internal static string AlienNameLabel {
+            get {
+                return ResourceManager.GetString("AlienNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a He is ready to track his prey with precision and skill..
+        /// </summary>
+        internal static string HunterDescriptionLabel {
+            get {
+                return ResourceManager.GetString("HunterDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Hunter.
+        /// </summary>
+        internal static string HunterNameLabel {
+            get {
+                return ResourceManager.GetString("HunterNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a From a land far, far away..
         /// </summary>
         internal static string KnightDescriptionLabel {
             get {
@@ -93,6 +129,42 @@ namespace LabyrinthClient.Properties {
         internal static string KnightNameLabel {
             get {
                 return ResourceManager.GetString("KnightNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a He moves silently, striking from the shadows..
+        /// </summary>
+        internal static string NinjaDescriptionLabel {
+            get {
+                return ResourceManager.GetString("NinjaDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ninja.
+        /// </summary>
+        internal static string NinjaNameLabel {
+            get {
+                return ResourceManager.GetString("NinjaNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a He sails the seas in search of treasure and adventure..
+        /// </summary>
+        internal static string PirateDescriptionLabel {
+            get {
+                return ResourceManager.GetString("PirateDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Pirate.
+        /// </summary>
+        internal static string PirateNameLabel {
+            get {
+                return ResourceManager.GetString("PirateNameLabel", resourceCulture);
             }
         }
         
@@ -115,7 +187,43 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a A master of illusions.
+        ///   Busca una cadena traducida similar a He is programmed to complete any mission without fail..
+        /// </summary>
+        internal static string RobotDescriptionLabel {
+            get {
+                return ResourceManager.GetString("RobotDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Robot.
+        /// </summary>
+        internal static string RobotNameLabel {
+            get {
+                return ResourceManager.GetString("RobotNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a He seeks to uncover the secrets of the universe..
+        /// </summary>
+        internal static string ScientistDescriptionLabel {
+            get {
+                return ResourceManager.GetString("ScientistDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Scientist.
+        /// </summary>
+        internal static string ScientistNameLabel {
+            get {
+                return ResourceManager.GetString("ScientistNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a A master of illusions..
         /// </summary>
         internal static string WizzardDescriptionLabel {
             get {

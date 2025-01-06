@@ -13,6 +13,16 @@
         Width="590"
         WindowStyle="ToolWindow">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </Window.Resources>
+
+
     <Grid Margin="0,0,0,-6">
         <Grid.Background>
             <ImageBrush 
@@ -28,6 +38,7 @@
                 Canvas.Top="20" 
                 Click="EditProfileButtonIsPressed" 
                 HorizontalAlignment="Left" 
+                Style="{StaticResource CustomButtonStyle}" 
                 VerticalAlignment="Center"/>
 
             <Button 
@@ -39,6 +50,7 @@
                 Visibility="Collapsed" 
                 HorizontalAlignment="Left"
                 VerticalAlignment="Center"
+                Style="{StaticResource CustomButtonStyle}" 
                 Click="AcceptButtonIsPressed"/>
 
             <Button x:Name="cancelButton" 
@@ -49,6 +61,7 @@
                 Visibility="Collapsed" 
                 HorizontalAlignment="Left" 
                 VerticalAlignment="Center"
+                Style="{StaticResource CustomButtonStyle}" 
                 Click="CancelButtonIsPressed"/>
         </Canvas>
 
@@ -74,7 +87,7 @@
             Margin="352,82,0,0" 
             VerticalAlignment="Top" 
             FontSize="16" 
-            Width="126" 
+            Width="137" 
             FontWeight="Bold"/>
         <Label 
             x:Name="gamesPlayedCuantityLabel" 
@@ -102,9 +115,11 @@
                 Margin="-12,-10,10,0">
                 <TextBox 
                     x:Name="userNameTextBox" 
+                    Height="25"
                     HorizontalAlignment="Left" 
                     TextWrapping="Wrap" 
-                    Text="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}" 
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
+                    Tag="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}"
                     VerticalAlignment="Center" 
                     Width="241" 
                     IsEnabled="False" 
@@ -112,17 +127,20 @@
                     Canvas.Left="8" />
                 <ComboBox 
                     x:Name="countryComboBox" 
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center" 
+                    Height="25"
+                    VerticalAlignment="Top" 
                     Width="241" 
                     IsEnabled="False" 
-                    Canvas.Top="59" 
+                    Canvas.Top="62" 
+                    Style="{StaticResource CustomComboBoxStyle}" 
                     Canvas.Left="8"/>
                 <TextBox 
                     x:Name="emailTextBox" 
                     HorizontalAlignment="Left" 
-                    TextWrapping="Wrap" 
-                    Text="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" 
+                    Height="25"
+                    TextWrapping="Wrap"  
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
+                    Tag="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}"
                     VerticalAlignment="Center" 
                     Width="241"
                     IsEnabled="False" 
@@ -133,19 +151,25 @@
                     Visibility="Collapsed" 
                     Click="ChangeProfilePictureButtonIsPressed" 
                     Content="{x:Static p:Resources.ChangeProfilePictureButton}" 
-                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                    Canvas.Left="58" />
+                    Style="{StaticResource CustomButtonStyle}" 
+                    Canvas.Left="58" Height="28" HorizontalAlignment="Left" Width="138" />
+
+
                 <Button 
                     x:Name="changePasswordButton"
                     Content="{x:Static p:Resources.ChangePasswordButton}" 
                     Visibility="Collapsed" 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
                     Canvas.Left="10" 
                     Canvas.Top="132" 
-                    Click="ChangePasswordButtonIsPressed" />
+                    Style="{StaticResource CustomButtonStyle}" 
+                    Click="ChangePasswordButtonIsPressed" Width="122" />
+
                 <PasswordBox 
                     x:Name="oldPasswordPasswordBox" 
+                    Height="25"
+                    Tag="{x:Static p:Resources.OldPasswordLabel}" 
+                    Style="{StaticResource CustomPasswordBoxWithPlaceholderStyle}"
                     Visibility="Collapsed" 
                     Canvas.Left="8" 
                     Canvas.Top="32" 
@@ -155,6 +179,9 @@
                     AllowDrop="True"/>
                 <PasswordBox 
                     x:Name="newPasswordPasswordBox" 
+                    Height="25"
+                    Tag="{x:Static p:Resources.NewPasswordLabel}" 
+                    Style="{StaticResource CustomPasswordBoxWithPlaceholderStyle}"
                     Visibility="Collapsed" 
                     Canvas.Left="8"  
                     Canvas.Top="60" 

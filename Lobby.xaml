@@ -21,10 +21,7 @@
     </Window.Resources>
 
     <Grid Margin="0,0,0,-6">
-        <Grid.Background>
-            <ImageBrush 
-                ImageSource="/GraphicItems/LobbyCover.png"/>
-        </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="543*"/>
@@ -36,7 +33,45 @@
             <ColumnDefinition Width="342*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Canvas principal para el área de mensajes -->
+        <Canvas x:Name="ExtraTileAndTreasureCanvas" Grid.Column="2" Grid.Row="1" Margin="0,405,70,58" Visibility="Collapsed">
+            <Canvas.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Canvas.Background>
+            <Button x:Name="ExtraTileButton" Width="70" Height="70" Background="LightGray"
+                Click="RotateExtraFile" Grid.Column="2" Grid.Row="1" Canvas.Left="31" Canvas.Top="42">
+                <Grid>
+                    <Image x:Name="ExtraTileImage" Stretch="UniformToFill" />
+                    <Image x:Name="OverlayImage"  Source="GraphicItems/RotateButton.png"
+         Stretch="Uniform" Width="30" Height="30" 
+         VerticalAlignment="Center" HorizontalAlignment="Center"
+         Panel.ZIndex="1" Visibility="Hidden"/>
+                </Grid>
+            </Button>
+            <Label x:Name="NextTreasureLabel" Content="{x:Static p:Resources.NextTreasureLabel}" Canvas.Left="166" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Width="104" Foreground="White"/>
+            <Image x:Name="NexTraesureImage" Height="66" Canvas.Left="171" Canvas.Top="44" Width="75"/>
+            <Label x:Name="TreasuresCountLabel" Content="-/-" Canvas.Left="276" Canvas.Top="10" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+        </Canvas>
+
+        <Canvas x:Name="ConfigurationCanvas" Grid.Row="1" Margin="42,617,32,43" Grid.RowSpan="2" Grid.Column="1">
+            <Canvas.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Canvas.Background>
+            <Label Content="{x:Static p:Resources.TreasuresLabel}" Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Canvas.Left="30" Canvas.Top="26" VerticalAlignment="Center"/>
+            <ComboBox x:Name="QuantityTreasuresComboBox" Width="86" Style="{StaticResource CustomComboBoxStyle}" Canvas.Left="85" Canvas.Top="25" HorizontalAlignment="Left">
+                <ComboBoxItem Content="3" Tag="3" IsSelected="True"/>
+                <ComboBoxItem Content="4" Tag="4"/>
+                <ComboBoxItem Content="5" Tag="5"/>
+            </ComboBox>
+            <Label Content="{x:Static p:Resources.GameboardSkinLabel}"
+               Foreground="White" BorderBrush="White" HorizontalAlignment="Left" Canvas.Left="210" Canvas.Top="25" VerticalAlignment="Center"/>
+            <ComboBox x:Name="GameBoardSkinComboBox" HorizontalAlignment="Left" Width="120" SelectionChanged="ChangeGameBoardSkin"
+                  Style="{StaticResource CustomComboBoxStyle}" Canvas.Left="343" Canvas.Top="24" >
+                <ComboBoxItem Content="{x:Static p:Resources.ClassicComboBoxItem}" Tag="Classic"/>
+                <ComboBoxItem Content="{x:Static p:Resources.VolcanoComboBoxItem}" Tag="Volcano"/>
+            </ComboBox>
+            <Button Content="{x:Static p:Resources.StartButton}" HorizontalAlignment="Left" Style="{StaticResource CustomButtonStyle}" Width="95" Click="StartButtonIsPressed" Canvas.Left="498" Canvas.Top="22"/>
+        </Canvas>
+
         <StackPanel HorizontalAlignment="Left" Height="354" VerticalAlignment="Top" Margin="48,28,0,0" Width="322" Grid.Row="1">
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
@@ -55,17 +90,15 @@
          IsHitTestVisible="False" />
 
             <DockPanel Height="34" Width="299">
-                <TextBox x:Name="MessageTextBox" Foreground="Black" TextWrapping="Wrap" BorderBrush="Gray" Width="227" Height="34"
-                         Style="{DynamicResource CustomTextBoxStyle}"/>
-                <Button x:Name="SendButton" Content="Send" Click="SendButtonIsPressed" Width="62" Height="34"
+                <TextBox x:Name="MessageTextBox" Foreground="Black" TextWrapping="Wrap" BorderBrush="Gray" Width="227" Height="25"
+                          Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
+                          Tag="{x:Static p:Resources.GlobalMessageTextBoxPlaceholder}"/>
+                <Button x:Name="SendButton" Content="Send" Click="SendButtonIsPressed" Width="62" Height="25"
                         Style="{DynamicResource CustomButtonStyle}"/>
 
             </DockPanel>
 
         </StackPanel>
-
-        <!-- Rectángulo para el fondo de la parte inferior -->
-        <Rectangle HorizontalAlignment="Center" Height="111" Stroke="Black" VerticalAlignment="Center" Width="595" Grid.Column="1" Grid.Row="2" RadiusX="0" RadiusY="0"/>
 
         <!-- Botón para regresar -->
         <Button HorizontalAlignment="Left" Margin="48,14,0,0" VerticalAlignment="Top" Width="34" Height="33" BorderBrush="White" Foreground="White" Click="BackButtonIsPressed"
@@ -84,10 +117,10 @@
             <Label FontWeight="Bold"
                Foreground="Black"
                Height="44"
-               Width="200"
+               Width="281"
                Margin="0, 0, 0, 0">
                 <TextBlock Text="{x:Static p:Resources.LobbyMembersLabel}"
-                      Height="26" Width="171"
+                      Height="26" Width="209"
                            Foreground="White" FontSize ="20"/>
             </Label>
 
@@ -97,12 +130,20 @@
                         <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="1" Width="277" Height="54" HorizontalAlignment="Center">
                             <Canvas Margin="0,0,0,-2">
                                 <!-- Imagen de perfil -->
-                                <Image Width="40" Height="40" Canvas.Left="10" Canvas.Top="7" Source="{Binding ProfilePicture}">
+                                <Image Width="40" 
+                                       Height="40" 
+                                       Canvas.Left="10" 
+                                       Canvas.Top="7" 
+                                       Source="{Binding ProfilePicture}" 
+                                       Stretch="UniformToFill">
                                     <Image.Style>
-                                        <Style TargetType="Image">
+                                        <Style TargetType="{x:Type Image}">
                                             <Setter Property="Source" Value="/GraphicItems/userProfilePicture.png"/>
                                         </Style>
                                     </Image.Style>
+                                    <Image.Clip>
+                                        <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                    </Image.Clip>
                                 </Image>
 
                                 <!-- Texto -->
@@ -112,11 +153,9 @@
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Style.Triggers>
-                                                <!-- Ocultar si IsFriend es True -->
                                                 <DataTrigger Binding="{Binding IsFriend}" Value="True">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
-                                                <!-- Ocultar si IsRegistered es False -->
                                                 <DataTrigger Binding="{Binding IsRegistered}" Value="False">
                                                     <Setter Property="Visibility" Value="Collapsed" />
                                                 </DataTrigger>
@@ -151,7 +190,7 @@
                                 </Button>
 
                                 <!-- Botón para seleccionar personaje -->
-                                <Button Width="98" VerticalAlignment="Center" Canvas.Top="10" Canvas.Left="168" Height="30" HorizontalAlignment="Left" Content="Select character" Click="SelectCharacterButtonIsPressed" BorderBrush="{x:Null}">
+                                <Button x:Name="selectCharacterButton" Width="98" VerticalAlignment="Center" Canvas.Top="10" Canvas.Left="168" Height="30" HorizontalAlignment="Left" Content="Select character" Click="SelectCharacterButtonIsPressed" BorderBrush="{x:Null}">
                                     <Button.Style>
                                         <Style BasedOn="{StaticResource CustomButtonStyle}" TargetType="{x:Type Button}">
                                             <Style.Triggers>
@@ -168,7 +207,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button Content="{x:Static p:Resources.InviteFriendButton}" 
+            <Button x:Name="inviteFriendButton" Content="{x:Static p:Resources.InviteFriendButton}" 
                 Width="111"
                 Click="InviteFriendButtonIsPressed"
                 Style="{StaticResource CustomButtonStyle}" Height="30" Margin="10, 10, 10, 10" />
@@ -177,12 +216,111 @@
         <TextBox x:Name="lobbyCodeLabel"
          Text="lobbyCodeLabel"
          HorizontalAlignment="Center"
-         Margin="0,16,0,0"
+         Margin="0,3,0,0"
          VerticalAlignment="Top"
          IsReadOnly="True"
          BorderBrush="Transparent" 
          Background="Transparent" Grid.Column="1" 
                  FontWeight="Bold"
                  Foreground="Black"/>
+
+        <Grid x:Name="GameBoardGrid" Grid.Row="1" Margin="24,15,32,35" Grid.Column="1">
+            <!-- Definición de filas -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <!-- Fila de botones en la parte superior -->
+                <RowDefinition Height="*" />
+                <!-- Fila para la primera fila del tablero -->
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <!-- Fila para la última fila del tablero -->
+                <RowDefinition Height="Auto" />
+                <!-- Fila de botones en la parte inferior -->
+            </Grid.RowDefinitions>
+
+            <!-- Definición de columnas -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <!-- Columna para la última columna del tablero -->
+                <ColumnDefinition Width="Auto" />
+                <!-- Columna de botones a la derecha -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Botones para las filas -->
+            <Button x:Name="MoveRow2RightButton" Grid.Row="2" Grid.Column="0" Click="MoveRowClick" Tag="MoveRow2Right" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/RightArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveRow2LeftButton" Grid.Row="2" Grid.Column="8" Click="MoveRowClick" Tag="MoveRow2Left" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/LeftArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveRow4RightButton" Grid.Row="4" Grid.Column="0" Click="MoveRowClick" Tag="MoveRow4Right" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/RightArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveRow4LeftButton" Grid.Row="4" Grid.Column="8" Click="MoveRowClick" Tag="MoveRow4Left" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/LeftArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveRow6RightButton" Grid.Row="6" Grid.Column="0" Click="MoveRowClick" Tag="MoveRow6Right" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/RightArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveRow6LeftButton" Grid.Row="6" Grid.Column="8" Click="MoveRowClick" Tag="MoveRow6Left" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/LeftArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveColumn2DownButton" Grid.Row="0" Grid.Column="2" Click="MoveColumnClick" Tag="MoveColumn2Down" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/DownArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveColumn2UpButton" Grid.Row="8" Grid.Column="2" Click="MoveColumnClick" Tag="MoveColumn2Up" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/UpArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveColumn4DownButton" Grid.Row="0" Grid.Column="4" Click="MoveColumnClick" Tag="MoveColumn4Down" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/DownArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveColumn4UpButton" Grid.Row="8" Grid.Column="4" Click="MoveColumnClick" Tag="MoveColumn4Up" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/UpArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveColumn6DownButton" Grid.Row="0" Grid.Column="6" Click="MoveColumnClick" Tag="MoveColumn6Down" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/DownArrowButton.png" Width="30" Height="30"/>
+            </Button>
+
+            <Button x:Name="MoveColumn6UpButton" Grid.Row="8" Grid.Column="6" Click="MoveColumnClick" Tag="MoveColumn6Up" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50" Background="Transparent" BorderBrush="Transparent" Visibility="Hidden">
+                <Image Source="GraphicItems/UpArrowButton.png" Width="30" Height="30"/>
+            </Button>
+        </Grid>
+
+
+
+        <Button x:Name="ReorderButton" 
+            HorizontalAlignment="Left" VerticalAlignment="Top"
+            Margin="214,173,0,0" Click="ReorderGameBoard" Background="Transparent"
+            FocusVisualStyle="{x:Null}" BorderBrush="Transparent" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
+            <Image Source="GraphicItems/RotateButton.png" 
+                Width="267" Height="224"/>
+        </Button>
+        <Button x:Name="EndTurnButton" Grid.Column="2" Content="{x:Static p:Resources.EndTurnButton}" Margin="0,32,0,0" Grid.Row="2" VerticalAlignment="Top" Height="35" Width="222" Style="{StaticResource CustomButtonStyle}" Click="EndTurnButtonIsPressed" Visibility="Collapsed"/>
+        <TextBlock x:Name="TimerTextBlock" 
+                   FontSize="15" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" Width="37" Grid.Column="1" Margin="0,24,0,0" Height="19" ><Run/><LineBreak/><Run/></TextBlock>
+        <Label x:Name="WaitToHostLabel" Grid.Column="1" Content="Espere mientras el host configura&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,257,0,0" VerticalAlignment="Top" Grid.Row="1" Width="260" Visibility="Collapsed"/>
     </Grid>
 </Window>

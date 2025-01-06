@@ -4,13 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 
 
 
 namespace HelperClasses
 {
-    public class ProfilePictureManager
+    public static class ProfilePictureManager
     {
         public static BitmapImage ByteArrayToBitmapImage(byte[] imageData)
         {
@@ -29,15 +31,15 @@ namespace HelperClasses
                         bitmapImage.Freeze();
                     }
                 }
-            } 
-            catch (InvalidOperationException ex)
-            {
-
             }
-            catch (ArgumentOutOfRangeException ex)
+            catch (InvalidOperationException exception)
             {
-
-            } 
+                System.Windows.MessageBox.Show("An error occurred while loading the image. Please try again.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (ArgumentOutOfRangeException exception)
+            {
+                System.Windows.MessageBox.Show("The image data provided is invalid. Please check the file.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             return bitmapImage;
         }
     }

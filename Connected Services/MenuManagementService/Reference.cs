@@ -23,7 +23,7 @@ namespace LabyrinthClient.MenuManagementService {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryField;
+        private string CountryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
@@ -33,9 +33,6 @@ namespace LabyrinthClient.MenuManagementService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProfilePictureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LabyrinthClient.MenuManagementService.TransferCountry TransferCountryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private LabyrinthClient.MenuManagementService.TransferStats TransferStatsField;
@@ -54,14 +51,14 @@ namespace LabyrinthClient.MenuManagementService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Country {
+        public string CountryCode {
             get {
-                return this.CountryField;
+                return this.CountryCodeField;
             }
             set {
-                if ((this.CountryField.Equals(value) != true)) {
-                    this.CountryField = value;
-                    this.RaisePropertyChanged("Country");
+                if ((object.ReferenceEquals(this.CountryCodeField, value) != true)) {
+                    this.CountryCodeField = value;
+                    this.RaisePropertyChanged("CountryCode");
                 }
             }
         }
@@ -106,19 +103,6 @@ namespace LabyrinthClient.MenuManagementService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LabyrinthClient.MenuManagementService.TransferCountry TransferCountry {
-            get {
-                return this.TransferCountryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TransferCountryField, value) != true)) {
-                    this.TransferCountryField = value;
-                    this.RaisePropertyChanged("TransferCountry");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public LabyrinthClient.MenuManagementService.TransferStats TransferStats {
             get {
                 return this.TransferStatsField;
@@ -140,67 +124,6 @@ namespace LabyrinthClient.MenuManagementService {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TransferCountry", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
-    [System.SerializableAttribute()]
-    public partial class TransferCountry : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CountryIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CountryNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CountryId {
-            get {
-                return this.CountryIdField;
-            }
-            set {
-                if ((this.CountryIdField.Equals(value) != true)) {
-                    this.CountryIdField = value;
-                    this.RaisePropertyChanged("CountryId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CountryName {
-            get {
-                return this.CountryNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
-                    this.CountryNameField = value;
-                    this.RaisePropertyChanged("CountryName");
                 }
             }
         }
@@ -308,34 +231,95 @@ namespace LabyrinthClient.MenuManagementService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class LabyrinthException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorCode {
+            get {
+                return this.ErrorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorCodeField, value) != true)) {
+                    this.ErrorCodeField = value;
+                    this.RaisePropertyChanged("ErrorCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MenuManagementService.IMenuManagementService", CallbackContract=typeof(LabyrinthClient.MenuManagementService.IMenuManagementServiceCallback))]
     public interface IMenuManagementService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/Start", ReplyAction="http://tempuri.org/IMenuManagementService/StartResponse")]
-        void Start(LabyrinthClient.MenuManagementService.TransferUser user);
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.MenuManagementService.LabyrinthException), Action="http://tempuri.org/IMenuManagementService/StartLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int Start(LabyrinthClient.MenuManagementService.TransferUser user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/Start", ReplyAction="http://tempuri.org/IMenuManagementService/StartResponse")]
-        System.Threading.Tasks.Task StartAsync(LabyrinthClient.MenuManagementService.TransferUser user);
+        System.Threading.Tasks.Task<int> StartAsync(LabyrinthClient.MenuManagementService.TransferUser user);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/End", ReplyAction="http://tempuri.org/IMenuManagementService/EndResponse")]
-        void End(LabyrinthClient.MenuManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/ChangeAvailability", ReplyAction="http://tempuri.org/IMenuManagementService/ChangeAvailabilityResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.MenuManagementService.LabyrinthException), Action="http://tempuri.org/IMenuManagementService/ChangeAvailabilityLabyrinthExceptionFau" +
+            "lt", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int ChangeAvailability(LabyrinthClient.MenuManagementService.TransferUser user, bool availability);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/End", ReplyAction="http://tempuri.org/IMenuManagementService/EndResponse")]
-        System.Threading.Tasks.Task EndAsync(LabyrinthClient.MenuManagementService.TransferUser user);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/ChangeAvailability", ReplyAction="http://tempuri.org/IMenuManagementService/ChangeAvailabilityResponse")]
+        System.Threading.Tasks.Task<int> ChangeAvailabilityAsync(LabyrinthClient.MenuManagementService.TransferUser user, bool availability);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/InviteFriend", ReplyAction="http://tempuri.org/IMenuManagementService/InviteFriendResponse")]
-        void InviteFriend(string username, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMenuManagementService/InviteFriend")]
+        void InviteFriend(LabyrinthClient.MenuManagementService.TransferUser inviter, LabyrinthClient.MenuManagementService.TransferUser invitee, string lobbyCode);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/InviteFriend", ReplyAction="http://tempuri.org/IMenuManagementService/InviteFriendResponse")]
-        System.Threading.Tasks.Task InviteFriendAsync(string username, string lobbyCode);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IMenuManagementService/InviteFriend")]
+        System.Threading.Tasks.Task InviteFriendAsync(LabyrinthClient.MenuManagementService.TransferUser inviter, LabyrinthClient.MenuManagementService.TransferUser invitee, string lobbyCode);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/UpdateCallback", ReplyAction="http://tempuri.org/IMenuManagementService/UpdateCallbackResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.MenuManagementService.LabyrinthException), Action="http://tempuri.org/IMenuManagementService/UpdateCallbackLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int UpdateCallback(LabyrinthClient.MenuManagementService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/UpdateCallback", ReplyAction="http://tempuri.org/IMenuManagementService/UpdateCallbackResponse")]
+        System.Threading.Tasks.Task<int> UpdateCallbackAsync(LabyrinthClient.MenuManagementService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/DeleteUsers", ReplyAction="http://tempuri.org/IMenuManagementService/DeleteUsersResponse")]
+        void DeleteUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/DeleteUsers", ReplyAction="http://tempuri.org/IMenuManagementService/DeleteUsersResponse")]
+        System.Threading.Tasks.Task DeleteUsersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IMenuManagementServiceCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMenuManagementService/AttendInvitation", ReplyAction="http://tempuri.org/IMenuManagementService/AttendInvitationResponse")]
-        void AttendInvitation(string lobbyCode);
+        void AttendInvitation(LabyrinthClient.MenuManagementService.TransferUser inviter, string lobbyCode);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -366,28 +350,44 @@ namespace LabyrinthClient.MenuManagementService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void Start(LabyrinthClient.MenuManagementService.TransferUser user) {
-            base.Channel.Start(user);
+        public int Start(LabyrinthClient.MenuManagementService.TransferUser user) {
+            return base.Channel.Start(user);
         }
         
-        public System.Threading.Tasks.Task StartAsync(LabyrinthClient.MenuManagementService.TransferUser user) {
+        public System.Threading.Tasks.Task<int> StartAsync(LabyrinthClient.MenuManagementService.TransferUser user) {
             return base.Channel.StartAsync(user);
         }
         
-        public void End(LabyrinthClient.MenuManagementService.TransferUser user) {
-            base.Channel.End(user);
+        public int ChangeAvailability(LabyrinthClient.MenuManagementService.TransferUser user, bool availability) {
+            return base.Channel.ChangeAvailability(user, availability);
         }
         
-        public System.Threading.Tasks.Task EndAsync(LabyrinthClient.MenuManagementService.TransferUser user) {
-            return base.Channel.EndAsync(user);
+        public System.Threading.Tasks.Task<int> ChangeAvailabilityAsync(LabyrinthClient.MenuManagementService.TransferUser user, bool availability) {
+            return base.Channel.ChangeAvailabilityAsync(user, availability);
         }
         
-        public void InviteFriend(string username, string lobbyCode) {
-            base.Channel.InviteFriend(username, lobbyCode);
+        public void InviteFriend(LabyrinthClient.MenuManagementService.TransferUser inviter, LabyrinthClient.MenuManagementService.TransferUser invitee, string lobbyCode) {
+            base.Channel.InviteFriend(inviter, invitee, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task InviteFriendAsync(string username, string lobbyCode) {
-            return base.Channel.InviteFriendAsync(username, lobbyCode);
+        public System.Threading.Tasks.Task InviteFriendAsync(LabyrinthClient.MenuManagementService.TransferUser inviter, LabyrinthClient.MenuManagementService.TransferUser invitee, string lobbyCode) {
+            return base.Channel.InviteFriendAsync(inviter, invitee, lobbyCode);
+        }
+        
+        public int UpdateCallback(LabyrinthClient.MenuManagementService.TransferUser user) {
+            return base.Channel.UpdateCallback(user);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateCallbackAsync(LabyrinthClient.MenuManagementService.TransferUser user) {
+            return base.Channel.UpdateCallbackAsync(user);
+        }
+        
+        public void DeleteUsers() {
+            base.Channel.DeleteUsers();
+        }
+        
+        public System.Threading.Tasks.Task DeleteUsersAsync() {
+            return base.Channel.DeleteUsersAsync();
         }
     }
 }

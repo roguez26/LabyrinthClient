@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8085" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.30:8085" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="81ce8d8e-c310-4512-b086-b933f5330ff6" SourceId="1" SourceUrl="http://localhost:8085/?xsd=xsd2" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="15cfdf0b-2b93-4273-ade7-c37d029c06af" SourceId="1" SourceUrl="http://localhost:8085/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="a79a5f04-8f23-4a7f-9856-5c6dacb96143" SourceId="1" SourceUrl="http://localhost:8085/?disco" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="bc7cbb5f-f166-4cc1-8d43-8db4cab54cdf" SourceId="1" SourceUrl="http://localhost:8085/?xsd=xsd1" />
-    <MetadataFile FileName="MenuManagementServiceImplementation.wsdl" MetadataType="Wsdl" ID="0607b811-33a7-4d43-a52f-d41def105d70" SourceId="1" SourceUrl="http://localhost:8085/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="e2a244ca-c319-4414-b930-1cf30b4de0f1" SourceId="1" SourceUrl="http://192.168.0.30:8085/?xsd=xsd2" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="285cb744-31cc-4279-a197-18606ae6bea6" SourceId="1" SourceUrl="http://192.168.0.30:8085/?disco" />
+    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="a58f6caf-5011-4692-8616-4167589c6340" SourceId="1" SourceUrl="http://192.168.0.30:8085/?xsd=xsd1" />
+    <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="64ed6978-137f-44d5-ae89-ec43e91fb0f2" SourceId="1" SourceUrl="http://192.168.0.30:8085/?xsd=xsd0" />
+    <MetadataFile FileName="MenuManagementServiceImplementation1.wsdl" MetadataType="Wsdl" ID="227a83b6-9cb3-42ac-a9d2-50e395560ed9" SourceId="1" SourceUrl="http://192.168.0.30:8085/?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

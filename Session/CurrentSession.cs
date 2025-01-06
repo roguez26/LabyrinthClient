@@ -18,7 +18,9 @@ namespace LabyrinthClient.Session
 
         public static void Logout()
         {
-            CurrentUser = null;
+            CurrentUser = new TransferUser();
+            ProfilePicture = null;
         }
+
     }
 }

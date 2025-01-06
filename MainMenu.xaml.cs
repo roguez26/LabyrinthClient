@@ -18,12 +18,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HelperClasses;
+using LabyrinthClient.Properties;
 using LabyrinthClient.Session;
 using LabyrinthClient.UserManagementService;
 
 namespace LabyrinthClient
 {
-    public partial class MainMenu : Window, UserManagementService.IUserManagementCallback
+    public partial class MainMenu : Window, UserProfilePictureManagementService.IUserProfilePictureManagementServiceCallback, MenuManagementService.IMenuManagementServiceCallback
     {
 
         private static MainMenu _instance;
@@ -32,27 +33,139 @@ namespace LabyrinthClient
         public ObservableCollection<PlayerItem> Items { get; set; } = new ObservableCollection<PlayerItem>();
         public ObservableCollection<TopPlayerItem> TopPlayersItems { get; set; } = new ObservableCollection<TopPlayerItem>();
         public ObservableCollection<FriendRequestItem> RequestItems { get; set; } = new ObservableCollection<FriendRequestItem>();
-
-        private UserManagementService.UserManagementClient _userManagementClient;
+        private UserProfilePictureManagementService.UserProfilePictureManagementServiceClient _userManagementServiceClient;
+        private MenuManagementService.MenuManagementServiceClient _menuManagementClient;
+        private InstanceContext _instanceContext;
 
         private MainMenu()
         {
             DataContext = this;
-            InstanceContext context = new InstanceContext(this);
-            _userManagementClient = new UserManagementService.UserManagementClient(context);
+            _instanceContext = new InstanceContext(this);
             InitializeComponent();
-            userButton.Content = CurrentSession.CurrentUser.Username;
-            FillTopPlayersList(GetTopPlayersList());
+            InitializeClient();
+            LoadAllData();
+        }
 
+        private void LoadAllData()
+        {
+            try
+            {
+                LoadUserData();
+                FillTopPlayersList(GetTopPlayersList());
+                FillFriendsList(GetFriendsList());
+            }
+            catch (FaultException<UserManagementService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (FaultException<FriendsManagementService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
+        }
+        private void InitializeClient()
+        {
+            if (_userManagementServiceClient != null)
+            {
+                try
+                {
+                    _userManagementServiceClient.Close();
+                }
+                catch (CommunicationException)
+                {
+                    _userManagementServiceClient.Abort();
+                }
+            }
+            if (_menuManagementClient != null)
+            {
+                try
+                {
+                    _menuManagementClient.Close();
+                }
+                catch (CommunicationException)
+                {
+                    _menuManagementClient.Abort();
+                }
+            }
+            _userManagementServiceClient = new UserProfilePictureManagementService.UserProfilePictureManagementServiceClient(_instanceContext);
+            _menuManagementClient = new MenuManagementService.MenuManagementServiceClient(_instanceContext);
+        }
+
+        public void UpdateCallback()
+        {
+            try
+            {
+                if (_menuManagementClient.State == CommunicationState.Closed || _menuManagementClient.State == CommunicationState.Faulted)
+                {
+                    InitializeClient();
+                }
+                _menuManagementClient.UpdateCallback(new MenuManagementService.TransferUser { IdUser = CurrentSession.CurrentUser.IdUser });
+            }
+            catch (FaultException<MenuManagementService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
+        }
+
+        public bool JoinGame()
+        {
+            try
+            {
+                if (_menuManagementClient.State == CommunicationState.Closed || _menuManagementClient.State == CommunicationState.Faulted)
+                {
+                    InitializeClient();
+                }
+                _menuManagementClient.Start(new MenuManagementService.TransferUser { 
+                    IdUser = CurrentSession.CurrentUser.IdUser, 
+                    Username = CurrentSession.CurrentUser.Username });
+            }
+            catch 
+            {
+                CurrentSession.Logout();
+                this.Close();
+                throw;
+            }
+            return true;
+        }
+
+        private void LoadUserData()
+        {
+            userButton.Content = CurrentSession.CurrentUser.Username;
             if (CurrentSession.ProfilePicture == null)
             {
-                _userManagementClient.GetUserProfilePicture(CurrentSession.CurrentUser.IdUser, CurrentSession.CurrentUser.ProfilePicture);
+                try
+                {
+                    if (_userManagementServiceClient.State == CommunicationState.Closed || _userManagementServiceClient.State == CommunicationState.Faulted)
+                    {
+                        InitializeClient();
+                    }
+                    _userManagementServiceClient.GetUserProfilePicture(CurrentSession.CurrentUser.IdUser, CurrentSession.CurrentUser.ProfilePicture);
+                }
+                catch 
+                {
+                    throw;
+                }
             }
             else
             {
                 userProfilePictureImage.Source = CurrentSession.ProfilePicture;
             }
-            FillFriendsList(GetFriendsList());
         }
 
         private void UpdateUserData()
@@ -75,21 +188,39 @@ namespace LabyrinthClient
             {
                 _instance = new MainMenu();
                 _instance.Activate();
-            } else
+            }
+            else
             {
                 _instance.UpdateUserData();
             }
-            
             return _instance;
         }        
 
         private void HostGameButtonIsPressed(object sender, RoutedEventArgs e)
         {
             Lobby adminLobby = new Lobby();
-            adminLobby.HostGame();
-            adminLobby.IsAdmin = true;
-            adminLobby.Show();
-            this.Close();
+            try
+            {
+                adminLobby.HostGame();
+                adminLobby.Show();
+                this.Close();
+            }
+            catch (FaultException<LobbyManagementService.LabyrinthException> exception)
+            {
+                ExceptionHandler.HandleLabyrinthException(exception.Detail.ErrorCode);
+            }
+            catch (FaultException<MenuManagementService.LabyrinthException> exception)
+            {
+                ExceptionHandler.HandleLabyrinthException(exception.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
         }
 
         private void JoinGameButtonIsPressed(object sender, RoutedEventArgs e)
@@ -108,30 +239,53 @@ namespace LabyrinthClient
 
         private void UserButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            if (_myUser == null)
-            {
-                _myUser = new MyUser();
-                _myUser.Closed += (s, args) => _myUser = null;
-                _myUser.Show();
-            }
-            else
-            {
-                _myUser.Activate();
-            }
+            _myUser = new MyUser();
+            
+            _myUser.ShowDialog();
         }
 
         private void ShowFriendsButtonIsPressed(object sender, RoutedEventArgs e)
         {
             DynamicRequestsListView.Visibility = Visibility.Collapsed;
             DynamicFriendsListView.Visibility = Visibility.Visible; 
-            FillFriendsList(GetFriendsList());
+            try
+            {
+                FillFriendsList(GetFriendsList());
+            }
+            catch (FaultException<FriendsManagementService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
         }
 
         private void ShowFriendRequestButtonIsPressed(object sender, RoutedEventArgs e)
         {
             DynamicRequestsListView.Visibility = Visibility.Visible;
             DynamicFriendsListView.Visibility = Visibility.Collapsed;
-            FillFriendRequestsList(GetFriendsRequests());
+            try
+            {
+                FillFriendRequestsList(GetFriendsRequests());
+            }
+            catch (FaultException<FriendsManagementService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
         }
 
         private void AcceptButtonIsPressed(object sender, RoutedEventArgs e)
@@ -140,12 +294,12 @@ namespace LabyrinthClient
             Message confirmationMessage = new Message("InfoAcceptRequestConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
 
             confirmationMessage.ShowDialog();
-            if (confirmationMessage.UserDialogResult == Message.DialogResult.Confirm)
+            if (confirmationMessage.UserDialogResult == Message.CustomDialogResult.Confirm)
             {
                 result = AttendRequest(FriendsManagementService.FriendRequestStatus.Accepted, sender);
                 if (result > 0)
                 {
-                    Message message = new Message("InfoRequestAcceptedMessage");
+                    Message message = new Message(Messages.InfoRequestAcceptedMessage);
                     message.ShowDialog();
                 }
             }
@@ -175,6 +329,14 @@ namespace LabyrinthClient
                     {
                         ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
                     }
+                    catch (EndpointNotFoundException)
+                    {
+                        ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+                    }
+                    catch (CommunicationException)
+                    {
+                        ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+                    }
                 }
             }
             return response;
@@ -185,20 +347,18 @@ namespace LabyrinthClient
             Message confirmationMessage = new Message("InfoRejectRequestConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
 
             confirmationMessage.ShowDialog();
-            if (confirmationMessage.UserDialogResult == Message.DialogResult.Confirm)
+            if (confirmationMessage.UserDialogResult == Message.CustomDialogResult.Confirm)
             {
                 result = AttendRequest(FriendsManagementService.FriendRequestStatus.Rejected, sender);
                 if (result > 0)
                 {
-                    Message message = new Message("InfoRequestRejectedMessage");
+                    Message message = new Message(Messages.InfoRequestRejectedMessage);
                     message.ShowDialog();
                 }
             }
         }
 
-
-
-        private FriendsManagementService.TransferUser[] GetFriendsList()
+        private static FriendsManagementService.TransferUser[] GetFriendsList()
         {
             FriendsManagementService.TransferUser[] list = new FriendsManagementService.TransferUser[0];
             FriendsManagementService.FriendsManagementServiceClient friendsManagement = new FriendsManagementService.FriendsManagementServiceClient();
@@ -207,14 +367,14 @@ namespace LabyrinthClient
             {
                 list = friendsManagement.GetMyFriendsList(CurrentSession.CurrentUser.IdUser);
             } 
-            catch(FaultException<LabyrinthException> ex)
+            catch 
             {
-                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+                throw;
             }
             return list;
         }
 
-        private FriendsManagementService.TransferFriendRequest[] GetFriendsRequests()
+        private static FriendsManagementService.TransferFriendRequest[] GetFriendsRequests()
         {
             FriendsManagementService.TransferFriendRequest[] list = new FriendsManagementService.TransferFriendRequest[0];
             FriendsManagementService.FriendsManagementServiceClient client = new FriendsManagementService.FriendsManagementServiceClient();
@@ -223,115 +383,185 @@ namespace LabyrinthClient
             {
                 list = client.GetFriendRequestsList(CurrentSession.CurrentUser.IdUser);
             }
-            catch (FaultException<LabyrinthException> ex)
+            catch 
             {
-                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+                throw;
             }
             return list;
         }
 
-        private bool FillFriendsList(FriendsManagementService.TransferUser[] members)
+        private void FillFriendsList(FriendsManagementService.TransferUser[] members)
         {
             FriendsManagementService.FriendsManagementServiceClient friendsManagement = new FriendsManagementService.FriendsManagementServiceClient();
-            bool result = members.Length > 0;
 
             if (members.Length > 0)
             {
                 Items.Clear();
-                foreach (FriendsManagementService.TransferUser member in members)
+                try
                 {
-                    Items.Add(new PlayerItem { Username = member.Username, IdUser = member.IdUser, IsCurrentUser = true, IsFriend = friendsManagement.IsFriend(CurrentSession.CurrentUser.IdUser, member.IdUser),
-                        ProfilePicture = new BitmapImage(new Uri("pack://application:,,,/GraphicItems/userProfilePicture.png"))});
-                   _userManagementClient.GetUserProfilePicture(member.IdUser, member.ProfilePicture);
+                    foreach (FriendsManagementService.TransferUser member in members)
+                    {
+                        Items.Add(new PlayerItem
+                        {
+                            Username = member.Username,
+                            IdUser = member.IdUser,
+                            IsCurrentUser = true,
+                            IsFriend = friendsManagement.IsFriend(CurrentSession.CurrentUser.IdUser, member.IdUser),
+                            ProfilePicture = new BitmapImage(new Uri("pack://application:,,,/GraphicItems/userProfilePicture.png"))
+                        });
+                        GetUserProfilePicture(member.IdUser, member.ProfilePicture);
+                    }
+                }
+                catch 
+                {
+                    throw;
                 }
             }
-            return result;
         }
 
-        private UserManagementService.TransferUser[] GetTopPlayersList()
+        private void GetUserProfilePicture(int userId, string path)
         {
-            UserManagementService.TransferUser[] list = new UserManagementService.TransferUser[0];
+            if (_userManagementServiceClient.State == CommunicationState.Closed || _userManagementServiceClient.State == CommunicationState.Faulted)
+            {
+                InitializeClient();
+            }
 
             try
             {
-                list = _userManagementClient.GetRanking();
+                _userManagementServiceClient.GetUserProfilePicture(userId, path);
             }
-            catch (FaultException<LabyrinthException> ex)
+            catch 
             {
-                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+                throw;
             }
-            return list;
         }
 
-        private bool FillTopPlayersList(UserManagementService.TransferUser[] members)
+        private static UserManagementService.TransferUser[] GetTopPlayersList()
         {
-            bool result = members.Length > 0;
+            UserManagementService.TransferUser[] playersList = new UserManagementService.TransferUser[0];
+            UserManagementService.UserManagementClient userClient = new UserManagementService.UserManagementClient();
 
-            if (members.Length > 0)
+            try
             {
-                TopPlayersItems.Clear();
-                foreach (UserManagementService.TransferUser member in members)
-                {
-                    TopPlayersItems.Add(new TopPlayerItem
-                    {
-                        IdUser = member.IdUser,
-                        Username = member.Username,
-                        GamesWon = "Games won: " + member.TransferStats.GamesWon,
-                        ProfilePicture = new BitmapImage(new Uri("pack://application:,,,/GraphicItems/userProfilePicture.png"))
-                    });
-                    _userManagementClient.GetUserProfilePicture(member.IdUser, member.ProfilePicture);
-                }
+                playersList = userClient.GetRanking();
             }
-            return result;
+            catch 
+            {
+                throw;
+            }
+            return playersList;
         }
 
-        private bool FillFriendRequestsList(FriendsManagementService.TransferFriendRequest[] friendsRequest)
+        private void FillTopPlayersList(UserManagementService.TransferUser[] members)
         {
-            bool result = friendsRequest.Length > 0;
+            TopPlayersItems.Clear();
 
-            if (result)
-            {
-                RequestItems.Clear();
-                foreach (FriendsManagementService.TransferFriendRequest request in  friendsRequest)
-                {
-                    RequestItems.Add(new FriendRequestItem { FriendRequestId = request.IdFriendRequest, Username = request.Requester.Username, 
-                        UserId = request.Requester.IdUser, ProfilePicture = new BitmapImage(new Uri("pack://application:,,,/GraphicItems/userProfilePicture.png")) });
-                    _userManagementClient.GetUserProfilePicture(request.Requester.IdUser, request.Requester.ProfilePicture);
-                }
+            if (members == null || members.Length == 0) { 
+                return; 
             }
-            return true;
+
+            foreach (UserManagementService.TransferUser member in members)
+            {
+                TopPlayersItems.Add(new TopPlayerItem
+                {
+                    IdUser = member.IdUser,
+                    Username = member.Username,
+                    GamesWon = "🏆" + member.TransferStats.GamesWon,
+                    ProfilePicture = new BitmapImage(new Uri("pack://application:,,,/GraphicItems/userProfilePicture.png"))
+                });
+                GetUserProfilePicture(member.IdUser, member.ProfilePicture);
+            }
+        }
+
+        private void FillFriendRequestsList(FriendsManagementService.TransferFriendRequest[] friendsRequest)
+        {
+            RequestItems.Clear();
+
+            if (friendsRequest == null  || friendsRequest.Length == 0)
+            {
+                return;
+            }
+            
+            foreach (FriendsManagementService.TransferFriendRequest request in  friendsRequest)
+            {
+                RequestItems.Add(new FriendRequestItem { FriendRequestId = request.IdFriendRequest, 
+                    Username = request.Requester.Username, 
+                    UserId = request.Requester.IdUser, 
+                    ProfilePicture = new BitmapImage(new Uri("pack://application:,,,/GraphicItems/userProfilePicture.png")) });
+                GetUserProfilePicture(request.Requester.IdUser, request.Requester.ProfilePicture);
+            }
         }
 
         public void ReceiveProfilePicture(int userId, byte[] dataImage)
         {
-            if (dataImage != null)
+            if (dataImage == null)
             {
-                BitmapImage profilePicture = ProfilePictureManager.ByteArrayToBitmapImage(dataImage);
+                return;
+            }
+            
+            BitmapImage profilePicture = ProfilePictureManager.ByteArrayToBitmapImage(dataImage);
 
-                var topPlayerItem = TopPlayersItems.FirstOrDefault(item => item.IdUser == userId);
-                if (topPlayerItem != null)
+            var topPlayerItem = TopPlayersItems.FirstOrDefault(item => item.IdUser == userId);
+            if (topPlayerItem != null)
+            {
+                topPlayerItem.ProfilePicture = profilePicture;
+            }
+
+            if (userId == CurrentSession.CurrentUser.IdUser)
+            {
+                userProfilePictureImage.Source = profilePicture;
+                CurrentSession.ProfilePicture = profilePicture;
+            }
+            else
+            {
+                var playerItem = Items.FirstOrDefault(item => item.IdUser == userId);
+                if (playerItem != null)
                 {
-                    topPlayerItem.ProfilePicture = profilePicture;
+                    playerItem.ProfilePicture = profilePicture;
                 }
-
-                if (userId == CurrentSession.CurrentUser.IdUser)
+                var friendRequestItem = RequestItems.FirstOrDefault(item => item.UserId == userId);
+                if (friendRequestItem != null)
                 {
-                    userProfilePictureImage.Source = profilePicture;
-                    CurrentSession.ProfilePicture = profilePicture;
+                    friendRequestItem.ProfilePicture = profilePicture;
                 }
-                else
-                {
-                    var playerItem = Items.FirstOrDefault(item => item.IdUser == userId);
-                    if (playerItem != null)
-                    {
-                        playerItem.ProfilePicture = profilePicture;
-                    }
+            }
+        }
 
-                    var friendRequestItem = RequestItems.FirstOrDefault(item => item.UserId == userId);
-                    if (friendRequestItem != null)
+        public void AttendInvitation(MenuManagementService.TransferUser inviter,  string lobbyCode)
+        {
+            Message confirmationMessage = new Message("InfoAttendInvitationConfirmationMessage", inviter.Username, Properties.Resources.YesButton, Properties.Resources.NoButton);
+            confirmationMessage.Owner = this;
+            confirmationMessage.ShowDialog();
+            if (confirmationMessage.UserDialogResult == Message.CustomDialogResult.Confirm)
+            {
+                Lobby playerLobby = new Lobby();
+                try
+                {
+                    if (FieldValidator.IsValidLobbyCode(lobbyCode))
                     {
-                        friendRequestItem.ProfilePicture = profilePicture;
-                    }
+                        playerLobby = new Lobby();
+                        playerLobby.JoinToLobby(lobbyCode);
+                        playerLobby.Show();
+                        this.Close();
+                        MainMenu.GetInstance().Close();
+                    } 
+                }
+                catch (ArgumentException ex)
+                {
+                    ExceptionHandler.HandleValidationException(ex);
+                }
+                catch (FaultException<ChatService.LabyrinthException> ex)
+                {
+                    ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+                    playerLobby.Close();
+                }
+                catch (EndpointNotFoundException)
+                {
+                    ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+                }
+                catch (CommunicationException)
+                {
+                    ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
                 }
             }
         }
@@ -386,5 +616,4 @@ namespace LabyrinthClient
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
 }

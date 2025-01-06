@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/LabyrinthCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8087/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:import schemaLocation="http://localhost:8087/?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="TransferPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InactivityCount" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="InitialPosition" type="q1:ValueTupleOfintint" />
+      <xs:element minOccurs="0" name="SkinPath" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TreasuresForSearching" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferPlayer" nillable="true" type="tns:TransferPlayer" />
+  <xs:complexType name="LabyrinthException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LabyrinthException" nillable="true" type="tns:LabyrinthException" />
+  <xs:complexType name="TransferGameBoard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExtraTile" nillable="true" type="tns:TransferTile" />
+      <xs:element minOccurs="0" name="IsClassicSelected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxTreasures" type="xs:int" />
+      <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfTransferPlayer" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="TilesPositions" nillable="true" type="q3:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferGameBoard" nillable="true" type="tns:TransferGameBoard" />
+  <xs:complexType name="TransferTile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImagePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBottomOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLeftOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRightOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTopOpen" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PlayerOnTile" nillable="true" type="tns:ArrayOfTransferPlayer" />
+      <xs:element minOccurs="0" name="RotationAngle" type="xs:int" />
+      <xs:element minOccurs="0" name="Treasure" nillable="true" type="tns:TransferTreasure" />
+      <xs:element minOccurs="0" name="Type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferTile" nillable="true" type="tns:TransferTile" />
+  <xs:complexType name="ArrayOfTransferPlayer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransferPlayer" nillable="true" type="tns:TransferPlayer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransferPlayer" nillable="true" type="tns:ArrayOfTransferPlayer" />
+  <xs:complexType name="TransferTreasure">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImagePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFound" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransferTreasure" nillable="true" type="tns:TransferTreasure" />
+</xs:schema>

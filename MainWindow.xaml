@@ -20,7 +20,7 @@
                 <ResourceDictionary Source="Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-        
+
     </Window.Resources>
 
 
@@ -127,7 +127,7 @@ CornerRadius="8"
                     VerticalAlignment="Center" 
                     Width="377">
                     <Button 
-                        x:Name="changeToLoginButton"
+                        x:Name="ChangeToLoginButton"
                         FontWeight="Bold"
                         Content="{x:Static p:Resources.GlobalLogin}" 
                         HorizontalAlignment="Left" 
@@ -137,7 +137,7 @@ CornerRadius="8"
                         Style="{StaticResource CustomMainWindowOption}" 
                         />
                     <Button 
-                        x:Name="changeToSignupButton"
+                        x:Name="ChangeToSignupButton"
                         Content="{x:Static p:Resources.GlobalSignup}" 
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center" 
@@ -145,7 +145,7 @@ CornerRadius="8"
                         Click="ChangeToSignupIsPressed"
                         Style="{StaticResource CustomMainWindowOption}" Cursor=""/>
                     <Button 
-                        x:Name="changeToJoinAsGuest"
+                        x:Name="ChangeToJoinAsGuest"
                         Content="{x:Static p:Resources.JoinAsGuestTabItem}" 
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Center" 
@@ -156,7 +156,7 @@ CornerRadius="8"
 
                 </Grid>
 
-                <TextBox x:Name="emailForLoginTextBox"
+                <TextBox x:Name="EmailForLoginTextBox"
                      Width="258"
                      Height="25"
                      VerticalAlignment="Top"
@@ -165,18 +165,25 @@ CornerRadius="8"
                      Canvas.Left="64"
                      Canvas.Top="78"
                      Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
-                     Tag="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" />
+                     Tag="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}" 
+                     Visibility="Visible"/>
+                <DockPanel Canvas.Left="64"  Canvas.Top="121" HorizontalAlignment="Center" VerticalAlignment="Center">
 
 
-                <PasswordBox 
-                    x:Name="passwordForLoginTextBox"
-                    Width="258" Height="25"
-                    VerticalAlignment="Top"
-                    Style="{StaticResource CustomPasswordBoxStyle}" 
-                    Grid.ColumnSpan="2" Canvas.Left="64" 
-                    Canvas.Top="121" 
-                    HorizontalAlignment="Center"
-                    Visibility="Visible"/>
+                    <PasswordBox 
+                        x:Name="PasswordForLoginTextBox"
+                        Width="225"
+                        Height="25"
+                        Style="{StaticResource CustomPasswordBoxWithPlaceholderStyle}" 
+                        Tag="{x:Static p:Resources.GlobalPasswordTextBoxPlaceholder}"
+                        PasswordChanged="PasswordIsChanged"
+                        Visibility="Visible"/>
+
+                    <Button x:Name="ShowPasswordForLogin" Style="{StaticResource RoundGreenButtonStyle}" PreviewMouseDown="ShowPasswordIsPressed" PreviewMouseUp="HidePasswordIsPressed" Visibility="Visible"/>
+
+
+
+                </DockPanel>
 
                 <Button 
                     x:Name="LoginButton"
@@ -200,7 +207,8 @@ CornerRadius="8"
                     Width="259" Height="25" 
                     Canvas.Left="63" 
                     Canvas.Top="78" 
-                    Style="{StaticResource CustomTextBoxStyle}"
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
+                    Tag="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}"
                     Visibility="Collapsed"/>
 
                 <TextBox 
@@ -209,18 +217,23 @@ CornerRadius="8"
                     Height="25" 
                     Canvas.Left="64" 
                     Canvas.Top="121" 
-                    Style="{StaticResource CustomTextBoxStyle}"
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"
+                    Tag="{x:Static p:Resources.GlobalEmailTextBoxPlaceholder}"
                     Visibility="Collapsed"/>
+                <DockPanel Canvas.Left="64" Canvas.Top="162" VerticalAlignment="Center">
 
-                <PasswordBox 
-                    x:Name="PasswordBox"
-                    Width="258" Height="25"
-                    VerticalAlignment="Center" 
-                    Canvas.Left="64" 
-                    Canvas.Top="162" 
-                    HorizontalAlignment="Center" 
-                    Style="{StaticResource CustomPasswordBoxStyle}"
-                    Visibility="Collapsed"/>
+                    <PasswordBox 
+                        x:Name="PasswordBox"
+                        Width="225" 
+                        Height="25"
+                        Style="{StaticResource CustomPasswordBoxWithPlaceholderStyle}"
+                        Tag="{x:Static p:Resources.GlobalPasswordTextBoxPlaceholder}" 
+                        PasswordChanged="PasswordIsChanged"
+                        Visibility="Collapsed" RenderTransformOrigin="0.5,0.5"/>
+                    <Button x:Name="ShowPasswordForSignup" Style="{StaticResource RoundGreenButtonStyle}" PreviewMouseDown="ShowPasswordIsPressed" PreviewMouseUp="HidePasswordIsPressed" Visibility="Collapsed" />
+
+
+                </DockPanel>
 
                 <ComboBox 
                     x:Name="CountryCombobox"
@@ -235,7 +248,7 @@ CornerRadius="8"
                     Visibility="Collapsed"/>
 
                 <Button 
-                    x:Name="signupButton"
+                    x:Name="SignupButton"
                     Content="{x:Static p:Resources.GlobalSignup}"
                     Width="258" Height="22"
                     Click="SignupButtonIsPressed" 
@@ -247,7 +260,7 @@ CornerRadius="8"
                     Visibility="Collapsed"/>
 
                 <TextBox 
-                    x:Name="verificationCodeTextBox" 
+                    x:Name="VerificationCodeTextBox" 
                     HorizontalAlignment="Left" 
                     Grid.Row="1" TextWrapping="Wrap" 
                     Width="260" 
@@ -255,15 +268,17 @@ CornerRadius="8"
                     Canvas.Left="62"
                     Canvas.Top="78"
                     Visibility="Collapsed"
-                    Style="{StaticResource CustomTextBoxStyle}"/>
+                    Tag="{x:Static p:Resources.GlobalVerificationCodeTextBoxPlaceHolder}"
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}"/>
 
 
                 <TextBox 
-                    x:Name="lobbyTextBox"
+                    x:Name="LobbyTextBox"
                     Width="258" Height="25"
                     VerticalAlignment="Top"
                     TextWrapping="Wrap" 
-                    Style="{StaticResource CustomTextBoxStyle}" 
+                    Tag="{x:Static p:Resources.GlobalLobbyIdTextBoxPlaceholder}"
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}" 
                     Background="White" 
                     HorizontalAlignment="Left" 
                     Canvas.Left="64" 
@@ -271,17 +286,18 @@ CornerRadius="8"
                     Visibility="Collapsed"/>
 
                 <TextBox 
-                    x:Name="userNameForJoinAsGuestTextBox"
+                    x:Name="UserNameForJoinAsGuestTextBox"
                     Width="258" Height="25"
                     TextWrapping="Wrap" 
-                    Style="{StaticResource CustomTextBoxStyle}" 
+                    Tag="{x:Static p:Resources.GlobalUsernameTextBoxPlaceholder}"
+                    Style="{StaticResource CustomTextBoxWithPlaceholderStyle}" 
                     HorizontalAlignment="Left"
                     Canvas.Left="64" 
                     Canvas.Top="121"
                     Visibility="Collapsed"/>
 
                 <Button
-                    x:Name="joinAsGuestButton"
+                    x:Name="JoinAsGuestButton"
                     Content="{x:Static p:Resources.JoinGameButton}"
                     Width="258" Height="22"
                     Style="{StaticResource CustomButtonStyle}" 

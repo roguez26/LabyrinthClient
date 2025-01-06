@@ -9,23 +9,303 @@
 //------------------------------------------------------------------------------
 
 namespace LabyrinthClient.ChatService {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferUser", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class TransferUser : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProfilePictureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private LabyrinthClient.ChatService.TransferStats TransferStatsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryCode {
+            get {
+                return this.CountryCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryCodeField, value) != true)) {
+                    this.CountryCodeField = value;
+                    this.RaisePropertyChanged("CountryCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdUser {
+            get {
+                return this.IdUserField;
+            }
+            set {
+                if ((this.IdUserField.Equals(value) != true)) {
+                    this.IdUserField = value;
+                    this.RaisePropertyChanged("IdUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProfilePicture {
+            get {
+                return this.ProfilePictureField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProfilePictureField, value) != true)) {
+                    this.ProfilePictureField = value;
+                    this.RaisePropertyChanged("ProfilePicture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public LabyrinthClient.ChatService.TransferStats TransferStats {
+            get {
+                return this.TransferStatsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransferStatsField, value) != true)) {
+                    this.TransferStatsField = value;
+                    this.RaisePropertyChanged("TransferStats");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TransferStats", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class TransferStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GamesPlayedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GamesWonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UserIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GamesPlayed {
+            get {
+                return this.GamesPlayedField;
+            }
+            set {
+                if ((this.GamesPlayedField.Equals(value) != true)) {
+                    this.GamesPlayedField = value;
+                    this.RaisePropertyChanged("GamesPlayed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GamesWon {
+            get {
+                return this.GamesWonField;
+            }
+            set {
+                if ((this.GamesWonField.Equals(value) != true)) {
+                    this.GamesWonField = value;
+                    this.RaisePropertyChanged("GamesWon");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StatId {
+            get {
+                return this.StatIdField;
+            }
+            set {
+                if ((this.StatIdField.Equals(value) != true)) {
+                    this.StatIdField = value;
+                    this.RaisePropertyChanged("StatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UserId {
+            get {
+                return this.UserIdField;
+            }
+            set {
+                if ((this.UserIdField.Equals(value) != true)) {
+                    this.UserIdField = value;
+                    this.RaisePropertyChanged("UserId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+    [System.SerializableAttribute()]
+    public partial class LabyrinthException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorCodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorCode {
+            get {
+                return this.ErrorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorCodeField, value) != true)) {
+                    this.ErrorCodeField = value;
+                    this.RaisePropertyChanged("ErrorCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ChatService.IChatService", CallbackContract=typeof(LabyrinthClient.ChatService.IChatServiceCallback))]
     public interface IChatService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
-        void SendMessage(string message);
+        void SendMessage(string message, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/SendMessage")]
-        System.Threading.Tasks.Task SendMessageAsync(string message);
+        System.Threading.Tasks.Task SendMessageAsync(string message, string lobbyCode);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Start", ReplyAction="http://tempuri.org/IChatService/StartResponse")]
-        void Start();
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.ChatService.LabyrinthException), Action="http://tempuri.org/IChatService/StartLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int Start(string lobbyCode, LabyrinthClient.ChatService.TransferUser lobbyCreator);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Start", ReplyAction="http://tempuri.org/IChatService/StartResponse")]
-        System.Threading.Tasks.Task StartAsync();
+        System.Threading.Tasks.Task<int> StartAsync(string lobbyCode, LabyrinthClient.ChatService.TransferUser lobbyCreator);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/JoinToChat", ReplyAction="http://tempuri.org/IChatService/JoinToChatResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.ChatService.LabyrinthException), Action="http://tempuri.org/IChatService/JoinToChatLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int JoinToChat(string lobbyCode, LabyrinthClient.ChatService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/JoinToChat", ReplyAction="http://tempuri.org/IChatService/JoinToChatResponse")]
+        System.Threading.Tasks.Task<int> JoinToChatAsync(string lobbyCode, LabyrinthClient.ChatService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/RemoveUserFromChat", ReplyAction="http://tempuri.org/IChatService/RemoveUserFromChatResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(LabyrinthClient.ChatService.LabyrinthException), Action="http://tempuri.org/IChatService/RemoveUserFromChatLabyrinthExceptionFault", Name="LabyrinthException", Namespace="http://schemas.datacontract.org/2004/07/LabyrinthCommon")]
+        int RemoveUserFromChat(string lobbyCode, LabyrinthClient.ChatService.TransferUser user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/RemoveUserFromChat", ReplyAction="http://tempuri.org/IChatService/RemoveUserFromChatResponse")]
+        System.Threading.Tasks.Task<int> RemoveUserFromChatAsync(string lobbyCode, LabyrinthClient.ChatService.TransferUser user);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -63,20 +343,36 @@ namespace LabyrinthClient.ChatService {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void SendMessage(string message) {
-            base.Channel.SendMessage(message);
+        public void SendMessage(string message, string lobbyCode) {
+            base.Channel.SendMessage(message, lobbyCode);
         }
         
-        public System.Threading.Tasks.Task SendMessageAsync(string message) {
-            return base.Channel.SendMessageAsync(message);
+        public System.Threading.Tasks.Task SendMessageAsync(string message, string lobbyCode) {
+            return base.Channel.SendMessageAsync(message, lobbyCode);
         }
         
-        public void Start() {
-            base.Channel.Start();
+        public int Start(string lobbyCode, LabyrinthClient.ChatService.TransferUser lobbyCreator) {
+            return base.Channel.Start(lobbyCode, lobbyCreator);
         }
         
-        public System.Threading.Tasks.Task StartAsync() {
-            return base.Channel.StartAsync();
+        public System.Threading.Tasks.Task<int> StartAsync(string lobbyCode, LabyrinthClient.ChatService.TransferUser lobbyCreator) {
+            return base.Channel.StartAsync(lobbyCode, lobbyCreator);
+        }
+        
+        public int JoinToChat(string lobbyCode, LabyrinthClient.ChatService.TransferUser user) {
+            return base.Channel.JoinToChat(lobbyCode, user);
+        }
+        
+        public System.Threading.Tasks.Task<int> JoinToChatAsync(string lobbyCode, LabyrinthClient.ChatService.TransferUser user) {
+            return base.Channel.JoinToChatAsync(lobbyCode, user);
+        }
+        
+        public int RemoveUserFromChat(string lobbyCode, LabyrinthClient.ChatService.TransferUser user) {
+            return base.Channel.RemoveUserFromChat(lobbyCode, user);
+        }
+        
+        public System.Threading.Tasks.Task<int> RemoveUserFromChatAsync(string lobbyCode, LabyrinthClient.ChatService.TransferUser user) {
+            return base.Channel.RemoveUserFromChatAsync(lobbyCode, user);
         }
     }
 }

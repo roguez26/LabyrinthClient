@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("titlestyle.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("graphicitems/characterselectionbackground.jpg")]
 
 

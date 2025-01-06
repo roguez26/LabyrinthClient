@@ -18,19 +18,19 @@ namespace LabyrinthClient
 {
     public partial class Message : Window
     {
-        public enum DialogResult
+        public enum CustomDialogResult
         {
             Neutral,
             Confirm,
             Dismiss
         }
 
-        public DialogResult UserDialogResult { get; private set; }
+        public CustomDialogResult UserDialogResult { get; private set; }
 
-        public Message(string messageCode)
+        public Message(string message)
         {
             InitializeComponent();
-            MessageTextBlock.Text = Messages.ResourceManager.GetString(messageCode);
+            MessageTextBlock.Text = message;
 
             confirmButton.Visibility = Visibility.Collapsed;
             dismissButton.Content = Properties.Resources.AcceptButton;
@@ -47,23 +47,43 @@ namespace LabyrinthClient
             dismissButton.Content = dismissButtonText;
         }
 
+        public Message(string messageCode, string additionalText, string confirmButtonText, string dismissButtonText)
+        {
+            InitializeComponent();
+
+            MessageTextBlock.Text = Messages.ResourceManager.GetString(messageCode) + " " + additionalText;
+
+            confirmButton.Content = confirmButtonText;
+
+            dismissButton.Content = dismissButtonText;
+        }
+
+        public Message(string messageCode, string additionalText)
+        {
+            InitializeComponent();
+            MessageTextBlock.Text = Messages.ResourceManager.GetString(messageCode) + " " + additionalText;
+
+            confirmButton.Visibility = Visibility.Collapsed;
+            dismissButton.Content = Properties.Resources.AcceptButton;
+        }
+
         private void ConfirmButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            UserDialogResult = DialogResult.Confirm;
+            UserDialogResult = CustomDialogResult.Confirm;
             Close();
         }
 
         private void DismissButtonIsPressed(object sender, RoutedEventArgs e)
         {
-            UserDialogResult = DialogResult.Dismiss;
+            UserDialogResult = CustomDialogResult.Dismiss;
             Close();
         }
 
         private void MessageWindowIsClosed(object sender, CancelEventArgs e)
         {
-            if (UserDialogResult != DialogResult.Confirm && UserDialogResult != DialogResult.Dismiss)
+            if (UserDialogResult != CustomDialogResult.Confirm && UserDialogResult != CustomDialogResult.Dismiss)
             {
-                UserDialogResult = DialogResult.Neutral;
+                UserDialogResult = CustomDialogResult.Neutral;
             }
         }
 

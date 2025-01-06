@@ -11,7 +11,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -26,80 +25,108 @@ using HelperClasses;
 using LabyrinthClient.Session;
 using System.Collections.Specialized;
 using System.Threading;
+using LabyrinthClient.UserProfilePictureManagementService;
+using System.Windows.Markup;
+using System.Net.NetworkInformation;
 
 namespace LabyrinthClient
 {
-    public partial class MainWindow : Window, UserManagementService.IUserManagementCallback
+    public partial class MainWindow : Window
     {
-        private UserManagementService.UserManagementClient client;
+
+        private string _passwordForShow;
         public MainWindow()
         {
-            DataContext = this;
-            InstanceContext context = new InstanceContext(this);
-            client = new UserManagementService.UserManagementClient(context);
-            InitializeComponent();
-            LoadCountries();
+           
             CultureInfo ui_culture = new CultureInfo("en-US");
             CultureInfo culture = new CultureInfo("en-US");
-
             Thread.CurrentThread.CurrentUICulture = ui_culture;
             Thread.CurrentThread.CurrentCulture = culture;
-
+            InitializeComponent();
         }
 
-        private void LoadCountries()
+        public MainWindow(string languajeCode)
         {
-            try
-            {
-                CatalogManagementService.CatalogManagementClient client = new CatalogManagementService.CatalogManagementClient();
-                var countries = client.GetAllCountries();
-                CountryCombobox.ItemsSource = countries;
-                CountryCombobox.DisplayMemberPath = "CountryName";
-                CountryCombobox.SelectedValuePath = "CountryId";
-            }
-            catch (FaultException<LabyrinthException> ex)
-            {
-                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
-            }
+            CultureInfo ui_culture = new CultureInfo(languajeCode);
+            CultureInfo culture = new CultureInfo(languajeCode);
+            Thread.CurrentThread.CurrentUICulture = ui_culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+            InitializeComponent();
         }
+
+        private void LoadCountriesFromResources()
+        {
+            var resourceSet = Countries.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentUICulture, true, true);
+            var countries = resourceSet.Cast<System.Collections.DictionaryEntry>()
+                                        .Select(entry => new
+                                        {
+                                            CountryCode = entry.Key.ToString(),
+                                            CountryName = entry.Value.ToString()
+                                        })
+                                        .OrderBy(country => country.CountryName) 
+                                        .ToList();
+
+            CountryCombobox.ItemsSource = countries;
+            CountryCombobox.DisplayMemberPath = "CountryName"; 
+            CountryCombobox.SelectedValuePath = "CountryCode"; 
+        }
+
         private void LoginButtonIsPressed(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (FieldValidator.IsValidEmail(emailForLoginTextBox.Text) //&& FieldValidator.IsValidPassword(passwordForLoginTextBox.Password)
+                if (FieldValidator.IsValidEmail(EmailForLoginTextBox.Text) //&& FieldValidator.IsValidPassword(PasswordForLoginTextBox.Password)
                     ) 
                 {
-                    UserManagementService.TransferUser user = new UserManagementService.TransferUser();
+                    UserManagementService.UserManagementClient usermanagementClient = new UserManagementService.UserManagementClient();
+                    UserManagementService.TransferUser user;
 
-                    user = client.VerificateUser(emailForLoginTextBox.Text, EncryptPassword(passwordForLoginTextBox.Password));
-                    if (user.IdUser > 0)
+                    user = usermanagementClient.VerificateUser(EmailForLoginTextBox.Text, EncryptPassword(PasswordForLoginTextBox.Password));
+                    if (user != null && user.IdUser > 0)
                     {
                         CurrentSession.CurrentUser = user;
-                        MainMenu.GetInstance().Show();
-                        this.Close();
+                        MainMenu mainMenu= MainMenu.GetInstance();
+                        if (mainMenu.JoinGame())
+                        {
+                            mainMenu.Show();
+                            this.Close();
+                        }
                     }
                 }
             }
             catch (ArgumentException ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleValidationException(ex);
             }
-            catch (FaultException<LabyrinthException> ex)
+            catch (FaultException<UserManagementService.LabyrinthException> ex)
             {
                 ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
             }
-            
+            catch (FaultException<MenuManagementService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(ex.Message);
+            }
+            catch (CommunicationException ex)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(ex.Message);
+            }
         }
 
         private void SignupButtonIsPressed(object sender, RoutedEventArgs e)
         {
+            
             try
             {
-                if (verificationCodeTextBox.IsVisible)
+                if (VerificationCodeTextBox.IsVisible)
                 {
-                    if (!string.IsNullOrEmpty(verificationCodeTextBox.Text))
+                    if (!string.IsNullOrEmpty(VerificationCodeTextBox.Text))
                     {
-                        if (client.VerificateCode(EmailTextbox.Text, verificationCodeTextBox.Text))
+                        UserManagementService.UserManagementClient userClient = new UserManagementService.UserManagementClient();
+                        if (userClient.VerificateCode(EmailTextbox.Text, VerificationCodeTextBox.Text))
                         {
                             AddUser();
                             ChangeToVerificationMode(false);
@@ -108,11 +135,13 @@ namespace LabyrinthClient
                 }
                 else
                 {
-                    if (FieldValidator.IsValidUsername(UsernameTextbox.Text) && FieldValidator.IsValidPassword(PasswordBox.Password) && FieldValidator.IsValidEmail(EmailTextbox.Text))
+                    if (FieldValidator.IsValidUsername(UsernameTextbox.Text) && FieldValidator.IsValidPassword(PasswordBox.Password) && FieldValidator.IsValidEmail(EmailTextbox.Text) && CountryCombobox.SelectedItem != null)
                     {
-                        if (client.AddVerificationCode(EmailTextbox.Text, UsernameTextbox.Text) > 0)
+                        UserManagementService.UserManagementClient userClient = new UserManagementService.UserManagementClient();
+                        if (userClient.AddVerificationCode(EmailTextbox.Text, UsernameTextbox.Text) > 0)
                         {
-                            Message message = new Message("InfoVerificationCodeSentMessage");
+                            Message message = new Message(Messages.InfoVerificationCodeSentMessage);
+                            message.ShowDialog();
                             ChangeToVerificationMode(true);
                         }
                     }
@@ -120,11 +149,19 @@ namespace LabyrinthClient
             }
             catch (ArgumentException ex)
             {
-                ExceptionHandler.HandleException(ex);
+                ExceptionHandler.HandleValidationException(ex);
             }
             catch (FaultException<LabyrinthException> ex)
             {
                 ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
             }
         }
 
@@ -136,7 +173,8 @@ namespace LabyrinthClient
                 PasswordBox.Visibility = Visibility.Collapsed;
                 UsernameTextbox.Visibility = Visibility.Collapsed;
                 CountryCombobox.Visibility = Visibility.Collapsed;
-                verificationCodeTextBox.Visibility = Visibility.Visible;
+                VerificationCodeTextBox.Visibility = Visibility.Visible;
+                ShowPasswordForSignup.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -144,72 +182,106 @@ namespace LabyrinthClient
                 PasswordBox.Visibility = Visibility.Visible;
                 UsernameTextbox.Visibility = Visibility.Visible;
                 CountryCombobox.Visibility = Visibility.Visible;
-                verificationCodeTextBox.Visibility = Visibility.Collapsed;
+                VerificationCodeTextBox.Visibility = Visibility.Collapsed;
+                ShowPasswordForSignup.Visibility = Visibility.Visible;
             }
         }
 
         private void AddUser()
         {
             UserManagementService.TransferUser user = new UserManagementService.TransferUser();
+            UserManagementService.UserManagementClient userClient = new UserManagementService.UserManagementClient();
+            
             string password = "";
-
+            user.CountryCode = CountryCombobox.SelectedValue.ToString();
             user.Username = UsernameTextbox.Text;
             user.Email = EmailTextbox.Text;
             password = EncryptPassword(PasswordBox.Password);
 
-            user.Country = (int)CountryCombobox.SelectedValue;
            
-            if (client.AddUser(user, password) > 0)
+            if (userClient.AddUser(user, password) > 0)
             {
-                Message message = new Message("InfoUserRegisteredMessage");
-                verificationCodeTextBox.Clear();
+                CleanFields();
+                Message message = new Message(Messages.InfoUserRegisteredMessage);
+                message.ShowDialog();
                 ChangeToVerificationMode(false);
             }
+        }
+
+        private void CleanFields()
+        {
+            EmailTextbox.Clear();
+            PasswordBox.Clear();
+            UsernameTextbox.Clear();
+            CountryCombobox.SelectedItem = null;
+            VerificationCodeTextBox.Clear();
+            VerificationCodeTextBox.Clear();
         }
         private void ExitButtonIsPressed(Object sender, RoutedEventArgs e)
         {
             Message message = new Message("InfoExitConfirmationMessage", Properties.Resources.YesButton, Properties.Resources.NoButton);
+            message.Owner = this;
             message.ShowDialog();
-            if (message.UserDialogResult == Message.DialogResult.Confirm)
+            if (message.UserDialogResult == Message.CustomDialogResult.Confirm)
             {
                 this.Close();
             }
         }
-        
-        private void JoinAsGuestButtonIsPressed(Object sender, RoutedEventArgs e)
-        {
-            Lobby lobbyForGuest = new Lobby();
-            lobbyForGuest.IsRegistered = false;
-            lobbyForGuest.JoinAsGuest(lobbyTextBox.Text,userNameForJoinAsGuestTextBox.Text);
-            lobbyForGuest.Show();
-            this.Close();
-        }
 
+        private void JoinAsGuestButtonIsPressed(object sender, RoutedEventArgs e)
+        {
+            Lobby lobbyForGuest = null;
+
+            try
+            {
+                if (FieldValidator.IsValidLobbyCode(LobbyTextBox.Text) && FieldValidator.IsValidUsername(UserNameForJoinAsGuestTextBox.Text))
+                {
+                    lobbyForGuest = new Lobby();
+                    lobbyForGuest.JoinAsGuest(LobbyTextBox.Text, UserNameForJoinAsGuestTextBox.Text);
+                    lobbyForGuest.Show();
+                    this.Close();
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                ExceptionHandler.HandleValidationException(ex);
+            }
+            catch (FaultException<ChatService.LabyrinthException> ex)
+            {
+                ExceptionHandler.HandleLabyrinthException(ex.Detail.ErrorCode);
+                lobbyForGuest?.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+            }
+
+        }
 
         private void LanguageButtonIsPressed(object sender, RoutedEventArgs e)
         {
+            string languageCode;
             var currentCulture = Thread.CurrentThread.CurrentUICulture.Name;
 
             if (currentCulture == "es-ES")
             {
-                CultureInfo ui_culture = new CultureInfo("en-US");
-                CultureInfo culture = new CultureInfo("en-US");
-
-                Thread.CurrentThread.CurrentUICulture = ui_culture;
-                Thread.CurrentThread.CurrentCulture = culture;
+                languageCode = "en-US";
             }
             else
             {
-                CultureInfo ui_culture = new CultureInfo("es-ES");
-                CultureInfo culture = new CultureInfo("es-ES");
-
-                Thread.CurrentThread.CurrentUICulture = ui_culture;
-                Thread.CurrentThread.CurrentCulture = culture;
+                languageCode = "es-ES";
             }
-
+            
+            MainWindow newWindow = new MainWindow(languageCode);
+            newWindow.Show();
+            this.Close();
         }
 
-        public string EncryptPassword(string password)
+        public static string EncryptPassword(string password)
         {
             SHA256 sha256 = SHA256Managed.Create();
             ASCIIEncoding encoding = new ASCIIEncoding();
@@ -227,18 +299,18 @@ namespace LabyrinthClient
         private void ChangeToJoinAsGuestIsPressed(object sender, RoutedEventArgs e)
         {
 
-            changeToSignupButton.FontWeight = FontWeights.Regular;
-            changeToLoginButton.FontWeight = FontWeights.Regular;
-            changeToJoinAsGuest.FontWeight = FontWeights.Bold;
+            ChangeToSignupButton.FontWeight = FontWeights.Regular;
+            ChangeToLoginButton.FontWeight = FontWeights.Regular;
+            ChangeToJoinAsGuest.FontWeight = FontWeights.Bold;
             ChangeToJoinAsGuestMode(true);
             ChangeToLoginMode(false);
             ChangeToSignupMode(false);
         }
         private void ChangeToLoginIsPressed(object sender, RoutedEventArgs e)
         {
-            changeToSignupButton.FontWeight = FontWeights.Regular;
-            changeToJoinAsGuest.FontWeight = FontWeights.Regular;
-            changeToLoginButton.FontWeight = FontWeights.Bold;
+            ChangeToSignupButton.FontWeight = FontWeights.Regular;
+            ChangeToJoinAsGuest.FontWeight = FontWeights.Regular;
+            ChangeToLoginButton.FontWeight = FontWeights.Bold;
             ChangeToJoinAsGuestMode(false);
             ChangeToLoginMode(true);
             ChangeToSignupMode(false);
@@ -246,9 +318,10 @@ namespace LabyrinthClient
         }
         private void ChangeToSignupIsPressed(object sender, RoutedEventArgs e)
         {
-            changeToJoinAsGuest.FontWeight = FontWeights.Regular;
-            changeToLoginButton.FontWeight = FontWeights.Regular;
-            changeToSignupButton.FontWeight = FontWeights.Bold;
+            LoadCountriesFromResources();
+            ChangeToJoinAsGuest.FontWeight = FontWeights.Regular;
+            ChangeToLoginButton.FontWeight = FontWeights.Regular;
+            ChangeToSignupButton.FontWeight = FontWeights.Bold;
             ChangeToJoinAsGuestMode(false);
             ChangeToLoginMode(false);
             ChangeToSignupMode(true);
@@ -259,14 +332,16 @@ namespace LabyrinthClient
         {
             if (isEnabled)
             {
-                emailForLoginTextBox.Visibility = Visibility.Visible;
-                passwordForLoginTextBox.Visibility = Visibility.Visible;
+                EmailForLoginTextBox.Visibility = Visibility.Visible;
+                PasswordForLoginTextBox.Visibility = Visibility.Visible;
                 LoginButton.Visibility = Visibility.Visible;
+                ShowPasswordForLogin.Visibility = Visibility.Visible;
             } else
             {
-                emailForLoginTextBox.Visibility = Visibility.Collapsed;
-                passwordForLoginTextBox.Visibility = Visibility.Collapsed;
+                EmailForLoginTextBox.Visibility = Visibility.Collapsed;
+                PasswordForLoginTextBox.Visibility = Visibility.Collapsed;
                 LoginButton.Visibility = Visibility.Collapsed;
+                ShowPasswordForLogin.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -278,14 +353,16 @@ namespace LabyrinthClient
                 EmailTextbox.Visibility = Visibility.Visible;
                 PasswordBox.Visibility = Visibility.Visible;
                 CountryCombobox.Visibility = Visibility.Visible;
-                signupButton.Visibility = Visibility.Visible;
+                SignupButton.Visibility = Visibility.Visible;
+                ShowPasswordForSignup.Visibility = Visibility.Visible;
             } else
             {
                 UsernameTextbox.Visibility = Visibility.Collapsed;
                 EmailTextbox.Visibility = Visibility.Collapsed;
                 PasswordBox.Visibility = Visibility.Collapsed;
                 CountryCombobox.Visibility = Visibility.Collapsed;
-                signupButton.Visibility = Visibility.Collapsed;
+                SignupButton.Visibility = Visibility.Collapsed;
+                ShowPasswordForSignup.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -293,40 +370,107 @@ namespace LabyrinthClient
         {
             if (isEnabled)
             {
-                lobbyTextBox.Visibility = Visibility.Visible;
-                userNameForJoinAsGuestTextBox.Visibility = Visibility.Visible;
-                joinAsGuestButton.Visibility = Visibility.Visible;
+                LobbyTextBox.Visibility = Visibility.Visible;
+                UserNameForJoinAsGuestTextBox.Visibility = Visibility.Visible;
+                JoinAsGuestButton.Visibility = Visibility.Visible;
             } else
             {
-                lobbyTextBox.Visibility = Visibility.Collapsed;
-                userNameForJoinAsGuestTextBox.Visibility= Visibility.Collapsed;
-                joinAsGuestButton.Visibility = Visibility.Collapsed;
+                LobbyTextBox.Visibility = Visibility.Collapsed;
+                UserNameForJoinAsGuestTextBox.Visibility= Visibility.Collapsed;
+                JoinAsGuestButton.Visibility = Visibility.Collapsed;
+            }
+        }
+     
+
+        private void PasswordIsChanged(object sender, RoutedEventArgs e)
+        {
+            var passwordBox = (PasswordBox)sender;  
+            var password = passwordBox.Password;    
+
+            if (string.IsNullOrEmpty(password))
+            {
+                passwordBox.Tag = Properties.Resources.GlobalPasswordTextBoxPlaceholder;
+            }
+            else
+            {
+                passwordBox.Tag = "";
             }
         }
 
-        public void ReceiveProfilePicture(int userId, byte[] dataImage)
+        private void ShowPasswordIsPressed(object sender, RoutedEventArgs e)
         {
-        }
-    }
+            if (PasswordForLoginTextBox.IsVisible)
+            {
+                if (!string.IsNullOrEmpty(PasswordForLoginTextBox.Password))
+                {
+                    _passwordForShow = PasswordForLoginTextBox.Password;
+                    PasswordForLoginTextBox.Password = "";
 
-    public class ExceptionHandler
+                    PasswordForLoginTextBox.Tag = _passwordForShow;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(PasswordBox.Password))
+                {
+                    _passwordForShow = PasswordBox.Password;
+                    PasswordBox.Password = "";
+
+                    PasswordBox.Tag = _passwordForShow;
+                }
+            }
+        }
+
+        private void HidePasswordIsPressed(object sender, RoutedEventArgs e)
+        {
+            if (PasswordForLoginTextBox.IsVisible)
+            {
+                if (string.IsNullOrEmpty(PasswordForLoginTextBox.Password))
+                {
+                    PasswordForLoginTextBox.Password = _passwordForShow;
+                }
+            } 
+            else
+            {
+                if (string.IsNullOrEmpty(PasswordBox.Password))
+                {
+                    PasswordBox.Password = _passwordForShow;
+                }
+            }
+            _passwordForShow = "";
+        }
+
+    }
+    public static class ExceptionHandler
     {
-        public static Message.DialogResult HandleLabyrinthException(string messageText)
+        public static Message.CustomDialogResult HandleLabyrinthException(string messageCode)
+        {
+            Message message = new Message(Messages.ResourceManager.GetString(messageCode));
+            message.ShowDialog();
+            return message.UserDialogResult;
+        }
+
+        public static Message.CustomDialogResult HandleValidationException(ArgumentException exception)
+        {
+            Message message = new Message(Messages.ResourceManager.GetString(exception.Message));
+            message.ShowDialog();
+            return message.UserDialogResult;
+        }
+
+        public static Message.CustomDialogResult HandleFailConnectionToServer(string messageText)
         {
             Message message = new Message(messageText);
             message.ShowDialog();
             return message.UserDialogResult;
         }
 
-        public static Message.DialogResult HandleException(Exception ex)
+        public static Message.CustomDialogResult HandleCommunicationException()
         {
-            Message message = new Message(ex.Message);
+            Message message = new Message("FailServerCommunication");
             message.ShowDialog();
             return message.UserDialogResult;
         }
     }
-
-
     public class EmptyStringToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -337,11 +481,8 @@ namespace LabyrinthClient
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            string text = value as string;
+            return string.IsNullOrWhiteSpace(text) ? Visibility.Visible : Visibility.Collapsed;
         }
     }
-
-    
-
-
 }

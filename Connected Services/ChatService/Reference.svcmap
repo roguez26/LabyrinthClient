@@ -19,13 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8080" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.30:8080" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="7686a7ba-f71c-45fc-9b4c-949d5f60a21e" SourceId="1" SourceUrl="http://localhost:8080/?disco" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="8d9e474e-4d6c-4f2d-b1ce-b7e006a0db86" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c211b5c0-153a-4009-b93b-fa52bfa75353" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
-    <MetadataFile FileName="ChatServiceImplementation.wsdl" MetadataType="Wsdl" ID="a49272c6-64b5-45a4-8277-2f524aadc902" SourceId="1" SourceUrl="http://localhost:8080/?wsdl" />
+    <MetadataFile FileName="ChatServiceImplementation1.wsdl" MetadataType="Wsdl" ID="c640c25e-209f-487c-86bb-7ed8ba2c368f" SourceId="1" SourceUrl="http://192.168.0.30:8080/?wsdl" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="56f9f9c2-6b56-4444-81c1-d03170390854" SourceId="1" SourceUrl="http://192.168.0.30:8080/?xsd=xsd0" />
+    <MetadataFile FileName="item31.xsd" MetadataType="Schema" ID="3182217f-750e-49b3-a330-664679e7ba98" SourceId="1" SourceUrl="http://192.168.0.30:8080/?xsd=xsd1" />
+    <MetadataFile FileName="item32.xsd" MetadataType="Schema" ID="9fb21553-04be-421a-ac16-3f8b953363f4" SourceId="1" SourceUrl="http://192.168.0.30:8080/?xsd=xsd2" />
+    <MetadataFile FileName="item1.disco" MetadataType="Disco" ID="fa8d4619-5e71-4a18-8886-cf4af54f1654" SourceId="1" SourceUrl="http://192.168.0.30:8080/?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

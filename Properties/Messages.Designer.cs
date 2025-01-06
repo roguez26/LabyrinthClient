@@ -61,6 +61,33 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a There is already another active session with this account.
+        /// </summary>
+        internal static string FailActiveSessionAlreadyMessage {
+            get {
+                return ResourceManager.GetString("FailActiveSessionAlreadyMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while trying to connect to the chat.
+        /// </summary>
+        internal static string FailChatError {
+            get {
+                return ResourceManager.GetString("FailChatError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Could not connect to the database. Please try again later.
+        /// </summary>
+        internal static string FailDatabaseConnectionMessage {
+            get {
+                return ResourceManager.GetString("FailDatabaseConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a This email is registered already by another user.
         /// </summary>
         internal static string FailDuplicatedEmailMessage {
@@ -79,11 +106,38 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Could not connect to the database. Please check your Internet connection or try again later.
+        /// </summary>
+        internal static string FailEntityConnectionMessage {
+            get {
+                return ResourceManager.GetString("FailEntityConnectionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while managing friends.
+        /// </summary>
+        internal static string FailFriendManagementError {
+            get {
+                return ResourceManager.GetString("FailFriendManagementError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a You have already sent a friend request to this user.
         /// </summary>
-        internal static string FailFriendRequestDuplicated {
+        internal static string FailFriendRequestDuplicatedMessage {
             get {
-                return ResourceManager.GetString("FailFriendRequestDuplicated", resourceCulture);
+                return ResourceManager.GetString("FailFriendRequestDuplicatedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a We couldn&apos;t properly handle the profile photo correctly, please try again.
+        /// </summary>
+        internal static string FailHandleProfilePictureMessage {
+            get {
+                return ResourceManager.GetString("FailHandleProfilePictureMessage", resourceCulture);
             }
         }
         
@@ -115,6 +169,24 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The lobby code is invalid. It must follow the format XXX-XXX-XXX with uppercase letters and numbers.
+        /// </summary>
+        internal static string FailInvalidLobbyCodeMessage {
+            get {
+                return ResourceManager.GetString("FailInvalidLobbyCodeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Movement is not allowed.
+        /// </summary>
+        internal static string FailInvalidMoveMessage {
+            get {
+                return ResourceManager.GetString("FailInvalidMoveMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Password must be between 8 and 64 characters, and include at least one capital letter, one number, and one special character.
         /// </summary>
         internal static string FailInvalidPasswordMessage {
@@ -133,11 +205,38 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while trying to enter the lobby. Please try again later.
+        /// </summary>
+        internal static string FailJoinToLobbyError {
+            get {
+                return ResourceManager.GetString("FailJoinToLobbyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred when trying to access the lobby.
+        /// </summary>
+        internal static string FailLobbyError {
+            get {
+                return ResourceManager.GetString("FailLobbyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a The lobby was not found.
         /// </summary>
         internal static string FailLobbyNotFoundMessage {
             get {
                 return ResourceManager.GetString("FailLobbyNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Connection to the server was lost. Therefore, you have been disconnected from the game. Please check your Internet connection and try again.
+        /// </summary>
+        internal static string FailLostConnectionMessage {
+            get {
+                return ResourceManager.GetString("FailLostConnectionMessage", resourceCulture);
             }
         }
         
@@ -151,11 +250,110 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a An unexpected error occurred while connecting to the server. Please try again.
+        /// </summary>
+        internal static string FailNoServerCommunicationMessage {
+            get {
+                return ResourceManager.GetString("FailNoServerCommunicationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a We were unable to establish a connection to the server, please check your connection and try again.
+        /// </summary>
+        internal static string FailNotFoundEndPointMessage {
+            get {
+                return ResourceManager.GetString("FailNotFoundEndPointMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The player is in game already.
+        /// </summary>
+        internal static string FailPlayerInGameMessage {
+            get {
+                return ResourceManager.GetString("FailPlayerInGameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while loading player statistics..
+        /// </summary>
+        internal static string FailStatsNotFoundError {
+            get {
+                return ResourceManager.GetString("FailStatsNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The action has expired. Please try again.
+        /// </summary>
+        internal static string FailTimeOutMessage {
+            get {
+                return ResourceManager.GetString("FailTimeOutMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The profile photo must not be larger than 1 MB.
+        /// </summary>
+        internal static string FailTooLongProfilePictureMessage {
+            get {
+                return ResourceManager.GetString("FailTooLongProfilePictureMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a User has not been found.
         /// </summary>
         internal static string FailUserNotFoundMessage {
             get {
                 return ResourceManager.GetString("FailUserNotFoundMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while trying to register.
+        /// </summary>
+        internal static string FailUserRegistrationError {
+            get {
+                return ResourceManager.GetString("FailUserRegistrationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while trying to update the user.
+        /// </summary>
+        internal static string FailUserUpdatingError {
+            get {
+                return ResourceManager.GetString("FailUserUpdatingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a An error occurred while trying to verify the user.
+        /// </summary>
+        internal static string FailUserVerficationMessage {
+            get {
+                return ResourceManager.GetString("FailUserVerficationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string GuestHasJoinedGameMessage {
+            get {
+                return ResourceManager.GetString("GuestHasJoinedGameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string GuestHasLeftGame {
+            get {
+                return ResourceManager.GetString("GuestHasLeftGame", resourceCulture);
             }
         }
         
@@ -169,11 +367,47 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a You have received an invitation to join a game from.
+        /// </summary>
+        internal static string InfoAttendInvitationConfirmationMessage {
+            get {
+                return ResourceManager.GetString("InfoAttendInvitationConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Are you sure you want to quit the game?.
         /// </summary>
         internal static string InfoExitConfirmationMessage {
             get {
                 return ResourceManager.GetString("InfoExitConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a has joined the game.
+        /// </summary>
+        internal static string InfoGuestHasJoinedGameMessage {
+            get {
+                return ResourceManager.GetString("InfoGuestHasJoinedGameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a has left the game.
+        /// </summary>
+        internal static string InfoGuestHasLeftGame {
+            get {
+                return ResourceManager.GetString("InfoGuestHasLeftGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have received a request to join a game, in order to join you need to leave the lobby. From:.
+        /// </summary>
+        internal static string InfoInvitationMessage {
+            get {
+                return ResourceManager.GetString("InfoInvitationMessage", resourceCulture);
             }
         }
         
@@ -223,6 +457,24 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a The game has started.
+        /// </summary>
+        internal static string InfoStartGameMessage {
+            get {
+                return ResourceManager.GetString("InfoStartGameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Turn of.
+        /// </summary>
+        internal static string InfoTurnMessage {
+            get {
+                return ResourceManager.GetString("InfoTurnMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Are you sure you want to change your password?.
         /// </summary>
         internal static string InfoUpdatePasswordConfirmationMessage {
@@ -264,6 +516,33 @@ namespace LabyrinthClient.Properties {
         internal static string InfoVerificationCodeSentMessage {
             get {
                 return ResourceManager.GetString("InfoVerificationCodeSentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The game is over. The winner is .
+        /// </summary>
+        internal static string InfoWinnerMessage {
+            get {
+                return ResourceManager.GetString("InfoWinnerMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a You have joined the game.
+        /// </summary>
+        internal static string InfoYouHaveJoinedTheGameMessage {
+            get {
+                return ResourceManager.GetString("InfoYouHaveJoinedTheGameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a .
+        /// </summary>
+        internal static string YouHaveJoinedTheGameMessage {
+            get {
+                return ResourceManager.GetString("YouHaveJoinedTheGameMessage", resourceCulture);
             }
         }
     }

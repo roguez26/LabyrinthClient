@@ -127,18 +127,54 @@
     <value>Adventurer</value>
   </data>
   <data name="AdventurerDescriptionLabel" xml:space="preserve">
-    <value>He is here for a new adventure</value>
+    <value>He is here for a new adventure.</value>
   </data>
   <data name="WizzardNameLabel" xml:space="preserve">
     <value>Wizzard</value>
   </data>
   <data name="WizzardDescriptionLabel" xml:space="preserve">
-    <value>A master of illusions</value>
+    <value>A master of illusions.</value>
   </data>
   <data name="KnightNameLabel" xml:space="preserve">
     <value>Knight</value>
   </data>
   <data name="KnightDescriptionLabel" xml:space="preserve">
-    <value>From a land far, far away</value>
+    <value>From a land far, far away.</value>
+  </data>
+  <data name="AlienDescriptionLabel" xml:space="preserve">
+    <value>He comes from a distant galaxy to explore the unknown.</value>
+  </data>
+  <data name="AlienNameLabel" xml:space="preserve">
+    <value>Alien</value>
+  </data>
+  <data name="HunterDescriptionLabel" xml:space="preserve">
+    <value>He is ready to track his prey with precision and skill.</value>
+  </data>
+  <data name="HunterNameLabel" xml:space="preserve">
+    <value>Hunter</value>
+  </data>
+  <data name="NinjaDescriptionLabel" xml:space="preserve">
+    <value>He moves silently, striking from the shadows.</value>
+  </data>
+  <data name="NinjaNameLabel" xml:space="preserve">
+    <value>Ninja</value>
+  </data>
+  <data name="PirateDescriptionLabel" xml:space="preserve">
+    <value>He sails the seas in search of treasure and adventure.</value>
+  </data>
+  <data name="PirateNameLabel" xml:space="preserve">
+    <value>Pirate</value>
+  </data>
+  <data name="RobotDescriptionLabel" xml:space="preserve">
+    <value>He is programmed to complete any mission without fail.</value>
+  </data>
+  <data name="RobotNameLabel" xml:space="preserve">
+    <value>Robot</value>
+  </data>
+  <data name="ScientistDescriptionLabel" xml:space="preserve">
+    <value>He seeks to uncover the secrets of the universe.</value>
+  </data>
+  <data name="ScientistNameLabel" xml:space="preserve">
+    <value>Scientist</value>
   </data>
 </root>

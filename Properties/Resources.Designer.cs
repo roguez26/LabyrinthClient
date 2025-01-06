@@ -88,29 +88,11 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string AdventurerDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("AdventurerDescriptionTextBlock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Adventurer.
         /// </summary>
         public static string AdventurerNameLabel {
             get {
                 return ResourceManager.GetString("AdventurerNameLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string AlienDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("AlienDescriptionTextBlock", resourceCulture);
             }
         }
         
@@ -250,7 +232,7 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Email address (e.g. example@gmail.com).
+        ///   Busca una cadena traducida similar a Email address .
         /// </summary>
         public static string GlobalEmailTextBoxPlaceholder {
             get {
@@ -385,6 +367,15 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Verification code.
+        /// </summary>
+        public static string GlobalVerificationCodeTextBoxPlaceHolder {
+            get {
+                return ResourceManager.GetString("GlobalVerificationCodeTextBoxPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a You.
         /// </summary>
         public static string GlobalYouLabel {
@@ -399,15 +390,6 @@ namespace LabyrinthClient.Properties {
         public static string HostGameButton {
             get {
                 return ResourceManager.GetString("HostGameButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string HunterDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("HunterDescriptionTextBlock", resourceCulture);
             }
         }
         
@@ -444,15 +426,6 @@ namespace LabyrinthClient.Properties {
         public static string JoinGameButton {
             get {
                 return ResourceManager.GetString("JoinGameButton", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string KnightDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("KnightDescriptionTextBlock", resourceCulture);
             }
         }
         
@@ -502,15 +475,6 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string NinjaDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("NinjaDescriptionTextBlock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Ninja.
         /// </summary>
         public static string NinjaNameLabel {
@@ -534,15 +498,6 @@ namespace LabyrinthClient.Properties {
         public static string OldPasswordLabel {
             get {
                 return ResourceManager.GetString("OldPasswordLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string PirateDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("PirateDescriptionTextBlock", resourceCulture);
             }
         }
         
@@ -601,29 +556,11 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string RobotDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("RobotDescriptionTextBlock", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Robot.
         /// </summary>
         public static string RobotNameLabel {
             get {
                 return ResourceManager.GetString("RobotNameLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string ScientistDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("ScientistDescriptionTextBlock", resourceCulture);
             }
         }
         
@@ -655,7 +592,7 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Show friends requests.
+        ///   Busca una cadena traducida similar a Friends requests.
         /// </summary>
         public static string ShowFriendRequestsButton {
             get {
@@ -664,7 +601,7 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Show friends.
+        ///   Busca una cadena traducida similar a Friends.
         /// </summary>
         public static string ShowFriendsButton {
             get {
@@ -700,29 +637,11 @@ namespace LabyrinthClient.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Verification code.
-        /// </summary>
-        public static string VerificationCodeTextBox {
-            get {
-                return ResourceManager.GetString("VerificationCodeTextBox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Volcano.
         /// </summary>
         public static string VolcanoComboBoxItem {
             get {
                 return ResourceManager.GetString("VolcanoComboBoxItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a ToDo.
-        /// </summary>
-        public static string WizardDescriptionTextBlock {
-            get {
-                return ResourceManager.GetString("WizardDescriptionTextBlock", resourceCulture);
             }
         }
         

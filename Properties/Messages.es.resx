@@ -156,7 +156,7 @@
   <data name="InfoSentFriendRequestMessage" xml:space="preserve">
     <value>Se ha enviado la solicitud de amistad correctamente</value>
   </data>
-  <data name="FailFriendRequestDuplicated" xml:space="preserve">
+  <data name="FailFriendRequestDuplicatedMessage" xml:space="preserve">
     <value>Ya has enviado una solicitud de amistad a este usuario</value>
   </data>
   <data name="FailDuplicatedUsernameMessage" xml:space="preserve">
@@ -185,5 +185,90 @@
   </data>
   <data name="FailLobbyNotFoundMessage" xml:space="preserve">
     <value>No se encontró el lobby</value>
+  </data>
+  <data name="FailActiveSessionAlreadyMessage" xml:space="preserve">
+    <value>Ya hay otra sesión activa con esta cuenta</value>
+  </data>
+  <data name="FailTooLongProfilePictureMessage" xml:space="preserve">
+    <value>La foto de perfil no debe ser mayor a 1 MB</value>
+  </data>
+  <data name="InfoAttendInvitationConfirmationMessage" xml:space="preserve">
+    <value>Haz recibido una invitación para unirte a una partida por parte de
+</value>
+  </data>
+  <data name="FailPlayerInGameMessage" xml:space="preserve">
+    <value>El jugador ya se encuentra en la partida</value>
+  </data>
+  <data name="FailNoServerCommunicationMessage" xml:space="preserve">
+    <value>Se produjo un error inesperado al conectarse al servidor. Por favor inténtalo de nuevo</value>
+  </data>
+  <data name="FailInvalidLobbyCodeMessage" xml:space="preserve">
+    <value>El código del lobby no es válido. Debe seguir el formato XXX-XXX-XXX con letras mayúsculas y números</value>
+  </data>
+  <data name="InfoInvitationMessage" xml:space="preserve">
+    <value>Has recibido una solicitud para unirte a un juego, para poder hacerlo debes abandonar el lobby. De </value>
+  </data>
+  <data name="FailStatsNotFoundError" xml:space="preserve">
+    <value>Se produjo un error al cargar las estadísticas del jugador.</value>
+  </data>
+  <data name="FailJoinToLobbyError" xml:space="preserve">
+    <value>Se produjo un error al intentar ingresar al lobby. Inténtalo nuevamente más tarde</value>
+  </data>
+  <data name="FailUserRegistrationError" xml:space="preserve">
+    <value>Ocurrió un error al intentar hacer el registro</value>
+  </data>
+  <data name="FailUserUpdatingError" xml:space="preserve">
+    <value>currió un error al intentar actualizar el usuario</value>
+  </data>
+  <data name="FailUserVerficationMessage" xml:space="preserve">
+    <value>Ocurrió un error al intentar verificar el usuario</value>
+  </data>
+  <data name="FailChatError" xml:space="preserve">
+    <value>Se produjo un error al intentar conectarse al chat</value>
+  </data>
+  <data name="FailLobbyError" xml:space="preserve">
+    <value>Se produjo un error al intentar acceder al lobby</value>
+  </data>
+  <data name="FailFriendManagementError" xml:space="preserve">
+    <value>Ocurrio un error en el manejo de amigos</value>
+  </data>
+  <data name="FailInvalidMoveMessage" xml:space="preserve">
+    <value>El movimiento no está permitido</value>
+  </data>
+  <data name="InfoTurnMessage" xml:space="preserve">
+    <value>Turno de</value>
+  </data>
+  <data name="InfoStartGameMessage" xml:space="preserve">
+    <value>El juego ha empezado</value>
+  </data>
+  <data name="GuestHasJoinedGameMessage" xml:space="preserve">
+    <value>se ha unido a la partida</value>
+  </data>
+  <data name="YouHaveJoinedTheGameMessage" xml:space="preserve">
+    <value>Te has unido a la partida</value>
+  </data>
+  <data name="GuestHasLeftGame" xml:space="preserve">
+    <value>ha abandonado la partida</value>
+  </data>
+  <data name="InfoWinnerMessage" xml:space="preserve">
+    <value>El juego ha terminado. el ganador es </value>
+  </data>
+  <data name="FailNotFoundEndPointMessage" xml:space="preserve">
+    <value>No pudimos establecer una conexión con el servidor, verifique su conexión e inténtelo nuevamente</value>
+  </data>
+  <data name="FailTimeOutMessage" xml:space="preserve">
+    <value>La acción ha caducado. Por favor inténtalo de nuevo</value>
+  </data>
+  <data name="FailEntityConnectionMessage" xml:space="preserve">
+    <value>No se pudo conectar a la base de datos. Por favor verifique su conexión a Internet o vuelva a intentarlo más tarde</value>
+  </data>
+  <data name="FailDatabaseConnectionMessage" xml:space="preserve">
+    <value>No se pudo conectar a la base de datos. Vuelve a intentarlo más tarde</value>
+  </data>
+  <data name="FailHandleProfilePictureMessage" xml:space="preserve">
+    <value>No pudimos manejar correctamente la foto de perfil correctamente, inténtalo de nuevo</value>
+  </data>
+  <data name="FailLostConnectionMessage" xml:space="preserve">
+    <value>Se perdió la conexión con el servidor. Por lo tanto, has sido desconectado del juego. Por favor verifique su conexión a Internet e inténtelo nuevamente</value>
   </data>
 </root>

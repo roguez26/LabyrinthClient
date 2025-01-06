@@ -156,7 +156,7 @@
   <data name="InfoSentFriendRequestMessage" xml:space="preserve">
     <value>You have sent a friend request successfully</value>
   </data>
-  <data name="FailFriendRequestDuplicated" xml:space="preserve">
+  <data name="FailFriendRequestDuplicatedMessage" xml:space="preserve">
     <value>You have already sent a friend request to this user</value>
   </data>
   <data name="FailDuplicatedUsernameMessage" xml:space="preserve">
@@ -185,5 +185,98 @@
   </data>
   <data name="FailLobbyNotFoundMessage" xml:space="preserve">
     <value>The lobby was not found</value>
+  </data>
+  <data name="FailActiveSessionAlreadyMessage" xml:space="preserve">
+    <value>There is already another active session with this account</value>
+  </data>
+  <data name="FailTooLongProfilePictureMessage" xml:space="preserve">
+    <value>The profile photo must not be larger than 1 MB</value>
+  </data>
+  <data name="InfoAttendInvitationConfirmationMessage" xml:space="preserve">
+    <value>You have received an invitation to join a game from</value>
+  </data>
+  <data name="FailPlayerInGameMessage" xml:space="preserve">
+    <value>The player is in game already</value>
+  </data>
+  <data name="FailNoServerCommunicationMessage" xml:space="preserve">
+    <value>An unexpected error occurred while connecting to the server. Please try again</value>
+  </data>
+  <data name="FailInvalidLobbyCodeMessage" xml:space="preserve">
+    <value>The lobby code is invalid. It must follow the format XXX-XXX-XXX with uppercase letters and numbers</value>
+  </data>
+  <data name="InfoGuestHasJoinedGameMessage" xml:space="preserve">
+    <value>has joined the game</value>
+  </data>
+  <data name="InfoYouHaveJoinedTheGameMessage" xml:space="preserve">
+    <value>You have joined the game</value>
+  </data>
+  <data name="InfoGuestHasLeftGame" xml:space="preserve">
+    <value>has left the game</value>
+  </data>
+  <data name="InfoInvitationMessage" xml:space="preserve">
+    <value>You have received a request to join a game, in order to join you need to leave the lobby. From:</value>
+  </data>
+  <data name="FailStatsNotFoundError" xml:space="preserve">
+    <value>An error occurred while loading player statistics.</value>
+  </data>
+  <data name="FailJoinToLobbyError" xml:space="preserve">
+    <value>An error occurred while trying to enter the lobby. Please try again later</value>
+  </data>
+  <data name="FailUserRegistrationError" xml:space="preserve">
+    <value>An error occurred while trying to register</value>
+  </data>
+  <data name="FailUserUpdatingError" xml:space="preserve">
+    <value>An error occurred while trying to update the user</value>
+  </data>
+  <data name="FailUserVerficationMessage" xml:space="preserve">
+    <value>An error occurred while trying to verify the user</value>
+  </data>
+  <data name="FailChatError" xml:space="preserve">
+    <value>An error occurred while trying to connect to the chat</value>
+  </data>
+  <data name="FailLobbyError" xml:space="preserve">
+    <value>An error occurred when trying to access the lobby</value>
+  </data>
+  <data name="FailFriendManagementError" xml:space="preserve">
+    <value>An error occurred while managing friends</value>
+  </data>
+  <data name="FailInvalidMoveMessage" xml:space="preserve">
+    <value>Movement is not allowed</value>
+  </data>
+  <data name="InfoTurnMessage" xml:space="preserve">
+    <value>Turn of</value>
+  </data>
+  <data name="InfoStartGameMessage" xml:space="preserve">
+    <value>The game has started</value>
+  </data>
+  <data name="GuestHasJoinedGameMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="YouHaveJoinedTheGameMessage" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GuestHasLeftGame" xml:space="preserve">
+    <value />
+  </data>
+  <data name="InfoWinnerMessage" xml:space="preserve">
+    <value>The game is over. The winner is </value>
+  </data>
+  <data name="FailNotFoundEndPointMessage" xml:space="preserve">
+    <value>We were unable to establish a connection to the server, please check your connection and try again</value>
+  </data>
+  <data name="FailTimeOutMessage" xml:space="preserve">
+    <value>The action has expired. Please try again</value>
+  </data>
+  <data name="FailEntityConnectionMessage" xml:space="preserve">
+    <value>Could not connect to the database. Please check your Internet connection or try again later</value>
+  </data>
+  <data name="FailDatabaseConnectionMessage" xml:space="preserve">
+    <value>Could not connect to the database. Please try again later</value>
+  </data>
+  <data name="FailHandleProfilePictureMessage" xml:space="preserve">
+    <value>We couldn't properly handle the profile photo correctly, please try again</value>
+  </data>
+  <data name="FailLostConnectionMessage" xml:space="preserve">
+    <value>Connection to the server was lost. Therefore, you have been disconnected from the game. Please check your Internet connection and try again</value>
   </data>
 </root>

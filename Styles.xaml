@@ -116,18 +116,6 @@
         </Style.Triggers>
     </Style>
     
-    <Style x:Key="CustomPasswordBoxStyle" TargetType="PasswordBox">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="PasswordBox">
-                    <Border Background="{TemplateBinding Background}" 
-                        CornerRadius="8">
-                        <ScrollViewer x:Name="PART_ContentHost" />
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     
     <Style x:Key="CustomComboBoxStyle" TargetType="ComboBox">
         <!-- Propiedades generales del ComboBox -->
@@ -142,13 +130,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <!-- Borde redondeado -->
                         <Border x:Name="ComboBoxBorder"
                             Background="{TemplateBinding Background}"
                             CornerRadius="8"
                             Cursor="Hand">
                             <Grid>
-                                <!-- Texto seleccionado -->
                                 <ContentPresenter x:Name="ContentSite"
                                               IsHitTestVisible="False"
                                               Content="{TemplateBinding SelectionBoxItem}"
@@ -157,12 +143,11 @@
                                               Margin="5,0,25,0"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Left" />
-                                <!-- Botón desplegable (opcional) -->
                                 <ToggleButton x:Name="ToggleButton"
                                       Focusable="False"
                                       IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                       ClickMode="Press"
-                                      Background="#AF8260"
+                                      Background="Gray"
                                       HorizontalAlignment="Right"
                                       VerticalAlignment="Center"
                                       Height="30"
@@ -185,9 +170,8 @@
                                 </ToggleButton>
                             </Grid>
                         </Border>
-                        <!-- Desplegable -->
                         <Popup x:Name="Popup"
-                           Placement="Bottom"
+                           Placement="Top"
                            IsOpen="{TemplateBinding IsDropDownOpen}"
                            AllowsTransparency="True"
                            Focusable="False"
@@ -350,7 +334,7 @@
                             <TextBlock 
                             Text="{TemplateBinding Tag}" 
                             Foreground="Gray" 
-                            Margin="10,0,0,0"  
+                            Margin="0,0,0,0"  
                             VerticalAlignment="Center" 
                             IsHitTestVisible="False"
                             Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyStringToVisibilityConverter}}" />
@@ -377,6 +361,92 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="CustomPasswordBoxWithPlaceholderStyle" TargetType="PasswordBox">
+        <!-- Estilo predeterminado -->
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="BorderBrush" Value="Gray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <!-- Alineación del texto al centro -->
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="8">
+                        <Grid>
+                            <!-- Placeholder TextBlock -->
+                            <TextBlock 
+                            Text="{TemplateBinding Tag}" 
+                            Foreground="Gray" 
+                            Margin="10,0,0,0"  
+                            VerticalAlignment="Center" 
+                            IsHitTestVisible="False"
+                            Visibility="{Binding Password, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource EmptyStringToVisibilityConverter}}" />
+
+                            <!-- ScrollViewer para contenido del PasswordBox -->
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0" VerticalAlignment="Center" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <!-- Triggers para cambiar apariencia -->
+        <Style.Triggers>
+            <!-- Cambiar borde a azul cuando se selecciona -->
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="#3498db" />
+            </Trigger>
+
+            <!-- Cambiar borde a gris oscuro cuando se pasa el mouse -->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderBrush" Value="DarkGray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="RoundGreenButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="Green"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="Green"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Width" Value="40"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Content" Value="👁"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="4"  
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DarkGreen"/>
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
 
 
