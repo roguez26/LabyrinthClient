@@ -116,7 +116,6 @@ namespace LabyrinthClient
 
         private void ChangeNextTurn()
         {
-           
             try
             {
                 _gameServiceClient.AsignTurn(lobbyCodeLabel.Text, new GameService.TransferPlayer { Username = CurrentSession.CurrentUser.Username });
@@ -131,6 +130,7 @@ namespace LabyrinthClient
             catch (EndpointNotFoundException)
             {
                 ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+                LeaveLobby();
             }
             catch (CommunicationException)
             {
@@ -195,6 +195,7 @@ namespace LabyrinthClient
                     catch (EndpointNotFoundException)
                     {
                         ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+                        LeaveLobby();
                     }
                     catch (CommunicationException)
                     {
@@ -230,7 +231,6 @@ namespace LabyrinthClient
 
         public void JoinToLobby(string lobbyCode)
         {
-            WaitToHostLabel.Visibility = Visibility.Visible;
             ConfigurationCanvas.Visibility = Visibility.Collapsed;
             lobbyCodeLabel.Text = lobbyCode;
 
@@ -265,7 +265,6 @@ namespace LabyrinthClient
         public void JoinAsGuest(string lobbyCode, string username)
         {
             inviteFriendButton.Visibility = Visibility.Collapsed;
-            WaitToHostLabel.Visibility = Visibility.Visible;
             ConfigurationCanvas.Visibility = Visibility.Collapsed;
             CurrentSession.CurrentUser.Username = username;
             lobbyCodeLabel.Text = lobbyCode;
@@ -486,6 +485,7 @@ namespace LabyrinthClient
                     catch (EndpointNotFoundException)
                     {
                         ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+                        LeaveLobby();
                         _friendInvitation.Close();
                     }
                     catch (CommunicationException)
@@ -553,11 +553,11 @@ namespace LabyrinthClient
             {
                 if (user.IdUser > 0 && user.IdUser == CurrentSession.CurrentUser.IdUser)
                 {
-                    MessagesListBox.Items.Add(Messages.ResourceManager.GetString("YouHaveJoinedTheGameMessage"));
+                    MessagesListBox.Items.Add(Messages.YouHaveJoinedTheGameMessage);
                 }
                 else
                 {
-                    MessagesListBox.Items.Add(user.Username + " "+ Messages.ResourceManager.GetString("GuestHasJoinedGameMessage"));
+                    MessagesListBox.Items.Add(user.Username + " "+ Messages.GuestHasJoinedGameMessage);
                 }
             });
         }
@@ -597,7 +597,7 @@ namespace LabyrinthClient
             } 
             else
             {
-                Message message = new Message("FailLobbyNotFoundMessage");
+                Message message = new Message(Messages.FailLobbyNotFoundMessage);
 
                 MainMenu mainMenu = MainMenu.GetInstance();
                 mainMenu.Show();
@@ -625,8 +625,7 @@ namespace LabyrinthClient
         {
             Dispatcher.Invoke(() =>
             {
-                    MessagesListBox.Items.Add(user.Username + " has left the game");
-
+                MessagesListBox.Items.Add(user.Username + Messages.GuestHasLeftGame);
             });
         }
 
@@ -922,7 +921,27 @@ namespace LabyrinthClient
         {
             _gameBoard.ExtraTile.RotateRight();
             ExtraTileImage.Source = _gameBoard.ExtraTile.GetCurrentImage();
-            _gameServiceClient.RotateTile(lobbyCodeLabel.Text, CurrentSession.CurrentUser.Username);
+            try
+            {
+                _gameServiceClient.RotateTile(lobbyCodeLabel.Text, CurrentSession.CurrentUser.Username);
+            }
+            catch (CommunicationObjectFaultedException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailLostConnectionMessage);
+                LeaveLobby();
+            }
+            catch (EndpointNotFoundException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
+                LeaveLobby();
+
+            }
+            catch (CommunicationException)
+            {
+                ExceptionHandler.HandleFailConnectionToServer(Messages.FailNoServerCommunicationMessage);
+                LeaveLobby();
+            }
+
         }
 
         private void ChangeGameBoardSkin(object sender, SelectionChangedEventArgs e)
@@ -970,7 +989,6 @@ namespace LabyrinthClient
                 {
                     ExceptionHandler.HandleFailConnectionToServer(Messages.FailNotFoundEndPointMessage);
                     LeaveLobby();
-
                 }
                 catch (CommunicationException)
                 {
@@ -1055,7 +1073,7 @@ namespace LabyrinthClient
             StartGame();
             Dispatcher.Invoke(() =>
             {
-                MessagesListBox.Items.Add(Messages.ResourceManager.GetString("InfoStartGameMessage"));
+                MessagesListBox.Items.Add(Messages.InfoStartGameMessage);
             });
         }
 
@@ -1066,7 +1084,7 @@ namespace LabyrinthClient
             _timer.Start();
             Dispatcher.Invoke(() =>
             {
-                MessagesListBox.Items.Add(Messages.ResourceManager.GetString("InfoTurnMessage") + " " + currentPlayer.Username);
+                MessagesListBox.Items.Add(Messages.ResourceManager.GetString(Messages.InfoTurnMessage) + " " + currentPlayer.Username);
 
             });
             if (currentPlayer.Username == CurrentSession.CurrentUser.Username)

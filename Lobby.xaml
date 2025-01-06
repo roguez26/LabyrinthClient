@@ -100,7 +100,6 @@
 
         </StackPanel>
 
-        <!-- Botón para regresar -->
         <Button HorizontalAlignment="Left" Margin="48,14,0,0" VerticalAlignment="Top" Width="34" Height="33" BorderBrush="White" Foreground="White" Click="BackButtonIsPressed"
                 Style="{DynamicResource CustomIconButtonStyle}">
             <Button.Background>
@@ -109,7 +108,6 @@
         </Button>
 
 
-        <!-- Etiqueta para el código del lobby -->
         <StackPanel Grid.Column="1" Margin="730,28,70,0" Orientation="Vertical" Grid.Row="1" VerticalAlignment="Top" Height="341" Cursor="" Grid.ColumnSpan="2" >
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
@@ -321,6 +319,5 @@
                    FontSize="15" 
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Top" Width="37" Grid.Column="1" Margin="0,24,0,0" Height="19" ><Run/><LineBreak/><Run/></TextBlock>
-        <Label x:Name="WaitToHostLabel" Grid.Column="1" Content="Espere mientras el host configura&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,257,0,0" VerticalAlignment="Top" Grid.Row="1" Width="260" Visibility="Collapsed"/>
     </Grid>
 </Window>
